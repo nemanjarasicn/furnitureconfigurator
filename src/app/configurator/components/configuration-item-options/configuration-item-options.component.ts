@@ -26,7 +26,10 @@ export class ConfigurationItemOptionsComponent implements OnInit {
   }
 
   onTileSelected(selectedOption: IConfigurationItemOption) {
-    this.configurationService.selectOption(this.item, selectedOption)
+    if (this.activeOption !== selectedOption) {
+      this.activeOption = selectedOption;
+      this.configurationService.selectOption(this.item, selectedOption)
+    }
   }
 
 }

@@ -13,6 +13,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LanguageConstants } from './common/constants/language.constants';
 import { HeaderComponent } from './header/header.component';
 import { CoreModule } from './core/core.module';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +39,11 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
+    }),
+    TooltipModule.forRoot({
+      'show-delay': 50,
+      'hide-delay': 50,
+      'placement': 'bottom'
     }),
     CoreModule
   ],

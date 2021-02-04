@@ -1,0 +1,20 @@
+.configurator-breadcrumbs {
+  background-color: #fff;
+  text-align: center;
+  border-bottom: 1px solid #ebebeb;
+
+  ul {
+    li {
+      display: inline-block;
+      a {
+        font-size: 12px;
+        padding: 15px;
+        border-bottom: 2px solid transparent;
+        display: block;
+        &.active {
+          border-bottom: 2px solid orangered;
+        }
+      }
+    }
+  }
+}

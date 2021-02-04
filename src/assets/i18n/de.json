@@ -16,7 +16,7 @@
       "GROUP_TITLE": "Waschbecken",
       "ITEMS": {
         "BASIN_COUNT": {
-          "TITLE" : "Anzahl Waschbecken",
+          "TITLE": "Anzahl Waschbecken",
           "DESCRIPTION": "Wählen Sie die gewünschte Anzahl an Waschbecken.",
           "OPTIONS": {
             "SINGLE": {
@@ -32,7 +32,219 @@
               "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
             }
           }
+        },
+        "BASIN_TYPE": {
+          "TITLE": "Waschbeckenart",
+          "DESCRIPTION": "Wählen Sie ob Sie ein Aufsatzwaschbecken möchten oder die Maße selbst angeben wollen.",
+          "OPTIONS": {
+            "COUNTERTOP": {
+              "LABEL": "Aufsatzwaschbecken",
+              "DESCRIPTION": "Aufsatzwaschbecken werden direkt in den Möbelkorpus hinein gelegt.",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/single_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/single_basin_full.jpg"
+            },
+            "MADETOMEASURE": {
+              "LABEL": "Waschbecken nach Maß",
+              "DESCRIPTION": "Definieren Sie die Maße Ihres Waschbeckens selbst.",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+            }
+          }
+        },
+        "BASIN_MEASURES": {
+          "TITLE": "Maße des Waschbeckens",
+          "DESCRIPTION": "Definieren Sie die Maße Ihres neuen Waschbeckens in CM.",
+          "OPTIONS": {
+            "WIDTH": {
+              "LABEL": "Breite",
+              "DESCRIPTION": "",
+              "PREVIEW_URL": "",
+              "IMAGE_URL": ""
+            },
+            "HEIGHT": {
+              "LABEL": "Höhe",
+              "DESCRIPTION": "",
+              "PREVIEW_URL": "",
+              "IMAGE_URL": ""
+            }
+          }
+        },
+        "BASIN_MODEL": {
+          "TITLE": "Waschbecken Modell",
+          "DESCRIPTION": "Wählen Sie eine Waschbeckenform aus.",
+          "OPTIONS": {
+            "MODEL3": {
+              "LABEL": "Modell 3",
+              "DESCRIPTION": "Nette Ausführung",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/single_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/single_basin_full.jpg"
+            },
+            "MODELY": {
+              "LABEL": "Modell Y",
+              "DESCRIPTION": "Feinste Keramik",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+            },
+            "MODELS": {
+              "LABEL": "Modell S",
+              "DESCRIPTION": "Der Sportwagen unter den Waschbecken",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+            },
+            "MODELX": {
+              "LABEL": "Modell X",
+              "DESCRIPTION": "Das robuste Weltraummaterial für jeden Einsatzzweck",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+            }
+          }
         }
+      }
+    },
+    "CABINET": {
+      "GROUP_TITLE": "Schrank konfigurieren",
+      "GROUP_DESCRIPTION": "Geben Sie Ihrem Schrank Farbe und Form.",
+      "ITEMS": {
+        "CABINET_MEASURES": {
+          "TITLE": "Schrankdimensionen",
+          "DESCRIPTION": "Legen Sie die Dimensionen Ihres Schrank fest",
+          "OPTIONS": {
+            "WIDTH": {
+              "LABEL": "Breite",
+              "DESCRIPTION": ""
+            },
+            "DEPTH": {
+              "LABEL": "Tiefe",
+              "DESCRIPTION": ""
+            },
+            "HEIGHT": {
+              "LABEL": "Höhe",
+              "DESCRIPTION": ""
+            }
+          }
+        },
+        "CABINET_COLOR": {
+          "TITLE": "Farbe außen",
+          "DESCRIPTION": "Wählen Sie die äußere Farbe des Schranks"
+        },
+        "FRONT_COLOR": {
+          "TITLE": "Farbe Front",
+          "DESCRIPTION": "Wählen die Farbe der Front"
+        },
+        "TOP_COLOR": {
+          "TITLE": "Farbe Deckplatte",
+          "DESCRIPTION": "Wählen die Farbe der Deckplatte"
+        }
+      }
+    },
+    "COLORS": {
+      "COLORADO": {
+        "LABEL": "Colorado",
+        "DESCRIPTION": "Colorado",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_colorado.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_colorado.jpg"
+      },
+      "CURIO": {
+        "LABEL": "Curio",
+        "DESCRIPTION": "Curio",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_curio.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_curio.jpg"
+      },
+      "EXECUTIVE": {
+        "LABEL": "Executive",
+        "DESCRIPTION": "Executive",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_executive.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_executive.jpg"
+      },
+      "ICE_WATER": {
+        "LABEL": "Ice Water",
+        "DESCRIPTION": "Ice Water",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_ice_water.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_ice_water.jpg"
+      },
+      "KIOTO_SOFTTOUCH": {
+        "LABEL": "Kioto Softtouch",
+        "DESCRIPTION": "Kioto Softtouch",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_kioto.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_kioto.jpg"
+      },
+      "LANCELOT": {
+        "LABEL": "Lancelot",
+        "DESCRIPTION": "Lancelot",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_lancelot.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_lancelot.jpg"
+      },
+      "MAGNOLIE": {
+        "LABEL": "Magnolie",
+        "DESCRIPTION": "Magnolie",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_magnolie.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_magnolie.jpg"
+      },
+      "MAYA_HIGHGLOSS": {
+        "LABEL": "Maya Hochglanz",
+        "DESCRIPTION": "Maya Hochglanz",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_maya_highgloss.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_maya_highgloss.jpg"
+      },
+      "PEMBROKE": {
+        "LABEL": "Pembroke",
+        "DESCRIPTION": "Pembroke",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_pembroke.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_pembroke.jpg"
+      },
+      "PULAKA": {
+        "LABEL": "Pulaka",
+        "DESCRIPTION": "Pulaka",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_pulaka.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_pulaka.jpg"
+      },
+      "SHERWOOD": {
+        "LABEL": "Sherwood",
+        "DESCRIPTION": "Sherwood",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_sherwood.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_sherwood.jpg"
+      },
+      "TELLURINO": {
+        "LABEL": "Tellurino",
+        "DESCRIPTION": "Tellurino",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_tellurino.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_tellurino.jpg"
+      },
+      "TIVOLI": {
+        "LABEL": "Tivoli",
+        "DESCRIPTION": "Tivoli",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_tivoli.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_tivoli.jpg"
+      },
+      "UTORI": {
+        "LABEL": "Utori",
+        "DESCRIPTION": "Utori",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_utori.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_utori.jpg"
+      },
+      "ALLENDE_HIGHGLOSS": {
+        "LABEL": "Allende Hochglanz",
+        "DESCRIPTION": "Allende Hochglanz",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_allende_highgloss.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_allende_highgloss.jpg"
+      },
+      "BALTIC": {
+        "LABEL": "Baltic",
+        "DESCRIPTION": "Baltic",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_baltic.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_baltic.jpg"
+      },
+      "CANCUN_SOFTTOUCH": {
+        "LABEL": "Cancun Softtouch",
+        "DESCRIPTION": "Cancun Softtouch",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_cancun.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_cancun.jpg"
+      },
+      "CASHMERE": {
+        "LABEL": "Cashmere",
+        "DESCRIPTION": "Cashmere",
+        "PREVIEW_URL": "assets/images/configurator_images/previews/color_cashmere.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/previews/color_cashmere.jpg"
       }
     }
   }

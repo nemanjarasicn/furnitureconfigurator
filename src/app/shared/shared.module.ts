@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 
 
@@ -8,8 +9,9 @@ import { TranslateModule } from '@ngx-translate/core';
   declarations: [],
   imports: [
     CommonModule,
-    TranslateModule
+    TranslateModule,
+    TooltipModule
   ],
-  exports: [TranslateModule]
+  exports: [TranslateModule, TooltipModule]
 })
 export class SharedModule { }

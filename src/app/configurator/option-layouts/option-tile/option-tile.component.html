@@ -1,3 +1,8 @@
-<div class="option-tile" (click)="onSelectOption()">
+<div class="option-tile zoom"
+[style.width.px]="tileSize"
+[style.height.px]="tileSize"
+[ngClass]="{'tile-active': isActive}"
+(click)="onSelectOption()"
+[tooltip]="(option?.label || '') | translate">
   <img [src]="(option?.previewUrl || '') | translate" />
 </div>

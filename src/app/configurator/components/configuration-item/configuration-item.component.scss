@@ -5,3 +5,15 @@
 .item-title {
   font-weight: bold;
 }
+
+.item-container{
+  overflow: visible;
+  margin-bottom: 30px;
+
+  &.hide-configuration-item {
+    overflow: hidden;
+    height: 0;
+    margin-bottom: 0;
+  }
+
+}

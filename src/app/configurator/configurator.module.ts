@@ -8,15 +8,19 @@ import { ConfigurationItemComponent } from './components/configuration-item/conf
 import { ConfigurationItemOptionsComponent } from './components/configuration-item-options/configuration-item-options.component';
 import { OptionTileComponent } from './option-layouts/option-tile/option-tile.component';
 import { ConfigurationPreviewComponent } from './components/configuration-preview/configuration-preview.component';
+import { OptionInputComponent } from './option-layouts/option-input/option-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConfigurationBreadcrumbComponent } from './components/configuration-breadcrumb/configuration-breadcrumb.component';
 
 
 
 @NgModule({
-  declarations: [ConfiguratorComponent, ConfigurationGroupComponent, ConfigurationItemComponent, ConfigurationItemOptionsComponent, OptionTileComponent, ConfigurationPreviewComponent],
+  declarations: [ConfiguratorComponent, ConfigurationGroupComponent, ConfigurationItemComponent, ConfigurationItemOptionsComponent, OptionTileComponent, ConfigurationPreviewComponent, OptionInputComponent, ConfigurationBreadcrumbComponent],
   imports: [
     CommonModule,
     ConfiguratorRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ConfiguratorModule { }

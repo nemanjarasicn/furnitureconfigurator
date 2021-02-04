@@ -1,4 +1,4 @@
 export enum BasinType {
-  SINGLE,
-  DOUBLE
+  COUNTERTOP,
+  MADE_TO_MEASURE
 }
