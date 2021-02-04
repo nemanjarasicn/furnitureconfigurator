@@ -1,0 +1,11 @@
+<div class="configurator-wrapper">
+
+  <div class="configurator-current-step-window">
+    <app-configuration-preview></app-configuration-preview>
+  </div>
+
+  <div class="configurator-steps-container">
+
+    <app-configuration-group *ngFor="let group of configuratorForm" [group]="group"></app-configuration-group>
+  </div>
+</div>

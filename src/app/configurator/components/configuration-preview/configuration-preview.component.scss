@@ -1,0 +1,26 @@
+.description-container {
+  position: absolute;
+  bottom: 0;
+  margin: 30px;
+  padding: 50px;
+
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+
+  font-size: 24px;
+  z-index: 1;
+}
+
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-background-size: cover!important;
+  -moz-background-size: cover!important;
+  -o-background-size: cover!important;
+  background-size: cover!important;
+  z-index: 0;
+  transition: 0.3 ease all
+}

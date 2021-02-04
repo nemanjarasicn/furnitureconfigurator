@@ -1,0 +1,12 @@
+<div class="item-info">
+  <div class="item-title" *ngIf="item.title">{{item.title | translate}}</div>
+  <div class="item-desciption" *ngIf="item.description">{{item.description | translate}}</div>
+</div>
+
+
+<div class="item-options-container">
+  <app-configuration-item-options
+  [item]="item"
+  [optionsType]="item.type"
+  [options]="item.options"></app-configuration-item-options>
+</div>

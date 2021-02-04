@@ -1,0 +1,5 @@
+<ng-container *ngIf="optionsType === optionTypeTile">
+  <div class="option-tile-container">
+    <app-option-tile *ngFor="let option of options" [option]="option" (tileSelected)="onTileSelected($event)"></app-option-tile>
+  </div>
+</ng-container>

@@ -1,0 +1,39 @@
+{
+  "HEADER": {
+    "TITLE": "Möbel nach Maß",
+    "SUB_TITLE": "schnell | einfach | individuell",
+    "LOGO_URL": "assets/images/logo_rgb.svg",
+    "LOGO_ALT_TEXT": "Niemann Emotion Logo"
+  },
+  "NAVIGATION": {
+    "HOMEPAGE": "Home",
+    "AGB": "Agb",
+    "CONTACT": "Kontakt",
+    "IMPRINT": "Impressum"
+  },
+  "CONFIGURATION": {
+    "BASIN": {
+      "GROUP_TITLE": "Waschbecken",
+      "ITEMS": {
+        "BASIN_COUNT": {
+          "TITLE" : "Anzahl Waschbecken",
+          "DESCRIPTION": "Wählen Sie die gewünschte Anzahl an Waschbecken.",
+          "OPTIONS": {
+            "SINGLE": {
+              "LABEL": "Einzelwaschbecken",
+              "DESCRIPTION": "Einzelnes Waschbecken aus Keramik.",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/single_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/single_basin_full.jpg"
+            },
+            "DOUBLE": {
+              "LABEL": "Zwei Waschbecken",
+              "DESCRIPTION": "ZWei Waschbecken nebeneinander.",
+              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
+              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+            }
+          }
+        }
+      }
+    }
+  }
+}

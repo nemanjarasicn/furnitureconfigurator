@@ -1,0 +1,12 @@
+<div class="configuration-group">
+  <div class="group-info">
+    <div class="group-title" *ngIf="group.title">{{group.title | translate}}</div>
+    <div class="group-description" *ngIf="group.description">{{group.description | translate}}</div>
+  </div>
+
+  <div class="configuration-items">
+    <app-configuration-item *ngFor="let item of group.items" [item]="item"></app-configuration-item>
+  </div>
+</div>
+
+<hr />

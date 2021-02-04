@@ -1,0 +1,4 @@
+<div class="image-container" [style.background]="backgroundImage"></div>
+<div class="description-container" *ngIf="description && description.length > 0">
+  {{description | translate }}
+</div>

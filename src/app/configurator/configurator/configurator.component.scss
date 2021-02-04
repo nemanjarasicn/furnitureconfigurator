@@ -1,0 +1,17 @@
+.configurator-wrapper {
+  height: 100%;
+  display: flex;
+}
+
+.configurator-steps-container {
+  width: 35%;
+  background-color: #fff;
+  border-left: 1px solid #ebebeb;
+  padding: 10px;
+}
+
+.configurator-current-step-window {
+  flex-grow: 1;
+  background-color: #ccc;
+  position: relative;
+}
