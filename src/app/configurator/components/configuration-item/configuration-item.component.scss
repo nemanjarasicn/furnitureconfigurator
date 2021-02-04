@@ -10,10 +10,12 @@
 
 .item-container{
   overflow: visible;
+  max-height: 500px;
+  transition: .3s linear;
 
   &.hide-configuration-item {
     overflow: hidden;
-    height: 0;
+    max-height: 0;
   }
 
 }
