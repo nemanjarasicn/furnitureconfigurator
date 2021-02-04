@@ -5,8 +5,24 @@
   margin-bottom: 10px;
   cursor: pointer;
   border: 2px solid #ebebeb;
+  position: relative;
 
   &.tile-active {
     border: 2px solid orangered;
+  }
+
+  .selected-marker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ebebeb;
+
+    &.active {
+      border: 1px solid orangered;
+      background-color: orangered;
+    }
   }
 }

@@ -7,9 +7,15 @@
   width: 35%;
   background-color: #fff;
   border-left: 1px solid #ebebeb;
-  padding: 15px;
   overflow-y: auto;
   scroll-behavior: smooth;
+
+  .configurator-group-wrapper {
+    padding: 15px;
+    &:nth-child(even) {
+      background-color: #ebebeb;
+    }
+  }
 }
 
 .configurator-current-step-window {

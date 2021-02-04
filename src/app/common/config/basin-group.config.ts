@@ -6,6 +6,7 @@ import { IConfigurationGroup } from "../models/interfaces/configuration-group.in
 
 const basinConfig: IConfigurationGroup = {
   title: 'CONFIGURATION.BASIN.GROUP_TITLE',
+  anchorLink: 'basin',
   items: [
     {
       key: 'basinCount',
@@ -58,14 +59,16 @@ const basinConfig: IConfigurationGroup = {
       type: ConfigurationOptionType.INPUT,
       options: [
         {
-          label: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.HEIGHT.LABEL',
-          description: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.HEIGHT.DESCRIPTION',
-          value: 0,
-        },
-        {
           label: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.WIDTH.LABEL',
           description: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.WIDTH.DESCRIPTION',
           value: 0,
+          imageUrl: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.WIDTH.IMAGE_URL',
+        },
+        {
+          label: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.HEIGHT.LABEL',
+          description: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.HEIGHT.DESCRIPTION',
+          value: 0,
+          imageUrl: 'CONFIGURATION.BASIN.ITEMS.BASIN_MEASURES.OPTIONS.HEIGHT.IMAGE_URL',
         },
       ],
       dependsOn: {

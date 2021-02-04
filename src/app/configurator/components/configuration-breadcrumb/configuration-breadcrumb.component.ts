@@ -10,11 +10,17 @@ import { IBreadcrumb } from 'src/app/common/models/interfaces/breadcrumb.interfa
 export class ConfigurationBreadcrumbComponent implements OnInit {
 
 
+
   breadcrumbs: IBreadcrumb[] = ConfigurationConstants.getConfigurationBreadCrumbs();
+  activeAnchor: string = this.breadcrumbs[0].anchor;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onBreadcrumbClick(breadcrumb: IBreadcrumb) {
+    this.activeAnchor = breadcrumb.anchor;
   }
 
 }

@@ -4,5 +4,6 @@
 [ngClass]="{'tile-active': isActive}"
 (click)="onSelectOption()"
 [tooltip]="(option?.label || '') | translate">
+<div class="selected-marker" [ngClass]="{'active': isActive}"></div>
   <img [src]="(option?.previewUrl || '') | translate" />
 </div>

@@ -1,12 +1,10 @@
-import { BasinCount } from "../enums/basin-count-enum";
-import { BasinModel } from "../enums/basin-model.enum";
-import { BasinType } from "../enums/basin-type-enum";
 import { ConfigurationOptionType } from "../enums/configuration-option-type.enum";
 import { IConfigurationGroup } from "../models/interfaces/configuration-group.interface";
 import { colorOptions } from "./color-options.config";
 
 const cabinetConfig: IConfigurationGroup = {
   title: 'CONFIGURATION.CABINET.GROUP_TITLE',
+  anchorLink: 'cabinet',
   items: [
     {
       key: 'cabinetMeasures',
@@ -18,16 +16,19 @@ const cabinetConfig: IConfigurationGroup = {
           label: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.WIDTH.LABEL',
           description: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.WIDTH.DESCRIPTION',
           value: 0,
+          imageUrl: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.WIDTH.IMAGE_URL',
         },
         {
           label: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.DEPTH.LABEL',
           description: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.DEPTH.DESCRIPTION',
           value: 0,
+          imageUrl: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.DEPTH.IMAGE_URL',
         },
         {
           label: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.HEIGHT.LABEL',
           description: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.HEIGHT.DESCRIPTION',
           value: 0,
+          imageUrl: 'CONFIGURATION.CABINET.ITEMS.CABINET_MEASURES.OPTIONS.HEIGHT.IMAGE_URL',
         },
       ]
     },

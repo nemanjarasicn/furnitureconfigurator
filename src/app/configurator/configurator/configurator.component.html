@@ -10,6 +10,8 @@
 
   <div class="configurator-steps-container">
 
-    <app-configuration-group *ngFor="let group of configuratorForm" [group]="group"></app-configuration-group>
+    <div class="configurator-group-wrapper" *ngFor="let group of configuratorForm">
+      <app-configuration-group [group]="group"></app-configuration-group>
+    </div>
   </div>
 </div>

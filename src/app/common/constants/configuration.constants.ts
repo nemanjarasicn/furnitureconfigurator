@@ -11,15 +11,16 @@ export abstract class ConfigurationConstants {
     cabinetConfig
   ];
 
-  public static readonly DEFAULT_TILE_SIZE_PX = 150;
+  public static readonly DEFAULT_TILE_SIZE_PX = 180;
 
   public static getConfigurationBreadCrumbs() {
 
     let breadcrumbs: IBreadcrumb[] = [];
     ConfigurationConstants.CONFIGURATION_FORM.forEach((group: IConfigurationGroup) => {
 
-      const items: IBreadcrumb[] = group.items.map((item: IConfigurationItem) => { return { title: item.title, anchor: `#${item.key}` } });
-      breadcrumbs = breadcrumbs.concat(items);
+      breadcrumbs.push({title: group.title, anchor: `#${group.anchorLink}`});
+      // const items: IBreadcrumb[] = group.items.map((item: IConfigurationItem) => { return { title: item.title, anchor: `#${item.key}` } });
+      // breadcrumbs = breadcrumbs.concat(items);
     })
 
     return breadcrumbs;

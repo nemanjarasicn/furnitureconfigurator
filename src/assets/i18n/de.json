@@ -57,15 +57,15 @@
           "OPTIONS": {
             "WIDTH": {
               "LABEL": "Breite",
-              "DESCRIPTION": "",
+              "DESCRIPTION": "Bestimmen Sie die Breite des Waschbeckens wie in rot dargestellt.",
               "PREVIEW_URL": "",
-              "IMAGE_URL": ""
+              "IMAGE_URL": "assets/images/configurator_images/basin_width.png"
             },
             "HEIGHT": {
               "LABEL": "Höhe",
-              "DESCRIPTION": "",
+              "DESCRIPTION": "Bestimmen Sie die Höhe des Waschbeckens wie in rot dargestellt.",
               "PREVIEW_URL": "",
-              "IMAGE_URL": ""
+              "IMAGE_URL": "assets/images/configurator_images/basin_height.png"
             }
           }
         },
@@ -76,26 +76,26 @@
             "MODEL3": {
               "LABEL": "Modell 3",
               "DESCRIPTION": "Nette Ausführung",
-              "PREVIEW_URL": "assets/images/configurator_images/previews/single_basin_preview.jpg",
-              "IMAGE_URL": "assets/images/configurator_images/single_basin_full.jpg"
+              "PREVIEW_URL": "assets/images/configurator_images/wb_1.png",
+              "IMAGE_URL": "assets/images/configurator_images/wb_1.png"
             },
             "MODELY": {
               "LABEL": "Modell Y",
               "DESCRIPTION": "Feinste Keramik",
-              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
-              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+              "PREVIEW_URL": "assets/images/configurator_images/wb_2.png",
+              "IMAGE_URL": "assets/images/configurator_images/wb_2.png"
             },
             "MODELS": {
               "LABEL": "Modell S",
               "DESCRIPTION": "Der Sportwagen unter den Waschbecken",
-              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
-              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+              "PREVIEW_URL": "assets/images/configurator_images/wb_3.png",
+              "IMAGE_URL": "assets/images/configurator_images/wb_3.png"
             },
             "MODELX": {
               "LABEL": "Modell X",
               "DESCRIPTION": "Das robuste Weltraummaterial für jeden Einsatzzweck",
-              "PREVIEW_URL": "assets/images/configurator_images/previews/double_basin_preview.jpg",
-              "IMAGE_URL": "assets/images/configurator_images/double_basin_full.jpg"
+              "PREVIEW_URL": "assets/images/configurator_images/wb_4.png",
+              "IMAGE_URL": "assets/images/configurator_images/wb_4.png"
             }
           }
         }
@@ -111,15 +111,18 @@
           "OPTIONS": {
             "WIDTH": {
               "LABEL": "Breite",
-              "DESCRIPTION": ""
+              "DESCRIPTION": "Bestimmen Sie die Breite Ihres Waschbeckens wie in rot dargestellt.",
+              "IMAGE_URL": "assets/images/configurator_images/cabinet_width.png"
             },
             "DEPTH": {
               "LABEL": "Tiefe",
-              "DESCRIPTION": ""
+              "DESCRIPTION": "Bestimmen Sie die Tiefe Ihres Waschbeckens wie in rot dargestellt.",
+              "IMAGE_URL": "assets/images/configurator_images/cabinet_depth.png"
             },
             "HEIGHT": {
               "LABEL": "Höhe",
-              "DESCRIPTION": ""
+              "DESCRIPTION": "Bestimmen Sie die Höhe Ihres Waschbeckens wie in rot dargestellt.",
+              "IMAGE_URL": "assets/images/configurator_images/cabinet_height.png"
             }
           }
         },

@@ -26,6 +26,12 @@ export class ConfigurationService {
     }
   }
 
+  focusInput(optionItem: IConfigurationItemOption) {
+    if (optionItem.imageUrl) {
+      this.changeConfiguratorPreview(optionItem.imageUrl, optionItem.description);
+    }
+  }
+
   onProductChanged(): BehaviorSubject<IProduct> {
     return this.product$;
   }
