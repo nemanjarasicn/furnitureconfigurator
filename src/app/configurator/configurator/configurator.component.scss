@@ -1,3 +1,8 @@
+@import '~bootstrap/scss/functions';
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+
 .configurator-wrapper {
   height: 100%;
   display: flex;
@@ -28,5 +33,22 @@
   .configurator-preview {
     flex-grow: 1;
     position: relative;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .configurator-wrapper {
+    flex-direction: column;
+  }
+
+  .configurator-current-step-window {
+    flex-grow: 0;
+    width: 100%;
+    height: 300px;
+  }
+
+  .configurator-steps-container {
+    width: 100%;
+    flex-grow: 1;
   }
 }
