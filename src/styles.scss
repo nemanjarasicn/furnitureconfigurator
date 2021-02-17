@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/scss/bootstrap";
-@import "./app/scss/globals";
+@import "./app/scss/_variables.scss";
+@import "./app/scss/_globals.scss";
+@import "./app/scss/_globals_extra_small.scss";
+@import "./app/scss/_globals_small.scss";
+@import "./app/scss/_globals_medium.scss";
+@import "./app/scss/_globals_large.scss";
+@import "./app/scss/_globals_extra_large.scss";
+@import "./app/scss/ronnyCss.scss";

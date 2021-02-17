@@ -9,26 +9,37 @@ import { Product } from 'src/app/common/models/product.model';
 
 @Injectable()
 export class ConfigurationService {
-
   private product: IProduct = new Product();
-  private product$: BehaviorSubject<IProduct> = new BehaviorSubject<IProduct>(this.product);
+  private product$: BehaviorSubject<IProduct> = new BehaviorSubject<IProduct>(
+    this.product
+  );
 
-  constructor() { }
+  constructor() {}
 
-  private configuratorPreview$: BehaviorSubject<IConfiguratorPreview> = new BehaviorSubject<IConfiguratorPreview>({})
+  private configuratorPreview$: BehaviorSubject<IConfiguratorPreview> = new BehaviorSubject<IConfiguratorPreview>(
+    {}
+  );
 
-  selectOption(optionItem: IConfigurationItem, selectedItemOption: IConfigurationItemOption) {
-
+  selectOption(
+    optionItem: IConfigurationItem,
+    selectedItemOption: IConfigurationItemOption
+  ) {
     this.publishProductChanges(optionItem, selectedItemOption);
 
     if (optionItem.type === ConfigurationOptionType.TILE) {
-      this.changeConfiguratorPreview(selectedItemOption.imageUrl, selectedItemOption.description)
+      this.changeConfiguratorPreview(
+        selectedItemOption.imageUrl,
+        selectedItemOption.description
+      );
     }
   }
 
   focusInput(optionItem: IConfigurationItemOption) {
     if (optionItem.imageUrl) {
-      this.changeConfiguratorPreview(optionItem.imageUrl, optionItem.description);
+      this.changeConfiguratorPreview(
+        optionItem.imageUrl,
+        optionItem.description
+      );
     }
   }
 
@@ -40,14 +51,20 @@ export class ConfigurationService {
     return this.configuratorPreview$;
   }
 
-  private publishProductChanges(optionItem: IConfigurationItem, selectedItemOption: IConfigurationItemOption) {
+  private publishProductChanges(
+    optionItem: IConfigurationItem,
+    selectedItemOption: IConfigurationItemOption
+  ) {
     if (this.product[optionItem.key]?.value !== selectedItemOption.value) {
       this.product[optionItem.key] = selectedItemOption;
       this.product$.next(this.product);
     }
   }
 
-  private changeConfiguratorPreview(image: string | undefined, description: string | undefined) {
-    this.configuratorPreview$.next({description, image});
+  private changeConfiguratorPreview(
+    image: string | undefined,
+    description: string | undefined
+  ) {
+    this.configuratorPreview$.next({ description, image });
   }
 }

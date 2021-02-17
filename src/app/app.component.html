@@ -1,4 +1,9 @@
-<div class="site-wrapper">
+<div
+  [ngClass]="{
+    'site-wrapper': currentRoute === '/',
+    'site-wrapper-custom': currentRoute !== '/'
+  }"
+>
   <div class="header">
     <app-header></app-header>
   </div>
@@ -6,5 +11,3 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-
-

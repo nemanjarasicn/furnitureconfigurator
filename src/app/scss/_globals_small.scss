@@ -1,0 +1,149 @@
+@media only screen and (min-width: 600px) {
+  $img-slideshow-width: 350px;
+  .img-slideshow {
+    width: $img-slideshow-width;
+  }
+  $home-img-slideshow-width: 100%;
+  .home-img-slideshow {
+    width: $home-img-slideshow-width;
+  }
+  .slide_viewer {
+    height: $img-slideshow-width;
+  }
+  .home-img-slideshow .slide_viewer {
+    height: 350px;
+  }
+  .bottom-slide-part {
+    width: $img-slideshow-width;
+    a {
+      width: $img-slideshow-width / 10;
+    }
+  }
+  .home-img-slideshow .bottom-slide-part {
+    width: $home-img-slideshow-width;
+    @include flex-row();
+    justify-content: center;
+    align-items: center;
+    a {
+      margin: 0 8px;
+      width: 60px;
+    }
+  }
+  .header-part-2 {
+    position: absolute;
+    width: -webkit-fill-available;
+    nav {
+      height: 40px;
+      ul {
+        display: none;
+        li {
+          margin: 10px 15px;
+        }
+      }
+      span {
+        @include flex-center-item();
+      }
+    }
+    address {
+      height: 25px;
+    }
+  }
+  .first-section {
+    margin-top: 45px;
+    height: 300px;
+  }
+  .calculation-con {
+    @include flex-column();
+    label {
+      width: 50px;
+    }
+  }
+  .img-con {
+    width: 190px;
+    img {
+      width: 180px;
+    }
+  }
+  #scrollTo-1,
+  #scrollTo-2,
+  #scrollTo-3,
+  #scrollTo-4 {
+    height: max-content;
+  }
+  .cookie-container {
+    height: 230px;
+    &.hide {
+      bottom: -230px !important;
+    }
+  }
+  .acc-container {
+    margin: 35px 0;
+  }
+  .title {
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+  .previous_btn_step {
+    left: 10px;
+  }
+  .next_btn_step {
+    right: 10px;
+  }
+  .slick-container {
+    width: 380px;
+  }
+  .slick-next,
+  .slick-prev {
+    background-color: $clr-gray-darker-1;
+    @include flex-center-item();
+    width: 40px;
+    height: 40px;
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .step-slideshow {
+    height: 1300px;
+  }
+  .customBody {
+    height: 100vh;
+  }
+  .config-con {
+    margin: 15px 15%;
+  }
+  #konfig_header {
+    margin-top: 30px;
+  }
+  .orange-line-part {
+    margin: 0;
+  }
+  .equal-space {
+    justify-content: space-evenly;
+  }
+  .zoom-pos1 {
+    top: unset;
+    bottom: 0;
+  }
+  .zoom-pos2,
+  .zoom-pos3 {
+    top: 0;
+  }
+  .complate-back-con {
+    justify-content: unset;
+    align-items: center;
+  }
+  #konfig_header {
+    .info {
+      left: -105px;
+      top: 25px;
+    }
+  }
+  #tip2_0Text {
+    bottom: unset;
+    top: -80px;
+  }
+  .main-el-container {
+    width: 100%;
+  }
+}

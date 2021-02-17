@@ -1,1 +1,77 @@
-<p>contact works!</p>
+<main>
+  <h1 class="title">Kontakt</h1>
+  <section class="info-container">
+    <article>
+      <p>
+        Rufen Sie uns an: 0421 - 59 49 52 16<br />
+        <br />
+        Kommen Sie persönlich bei uns vorbei und lassen Sie sich in unseren
+        Showroom beraten:<br />
+        Emotion Warenhandels GmbH<br />
+        Bordeaux Straße 3<br />
+        D - 28309 Bremen<br />
+        <br />
+        Oder schreiben Sie uns eine Email (info@emotion-24.de) und verwenden Sie
+        dafür gern folgendes Kontaktformular:
+      </p>
+    </article>
+    <article>
+      <form id="contact-form">
+        <select name="gender" id="gender" class="select-field">
+          <option value="" selected>Anrede</option>
+          <option value="Frau">Frau</option>
+          <option value="Herr">Herr</option>
+        </select>
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          placeholder="Nachname *"
+          class="input-field required"
+        />
+        <input
+          type="text"
+          name="last_name"
+          id="last_name"
+          placeholder="Vorname *"
+          class="input-field required"
+        />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="eMail-Adresse *"
+          class="input-field required"
+        />
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          placeholder="Telefon"
+          class="input-field"
+        />
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Betreff *"
+          class="input-field required"
+        />
+        <textarea
+          name="msg"
+          id="msg"
+          cols="30"
+          rows="10"
+          placeholder="Kommentar *"
+          class="textarea-field required"
+        ></textarea>
+        <small>Die mit einem * markierten Felder sind Pflichtfelder.</small>
+        <button type="submit" id="btnSubmit" name="btnSubmit">
+          Senden
+          <div></div>
+        </button>
+        <p class="msgEleP" id="msgEle"></p>
+      </form>
+    </article>
+  </section>
+</main>

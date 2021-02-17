@@ -1,11 +1,15 @@
 <header>
   <div class="header-container">
     <div class="header-slogan">
-      <span class="header-title">{{'HEADER.TITLE' | translate}}</span>
-      <span class="header-sub-title">{{'HEADER.SUB_TITLE' | translate}}</span>
+      <span class="header-title">{{ "HEADER.TITLE" | translate }}</span>
+      <span class="header-sub-title">{{ "HEADER.SUB_TITLE" | translate }}</span>
 
       <div class="header-logo">
-        <img [src]="'HEADER.LOGO_URL' | translate" [alt]="'HEADER.LOGO_ALT_TEXT'" />
+        <img
+          [routerLink]="'/'"
+          [src]="'HEADER.LOGO_URL' | translate"
+          [alt]="'HEADER.LOGO_ALT_TEXT'"
+        />
       </div>
     </div>
   </div>
@@ -14,7 +18,7 @@
   <div class="main-nav-container">
     <ul>
       <li *ngFor="let item of menuItems">
-        <a [routerLink]="item.link">{{item.label | translate}}</a>
+        <a [routerLink]="item.link">{{ item.label | translate }}</a>
       </li>
     </ul>
   </div>
