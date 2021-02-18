@@ -14,6 +14,9 @@ import { LanguageConstants } from './common/constants/language.constants';
 import { HeaderComponent } from './header/header.component';
 import { CoreModule } from './core/core.module';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { ContactService } from './core/services/contact.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,28 +29,29 @@ export function createTranslateLoader(http: HttpClient) {
     AgbComponent,
     ContactComponent,
     ImprintComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: LanguageConstants.DEFAULT_LANGUAGE,
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
     }),
     TooltipModule.forRoot({
       'show-delay': 50,
       'hide-delay': 50,
-      'placement': 'bottom'
+      placement: 'bottom',
     }),
-    CoreModule
+    CoreModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ContactService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

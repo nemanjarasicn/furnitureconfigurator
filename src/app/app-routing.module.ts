@@ -6,15 +6,28 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', loadChildren: () => import('./configurator/configurator.module').then(m => m.ConfiguratorModule) },
+  {
+    path: '',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('./configurator/configurator.module').then(
+        (m) => m.ConfiguratorModule
+      ),
+  },
   { path: 'agb', component: AgbComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'imprint', component: ImprintComponent },
-  { path: 'configurator', loadChildren: () => import('./configurator/configurator.module').then(m => m.ConfiguratorModule) },
+  {
+    path: 'configurator',
+    loadChildren: () =>
+      import('./configurator/configurator.module').then(
+        (m) => m.ConfiguratorModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

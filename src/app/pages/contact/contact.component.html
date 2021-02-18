@@ -16,61 +16,101 @@
       </p>
     </article>
     <article>
-      <form id="contact-form">
+      <form
+        id="contact-form"
+        [formGroup]="contactFrm"
+        (ngSubmit)="contactFrmSubmit()"
+      >
         <select name="gender" id="gender" class="select-field">
-          <option value="" selected>Anrede</option>
-          <option value="Frau">Frau</option>
-          <option value="Herr">Herr</option>
+          <option *ngFor="let gender of gederList" [value]="gender.value">
+            {{ gender.label }}
+          </option>
         </select>
         <input
           type="text"
           name="first_name"
-          id="first_name"
+          formControlName="first_name"
           placeholder="Nachname *"
-          class="input-field required"
+          required
+          class="input-field"
+          [ngClass]="{
+            'alert-input':
+              this.contactFrm.controls.first_name?.errors &&
+              this.contactFrm.controls.first_name.touched
+          }"
         />
         <input
           type="text"
           name="last_name"
-          id="last_name"
+          formControlName="last_name"
           placeholder="Vorname *"
-          class="input-field required"
+          required
+          class="input-field"
+          [ngClass]="{
+            'alert-input':
+              this.contactFrm.controls.last_name?.errors &&
+              this.contactFrm.controls.last_name.touched
+          }"
         />
         <input
           type="email"
           name="email"
-          id="email"
+          formControlName="email"
           placeholder="eMail-Adresse *"
-          class="input-field required"
+          class="input-field"
+          required
+          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+          [ngClass]="{
+            'alert-input':
+              this.contactFrm.controls.email?.errors &&
+              this.contactFrm.controls.email.touched
+          }"
         />
         <input
           type="text"
           name="phone"
-          id="phone"
+          formControlName="phone"
           placeholder="Telefon"
           class="input-field"
         />
         <input
           type="text"
           name="title"
-          id="title"
+          formControlName="title"
+          required
           placeholder="Betreff *"
-          class="input-field required"
+          class="input-field"
+          [ngClass]="{
+            'alert-input':
+              this.contactFrm.controls.title?.errors &&
+              this.contactFrm.controls.title.touched
+          }"
         />
         <textarea
           name="msg"
-          id="msg"
+          formControlName="msg"
           cols="30"
           rows="10"
           placeholder="Kommentar *"
-          class="textarea-field required"
+          required
+          class="textarea-field"
+          [ngClass]="{
+            'alert-input':
+              this.contactFrm.controls.msg?.errors &&
+              this.contactFrm.controls.msg.touched
+          }"
         ></textarea>
         <small>Die mit einem * markierten Felder sind Pflichtfelder.</small>
-        <button type="submit" id="btnSubmit" name="btnSubmit">
+        <button
+          type="submit"
+          name="btnSubmit"
+          [disabled]="!contactFrm.valid"
+          [class.disabled_btn]="!contactFrm.valid"
+        >
           Senden
           <div></div>
         </button>
-        <p class="msgEleP" id="msgEle"></p>
+        <p class="msgEleP" id="msgEle">{{ errMsg }}</p>
       </form>
     </article>
   </section>

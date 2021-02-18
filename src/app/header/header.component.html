@@ -1,25 +1,50 @@
 <header>
-  <div class="header-container">
-    <div class="header-slogan">
-      <span class="header-title">{{ "HEADER.TITLE" | translate }}</span>
-      <span class="header-sub-title">{{ "HEADER.SUB_TITLE" | translate }}</span>
-
-      <div class="header-logo">
+  <div class="header-part-1" id="scrollTo-0">
+    <div class="img-con">
+      <a href="#" [routerLink]="'/'">
         <img
-          [routerLink]="'/'"
           [src]="'HEADER.LOGO_URL' | translate"
           [alt]="'HEADER.LOGO_ALT_TEXT'"
         />
-      </div>
+      </a>
+    </div>
+    <div class="title-container">
+      <h1>{{ "HEADER.TITLE" | translate }}</h1>
+      <small>{{ "HEADER.SUB_TITLE" | translate }}</small>
     </div>
   </div>
-</header>
-<nav>
-  <div class="main-nav-container">
-    <ul>
-      <li *ngFor="let item of menuItems">
-        <a [routerLink]="item.link">{{ item.label | translate }}</a>
-      </li>
-    </ul>
+  <div class="header-part-2">
+    <nav>
+      <span onclick="//toogleMenu()" class="menu"
+        ><img
+          src="assets/images/icons/list.svg"
+          class="menu-icon"
+          alt="menu"
+        />Menü</span
+      >
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <a [routerLink]="item.link">{{ item.label | translate }}</a>
+        </li>
+      </ul>
+    </nav>
+    <address style="margin: 0">
+      <a
+        href="#"
+        title="Telefonnummer"
+        class="header-address-icon icon-phone-cell"
+      ></a>
+      <a
+        href="mailto:info@emotion-24.de"
+        class="header-address-icon icon-email"
+        title="E-Mail"
+      ></a>
+      <a
+        href="#"
+        [routerLink]="'/account'"
+        title="Einloggen/Account"
+        class="header-address-icon icon-person"
+      ></a>
+    </address>
   </div>
-</nav>
+</header>
