@@ -1,1 +1,13 @@
-<p>account works!</p>
+<main>
+  <div class="acc-container">
+    <app-account-dashboard *ngIf="isLoggedIn"></app-account-dashboard>
+    <app-account-login
+      [style.flex-grow]="1"
+      *ngIf="!isLoggedIn"
+    ></app-account-login>
+    <app-account-register
+      [style.flex-grow]="1"
+      *ngIf="!isLoggedIn"
+    ></app-account-register>
+  </div>
+</main>

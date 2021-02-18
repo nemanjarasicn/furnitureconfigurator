@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ContactService } from '../../core/services/contact.service';
-import { Gender } from '../../common/models/interfaces/contact-gender';
+import { Gender } from '../../common/models/interfaces/contact-gender.interface';
 
 @Component({
   selector: 'app-contact',
@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
     msg: new FormControl(''),
   });
 
-  gederList: Gender[] = [
+  genderList: Gender[] = [
     { value: '', label: 'Anrede' },
     { value: 'Frau', label: 'Frau' },
     { value: 'Herr', label: 'Herr' },

@@ -55,10 +55,10 @@ export class ConfigurationService {
     optionItem: IConfigurationItem,
     selectedItemOption: IConfigurationItemOption
   ) {
-    if (this.product[optionItem.key]?.value !== selectedItemOption.value) {
+    /*if (this.product[optionItem.key]?.value !== selectedItemOption.value) {
       this.product[optionItem.key] = selectedItemOption;
       this.product$.next(this.product);
-    }
+    }*/
   }
 
   private changeConfiguratorPreview(

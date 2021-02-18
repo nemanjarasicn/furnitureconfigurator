@@ -26,7 +26,7 @@ export class ConfigurationItemComponent implements OnInit, OnDestroy {
       });
   }
 
-  private performChecks(product: IProduct) {
+  private performChecks(product: /*IProduct*/ any) {
     if (this.item.dependsOn) {
       const option: IConfigurationItemOption = product[this.item.dependsOn.key]; //some bug appears
       this.isShown = option && option.value === this.item.dependsOn.value;

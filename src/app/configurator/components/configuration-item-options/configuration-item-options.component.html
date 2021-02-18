@@ -1,7 +1,12 @@
 <ng-container *ngIf="optionsType === optionTypeTile">
   <div class="option-tile-container">
     <div *ngFor="let option of options">
-      <app-option-tile [option]="option" [tileSize]="item.tileSize" [isActive]="activeOption && activeOption.value === option.value" (tileSelected)="onTileSelected($event)">
+      <app-option-tile
+        [option]="option"
+        [tileSize]="item.tileSize"
+        [isActive]="activeOption && activeOption.value === option.value"
+        (tileSelected)="onTileSelected($event)"
+      >
       </app-option-tile>
     </div>
   </div>
@@ -9,6 +14,9 @@
 
 <ng-container *ngIf="optionsType === optionTypeInput">
   <div class="option-input-container">
-    <app-option-input *ngFor="let option of options" [option]="option"></app-option-input>
+    <app-option-input
+      *ngFor="let option of options"
+      [option]="option"
+    ></app-option-input>
   </div>
 </ng-container>

@@ -1,0 +1,47 @@
+<section>
+  <h2>Einloggen</h2>
+  <form [formGroup]="frmLogin" (ngSubmit)="frmLoginSubmit()">
+    <input
+      class="input-field"
+      type="email"
+      formControlName="l_email"
+      name="l_email"
+      required
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      placeholder="eMail-Adresse *"
+      [ngClass]="{
+        'alert-input':
+          this.frmLogin.controls.l_email.invalid &&
+          (this.frmLogin.controls.l_email.dirty ||
+            this.frmLogin.controls.l_email.touched)
+      }"
+    />
+    <input
+      class="input-field"
+      required
+      type="password"
+      formControlName="l_password"
+      name="l_password"
+      minlength="8"
+      placeholder="********"
+      [ngClass]="{
+        'alert-input':
+          this.frmLogin.controls.l_password.invalid &&
+          (this.frmLogin.controls.l_password.dirty ||
+            this.frmLogin.controls.l_password.touched)
+      }"
+    />
+    <div>
+      <button
+        type="submit"
+        id="btnSubLogin"
+        name="btnSubLogin"
+        [class.disabled_btn]="!frmLogin.valid"
+        [disabled]="!frmLogin.valid"
+      >
+        Einreichen
+      </button>
+      <p id="msgEleLogin" class="msgEleP"></p>
+    </div>
+  </form>
+</section>

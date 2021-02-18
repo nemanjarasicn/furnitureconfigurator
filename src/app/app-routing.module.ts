@@ -11,11 +11,7 @@ import { CompleteConfigurationComponent } from './pages/complete-configuration/c
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    loadChildren: () =>
-      import('./configurator/configurator.module').then(
-        (m) => m.ConfiguratorModule
-      ),
+    component: HomepageComponent,
   },
   { path: 'agb', component: AgbComponent },
   { path: 'contact', component: ContactComponent },

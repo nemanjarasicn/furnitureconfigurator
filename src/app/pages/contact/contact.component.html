@@ -22,7 +22,7 @@
         (ngSubmit)="contactFrmSubmit()"
       >
         <select name="gender" id="gender" class="select-field">
-          <option *ngFor="let gender of gederList" [value]="gender.value">
+          <option *ngFor="let gender of genderList" [value]="gender.value">
             {{ gender.label }}
           </option>
         </select>
@@ -35,8 +35,9 @@
           class="input-field"
           [ngClass]="{
             'alert-input':
-              this.contactFrm.controls.first_name?.errors &&
-              this.contactFrm.controls.first_name.touched
+              this.contactFrm.controls.first_name.invalid &&
+              (this.contactFrm.controls.first_name.dirty ||
+                this.contactFrm.controls.first_name.touched)
           }"
         />
         <input
@@ -48,8 +49,9 @@
           class="input-field"
           [ngClass]="{
             'alert-input':
-              this.contactFrm.controls.last_name?.errors &&
-              this.contactFrm.controls.last_name.touched
+              this.contactFrm.controls.last_name.invalid &&
+              (this.contactFrm.controls.last_name.dirty ||
+                this.contactFrm.controls.last_name.touched)
           }"
         />
         <input
@@ -62,8 +64,9 @@
           pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
           [ngClass]="{
             'alert-input':
-              this.contactFrm.controls.email?.errors &&
-              this.contactFrm.controls.email.touched
+              this.contactFrm.controls.email.invalid &&
+              (this.contactFrm.controls.email.dirty ||
+                this.contactFrm.controls.email.touched)
           }"
         />
         <input
@@ -82,8 +85,9 @@
           class="input-field"
           [ngClass]="{
             'alert-input':
-              this.contactFrm.controls.title?.errors &&
-              this.contactFrm.controls.title.touched
+              this.contactFrm.controls.title.invalid &&
+              (this.contactFrm.controls.title.dirty ||
+                this.contactFrm.controls.title.touched)
           }"
         />
         <textarea
@@ -96,8 +100,9 @@
           class="textarea-field"
           [ngClass]="{
             'alert-input':
-              this.contactFrm.controls.msg?.errors &&
-              this.contactFrm.controls.msg.touched
+              this.contactFrm.controls.msg.invalid &&
+              (this.contactFrm.controls.msg.dirty ||
+                this.contactFrm.controls.msg.touched)
           }"
         ></textarea>
         <small>Die mit einem * markierten Felder sind Pflichtfelder.</small>

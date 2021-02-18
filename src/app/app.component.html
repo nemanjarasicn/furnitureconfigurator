@@ -1,7 +1,7 @@
 <div
   [ngClass]="{
-    'site-wrapper': currentRoute === '/',
-    'site-wrapper-custom': currentRoute !== '/'
+    'site-wrapper': currentRoute === '/configurator',
+    'site-wrapper-custom': currentRoute !== '/configurator'
   }"
 >
   <div class="header">
@@ -10,4 +10,5 @@
   <div class="content-wrapper">
     <router-outlet></router-outlet>
   </div>
+  <app-footer *ngIf="currentRoute === '/'"></app-footer>
 </div>

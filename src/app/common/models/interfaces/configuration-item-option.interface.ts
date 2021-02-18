@@ -1,5 +1,4 @@
 export interface IConfigurationItemOption {
-
   label: string;
   description?: string;
   value: any;

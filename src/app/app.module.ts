@@ -17,9 +17,16 @@ import { TooltipModule } from 'ng2-tooltip-directive';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContactService } from './core/services/contact.service';
+import { CookieService } from './core/services/cookie.service';
+import { AccountService } from './core/services/account.service';
 import { AccountComponent } from './pages/account/account.component';
 import { CompleteConfigurationComponent } from './pages/complete-configuration/complete-configuration.component';
 import { ThanksComponent } from './pages/thanks/thanks.component';
+import { AccountLoginComponent } from './pages/account/components/account-login/account-login.component';
+import { AccountRegisterComponent } from './pages/account/components/account-register/account-register.component';
+import { AccountDashboardComponent } from './pages/account/components/account-dashboard/account-dashboard.component';
+import { FooterComponent } from './footer/footer.component';
+import { CookieComponent } from './cookie/cookie.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,6 +43,11 @@ export function createTranslateLoader(http: HttpClient) {
     AccountComponent,
     CompleteConfigurationComponent,
     ThanksComponent,
+    AccountLoginComponent,
+    AccountRegisterComponent,
+    AccountDashboardComponent,
+    FooterComponent,
+    CookieComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +69,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     CoreModule,
   ],
-  providers: [ContactService],
+  providers: [ContactService, CookieService, AccountService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

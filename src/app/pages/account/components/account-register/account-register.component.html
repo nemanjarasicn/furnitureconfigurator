@@ -1,0 +1,142 @@
+<section>
+  <h2>Registrieren</h2>
+  <form [formGroup]="frmRegister" (ngSubmit)="frmRegisterSubmit()">
+    <input
+      type="text"
+      formControlName="r_firstname"
+      name="r_firstname"
+      required
+      class="input-field"
+      placeholder="Vorname *"
+      [ngClass]="{
+        'alert-input':
+          this.frmRegister.controls.r_firstname.invalid &&
+          (this.frmRegister.controls.r_firstname.dirty ||
+            this.frmRegister.controls.r_firstname.touched)
+      }"
+    />
+    <input
+      type="text"
+      formControlName="r_lastname"
+      name="r_lastname"
+      required
+      class="input-field"
+      placeholder="Nachname *"
+      [ngClass]="{
+        'alert-input':
+          this.frmRegister.controls.r_lastname.invalid &&
+          (this.frmRegister.controls.r_lastname.dirty ||
+            this.frmRegister.controls.r_lastname.touched)
+      }"
+    />
+    <input
+      type="text"
+      formControlName="r_salutation"
+      name="r_salutation"
+      required
+      class="input-field"
+      placeholder="Anrede *"
+      [ngClass]="{
+        'alert-input':
+          this.frmRegister.controls.r_salutation.invalid &&
+          (this.frmRegister.controls.r_salutation.dirty ||
+            this.frmRegister.controls.r_salutation.touched)
+      }"
+    />
+    <input
+      type="text"
+      formControlName="r_title"
+      name="r_title"
+      class="input-field"
+      required
+      placeholder="Titel *"
+      [ngClass]="{
+        'alert-input':
+          this.frmRegister.controls.r_title.invalid &&
+          (this.frmRegister.controls.r_title.dirty ||
+            this.frmRegister.controls.r_title.touched)
+      }"
+    />
+    <input
+      type="email"
+      formControlName="r_email"
+      name="r_email"
+      required
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      class="input-field"
+      placeholder="eMail-Adresse *"
+      [ngClass]="{
+        'alert-input':
+          this.frmRegister.controls.r_email.invalid &&
+          (this.frmRegister.controls.r_email.dirty ||
+            this.frmRegister.controls.r_email.touched)
+      }"
+    />
+    <input
+      type="password"
+      formControlName="r_password"
+      name="r_password"
+      required
+      class="input-field"
+      placeholder="Passwort ***"
+      [ngClass]="{
+        'alert-input':
+          this.frmRegister.controls.r_password.invalid &&
+          (this.frmRegister.controls.r_password.dirty ||
+            this.frmRegister.controls.r_password.touched)
+      }"
+    />
+    <input
+      type="password"
+      formControlName="r_password2"
+      name="r_password2"
+      required
+      class="input-field"
+      placeholder="Wiederhole das Passwort ***"
+      [ngClass]="{
+        'alert-input':
+          this.frmRegister.controls.r_password2.invalid &&
+          (this.frmRegister.controls.r_password2.dirty ||
+            this.frmRegister.controls.r_password2.touched)
+      }"
+    />
+    <input
+      type="tel"
+      formControlName="r_phone"
+      name="r_phone"
+      class="input-field"
+      placeholder="Telefonnummer"
+    />
+    <input
+      type="text"
+      formControlName="r_address"
+      name="r_address"
+      class="input-field"
+      placeholder="Adresse"
+    />
+    <div style="margin: 10px 0">
+      <label for="readed_agb">
+        Ich habe die AGB-Seite gelesen
+        <input
+          type="checkbox"
+          name="readed_agb"
+          required
+          [checked]="isChecked"
+          (click)="toggleIsChecked()"
+        />
+      </label>
+    </div>
+    <div>
+      <button
+        style="transition: all 0.2s"
+        type="submit"
+        name="btnSubRegister"
+        [disabled]="!frmRegister.valid || !isChecked"
+        [class.disabled_btn]="!frmRegister.valid || !isChecked"
+      >
+        Einreichen
+      </button>
+      <p id="msgEleRegister" class="msgEleP"></p>
+    </div>
+  </form>
+</section>
