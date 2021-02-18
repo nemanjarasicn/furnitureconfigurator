@@ -17,6 +17,9 @@ import { TooltipModule } from 'ng2-tooltip-directive';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContactService } from './core/services/contact.service';
+import { AccountComponent } from './pages/account/account.component';
+import { CompleteConfigurationComponent } from './pages/complete-configuration/complete-configuration.component';
+import { ThanksComponent } from './pages/thanks/thanks.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,6 +33,9 @@ export function createTranslateLoader(http: HttpClient) {
     ContactComponent,
     ImprintComponent,
     HeaderComponent,
+    AccountComponent,
+    CompleteConfigurationComponent,
+    ThanksComponent,
   ],
   imports: [
     BrowserModule,

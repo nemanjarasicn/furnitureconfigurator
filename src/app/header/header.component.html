@@ -15,14 +15,18 @@
   </div>
   <div class="header-part-2">
     <nav>
-      <span onclick="//toogleMenu()" class="menu"
+      <span (click)="toggleMenu()" class="menu"
         ><img
           src="assets/images/icons/list.svg"
           class="menu-icon"
           alt="menu"
         />Menü</span
       >
-      <ul>
+      <ul
+        [ngStyle]="{
+          height: screenWidth < 601 ? menuHeight : 'max-content'
+        }"
+      >
         <li *ngFor="let item of menuItems">
           <a [routerLink]="item.link">{{ item.label | translate }}</a>
         </li>

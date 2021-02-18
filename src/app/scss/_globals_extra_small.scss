@@ -42,7 +42,8 @@
       z-index: -1;
       width: 100%;
       ul {
-        display: none;
+        overflow: hidden;
+        height: 0px;
         li {
           margin: 25px 15px;
           text-align: center;
@@ -102,7 +103,7 @@
     margin: 35px 0;
   }
   .title {
-    margin-top: 25px;
+    margin-top: 50px;
     margin-bottom: 15px;
   }
 

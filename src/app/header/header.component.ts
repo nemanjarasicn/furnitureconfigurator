@@ -6,15 +6,19 @@ import { INavigationItem } from '../common/models/interfaces/navigation-item.int
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  menuHeight: string = '0px';
 
-  constructor() { }
+  constructor() {}
 
   menuItems: INavigationItem[] = NavigationConstants.NAVIGATION_LIST;
+  screenWidth: number = window.innerWidth;
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  toggleMenu(): void {
+    this.menuHeight = this.menuHeight === '0px' ? '200px' : '0px';
   }
-
 }

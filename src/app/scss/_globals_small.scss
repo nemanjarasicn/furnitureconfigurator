@@ -35,7 +35,8 @@
     nav {
       height: 40px;
       ul {
-        display: none;
+        overflow: hidden;
+        height: 0px;
         li {
           margin: 10px 15px;
         }
@@ -80,7 +81,7 @@
     margin: 35px 0;
   }
   .title {
-    margin-top: 25px;
+    margin-top: 50px;
     margin-bottom: 15px;
   }
   .previous_btn_step {
