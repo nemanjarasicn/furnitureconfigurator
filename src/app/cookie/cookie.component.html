@@ -1,4 +1,4 @@
-<div class="cookie-container" id="cookie-container">
+<div class="cookie-container" [class.hide]="isHide" id="cookie-container">
   <p>
     We use cookies on our website to give you the best experience on our site
     and show you relevant ads. To find out more read our
@@ -10,26 +10,28 @@
       <input
         type="checkbox"
         id="cookie_cb_ga"
-        checked
-        onchange="//cookieCbOther(this, 0)"
+        [checked]="isCb_ga"
+        (change)="isCb_ga = !isCb_ga"
     /></label>
     <label for="cookie_cb_al"
       >Advertising
       <input
         type="checkbox"
         id="cookie_cb_al"
-        checked
-        onchange="//cookieCbOther(this, 1)"
+        [checked]="isCb_al"
+        (change)="isCb_al = !isCb_al"
     /></label>
     <label for="cookie_cb_tr"
       >Necessary
       <input
         type="checkbox"
         id="cookie_cb_tr"
-        checked
-        disabled
-        onchange="//cookieCbOther(this, 2)"
+        [checked]="isCb_tr"
+        [disabled]="true"
+        (change)="isCb_tr = !isCb_tr"
     /></label>
   </div>
-  <button id="cookie-btn" class="cookie-btn">Okay</button>
+  <button id="cookie-btn" class="cookie-btn" (click)="setApprovedCookies()">
+    Okay
+  </button>
 </div>

@@ -1,25 +1,15 @@
 import { Injectable } from '@angular/core';
+import { CookieOptions } from '../../common/models/interfaces/cookie-options.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CookieService {
-  /* LIST OF COOKIE TYPES */
-  /*
-    0 - analytically
-    1 - advertising
-    2 - necessary
-
-    if empty array then user check None checkbox
-  */
-  approvedCookieObj = {
-    cookie_approved_0: true,
-    cookie_approved_1: true,
-    cookie_approved_2: true,
-    none_approved: false,
-  };
-
   cookieKeys = {
+    cookie_approved_0: 'cookie_approved_0',
+    cookie_approved_1: 'cookie_approved_1',
+    cookie_approved_2: 'cookie_approved_2',
+    none_approved: 'none_approved',
     schritt1Btn1: 'schritt1Btn1',
     schritt1Btn2: 'schritt1Btn2',
     schritt2Hohe: 'schritt2Hohe',
@@ -47,14 +37,17 @@ export class CookieService {
     waschbecken: 'waschbecken',
   };
 
-  cookieOptions = {
+  cookieOptions: CookieOptions = {
     path: '/',
     secure: true,
     samesite: 'strict',
   };
 
+  constructor() {}
+
   setCookie(name: string, value: string, moreOpt: any) {
-    let options = { ...this.cookieOptions, ...moreOpt };
+    let options: CookieOptions = { ...this.cookieOptions, ...moreOpt };
+
     //if (options.expires instanceof Date) {
     //options.expires = options.expires.toUTCString()
     //}
@@ -94,25 +87,7 @@ export class CookieService {
     this.setCookie(name, '', { ...this.cookieOptions, 'max-age': -1 });
   }
 
-  checkCookie(): boolean {
-    return this.getCookie('none_approved') === undefined ? false : true;
+  checkCookie(name: string): boolean {
+    return this.getCookie(name) === undefined ? false : true;
   }
-
-  /*okayHideCookie(ele) {
-  let is = false
-  for (const key in approvedObj) {
-    if (approvedObj[key] === true) is = true
-  }
-
-  if (is === true) {
-    for (const key in approvedObj) {
-      setCookie(key, approvedObj[key], cookieOptions)
-    }
-    ele.parentNode.classList.add('hide')
-  } else {
-    alert('Please, select a minimum 1 option for cookies.')
-  }
-}*/
-
-  constructor() {}
 }

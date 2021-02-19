@@ -14,7 +14,7 @@ export class ConfigurationItemComponent implements OnInit, OnDestroy {
   @Input()
   item!: IConfigurationItem;
   subscription: Subscription = new Subscription();
-  isShown: boolean = true;
+  isShown: boolean | undefined = true;
 
   constructor(private configurationService: ConfigurationService) {}
 
@@ -26,9 +26,10 @@ export class ConfigurationItemComponent implements OnInit, OnDestroy {
       });
   }
 
-  private performChecks(product: /*IProduct*/ any) {
+  private performChecks(product: IProduct) {
     if (this.item.dependsOn) {
-      const option: IConfigurationItemOption = product[this.item.dependsOn.key]; //some bug appears
+      const option: IConfigurationItemOption | undefined =
+        product[this.item.dependsOn.key as keyof typeof product]; //some bug appears
       this.isShown = option && option.value === this.item.dependsOn.value;
     }
   }

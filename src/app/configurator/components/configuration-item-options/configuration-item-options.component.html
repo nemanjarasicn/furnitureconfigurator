@@ -4,7 +4,7 @@
       <app-option-tile
         [option]="option"
         [tileSize]="item.tileSize"
-        [isActive]="activeOption && activeOption.value === option.value"
+        [isActive]="activeOption?.value === option.value"
         (tileSelected)="onTileSelected($event)"
       >
       </app-option-tile>

@@ -7,10 +7,9 @@ import { ConfigurationService } from 'src/app/core/services/configuration.servic
 @Component({
   selector: 'app-configuration-item-options',
   templateUrl: './configuration-item-options.component.html',
-  styleUrls: ['./configuration-item-options.component.scss']
+  styleUrls: ['./configuration-item-options.component.scss'],
 })
 export class ConfigurationItemOptionsComponent implements OnInit {
-
   @Input() options!: IConfigurationItemOption[];
   @Input() item!: IConfigurationItem;
   @Input() optionsType!: ConfigurationOptionType;
@@ -20,16 +19,14 @@ export class ConfigurationItemOptionsComponent implements OnInit {
   optionTypeTile = ConfigurationOptionType.TILE;
   optionTypeInput = ConfigurationOptionType.INPUT;
 
-  constructor(private configurationService: ConfigurationService) { }
+  constructor(private configurationService: ConfigurationService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onTileSelected(selectedOption: IConfigurationItemOption) {
     if (this.activeOption !== selectedOption) {
       this.activeOption = selectedOption;
-      this.configurationService.selectOption(this.item, selectedOption)
+      this.configurationService.selectOption(this.item, selectedOption);
     }
   }
-
 }
