@@ -1,55 +1,5 @@
-<div class="nav-div-scroll-con">
-  <a href="#prev" class="section-nav--link link--prev" title="Hochscrollen"
-    ><div></div
-  ></a>
-  <a
-    href="#start"
-    scrollto="0"
-    class="section-nav--link link--start"
-    title="Header"
-    ><div></div
-  ></a>
-  <!--<a
-      href="#section-1"
-      title="Abschnitt 1"
-      scrollto="1"
-      class="section-nav--link link--link"
-      ><div></div
-    ></a>-->
-  <a
-    href="#section-2"
-    title="Abschnitt 2"
-    scrollto="2"
-    class="section-nav--link link--link"
-    ><div></div
-  ></a>
-  <a
-    href="#section-3"
-    title="Abschnitt 3"
-    scrollto="3"
-    class="section-nav--link link--link"
-    ><div></div
-  ></a>
-  <a
-    href="#section-4"
-    title="Abschnitt 4"
-    scrollto="4"
-    class="section-nav--link link--link"
-    ><div></div
-  ></a>
-  <a
-    href="#end"
-    scrollto="5"
-    class="section-nav--link link--link"
-    title="Fusszeile"
-    ><div></div
-  ></a>
-  <a href="#next" class="section-nav--link link--next" title="Runterscrollen"
-    ><div></div
-  ></a>
-</div>
-
 <main>
+  <app-scroller *ngIf="showScroller" [isNotMobile]="isNotMobile"></app-scroller>
   <div class="first-section" id="scrollTo-1">
     <h2>Konfiguriere Dir</h2>
     <h2><b>DEIN</b> Badmöbel</h2>
@@ -98,17 +48,18 @@
             </div>--->
           <div class="schritt-1-btn-container" id="btn-con3">
             <button
-              class="active"
+              [class.active]="isWaschbecken0Active"
               name="waschbecken1"
               id="waschbecken1"
-              onclick="//setBtnCookie(cookieKeys.waschbecken, '0'); toggleBtnWaschbecken(this, 3)"
+              (click)="toggleBtnWaschbecken(0)"
             >
               Waschtisch mit einem Waschbecken
             </button>
             <button
+              [class.active]="!isWaschbecken0Active"
               name="waschbecken2"
               id="waschbecken2"
-              onclick="//setBtnCookie(cookieKeys.waschbecken, '1'); toggleBtnWaschbecken(this, 3)"
+              (click)="toggleBtnWaschbecken(1)"
             >
               Waschtisch mit zwei Waschbecken
             </button>
@@ -222,7 +173,7 @@
             <div
               style="background-image: url(assets/images/05-min.jpeg)"
               class="slide bgImg"
-              onclick="//toggleReadMore()"
+              (click)="toggleReadMore()"
               alt="Hochwertiges MDF für exklusive Möbel"
             >
               <p class="img-additional-txt">
@@ -232,7 +183,7 @@
             <div
               style="background-image: url(assets/images/06-min.jpeg)"
               class="slide bgImg"
-              onclick="//toggleReadMore()"
+              (click)="toggleReadMore()"
               alt="100% individuell durch eigene Waschbeckenproduktion"
             >
               <p class="img-additional-txt">
@@ -243,7 +194,7 @@
               style="background-image: url(assets/images/07-min.JPG)"
               class="slide bgImg"
               alt="Möbelproduktion aus eigener Herrstellung"
-              onclick="//toggleReadMore()"
+              (click)="toggleReadMore()"
             >
               <p class="img-additional-txt">
                 Möbelproduktion aus eigener Herrstellung
@@ -261,7 +212,7 @@
       <div class="slide_buttons slide_buttons2 bottom-slide-part"></div>
     </div>
   </section>
-  <div class="slider-text-container">
+  <div class="slider-text-container" [class.active]="isSlide_text_container">
     <p class="active" id="slider-text-0">
       Hochwertiges MDF für exklusive Möbel
     </p>
@@ -271,10 +222,11 @@
     <p id="slider-text-2">Möbelproduktion aus eigener Herrstellung</p>
   </div>
   <div class="read-more-btn-con">
-    <button onclick="//toggleReadMore()" class="bottom-section-btn">
-      <a href="#"><b>WEITERLESEN</b></a>
-      <span><div></div></span>
+    <button (click)="toggleReadMore()" class="bottom-section-btn">
+      <a><b>WEITERLESEN</b></a>
+      <span><div [class.active]="isSTCbtnIcon"></div></span>
     </button>
   </div>
   <div class="orange-line"></div>
 </main>
+<app-footer></app-footer>

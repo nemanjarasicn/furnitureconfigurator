@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ContactService } from './core/services/contact.service';
 import { CookieService } from './core/services/cookie.service';
 import { AccountService } from './core/services/account.service';
+import { SlideshowService } from './core/services/slideshow.service';
 import { AccountComponent } from './pages/account/account.component';
 import { CompleteConfigurationComponent } from './pages/complete-configuration/complete-configuration.component';
 import { ThanksComponent } from './pages/thanks/thanks.component';
@@ -27,6 +28,7 @@ import { AccountRegisterComponent } from './pages/account/components/account-reg
 import { AccountDashboardComponent } from './pages/account/components/account-dashboard/account-dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { CookieComponent } from './cookie/cookie.component';
+import { ScrollerComponent } from './pages/homepage/components/scroller/scroller.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,6 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
     AccountDashboardComponent,
     FooterComponent,
     CookieComponent,
+    ScrollerComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     CoreModule,
   ],
-  providers: [ContactService, CookieService, AccountService],
+  providers: [ContactService, CookieService, AccountService, SlideshowService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

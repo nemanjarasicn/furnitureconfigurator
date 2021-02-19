@@ -45,7 +45,7 @@ export class CookieService {
 
   constructor() {}
 
-  setCookie(name: string, value: string, moreOpt: any) {
+  setCookie(name: string, value: string, moreOpt?: any) {
     let options: CookieOptions = { ...this.cookieOptions, ...moreOpt };
 
     //if (options.expires instanceof Date) {
