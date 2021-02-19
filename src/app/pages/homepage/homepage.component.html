@@ -1,1 +1,280 @@
-<p>homepage works!</p>
+<div class="nav-div-scroll-con">
+  <a href="#prev" class="section-nav--link link--prev" title="Hochscrollen"
+    ><div></div
+  ></a>
+  <a
+    href="#start"
+    scrollto="0"
+    class="section-nav--link link--start"
+    title="Header"
+    ><div></div
+  ></a>
+  <!--<a
+      href="#section-1"
+      title="Abschnitt 1"
+      scrollto="1"
+      class="section-nav--link link--link"
+      ><div></div
+    ></a>-->
+  <a
+    href="#section-2"
+    title="Abschnitt 2"
+    scrollto="2"
+    class="section-nav--link link--link"
+    ><div></div
+  ></a>
+  <a
+    href="#section-3"
+    title="Abschnitt 3"
+    scrollto="3"
+    class="section-nav--link link--link"
+    ><div></div
+  ></a>
+  <a
+    href="#section-4"
+    title="Abschnitt 4"
+    scrollto="4"
+    class="section-nav--link link--link"
+    ><div></div
+  ></a>
+  <a
+    href="#end"
+    scrollto="5"
+    class="section-nav--link link--link"
+    title="Fusszeile"
+    ><div></div
+  ></a>
+  <a href="#next" class="section-nav--link link--next" title="Runterscrollen"
+    ><div></div
+  ></a>
+</div>
+
+<main>
+  <div class="first-section" id="scrollTo-1">
+    <h2>Konfiguriere Dir</h2>
+    <h2><b>DEIN</b> Badmöbel</h2>
+    <div class="config-con">
+      <section class="schritt" id="toSchritti1">
+        <h2 class="calculation-txt">Wie viele Waschbecken benötigst Du</h2>
+        <div class="calculation-con" id="calc-con2" style="margin: 30px 0">
+          <!---<div>
+              <label for="breite2">Breite</label>
+              <input
+                type="number"
+                id="breite2"
+                step="0.1"
+                min="14"
+                value='30'
+                placeholder="0.0"
+                pattern="/^[0-9]+(\.[0-9]{2})?$/"
+                oninput="setInputCookie(this, cookieKeys.schritt2Breite)"
+              /><span>cm</span>
+            </div>
+            <div>
+              <label for="tiefe2">Tiefe</label>
+              <input
+                type="number"
+                id="tiefe2"
+                step="0.1"
+                min="14"
+                value="50"
+                placeholder="0.0"
+                pattern="/^[0-9]+(\.[0-9]{2})?$/"
+                oninput="setInputCookie(this, cookieKeys.schritt2Tiefe)"
+              /><span>cm</span>
+            </div>
+            <div>
+              <label for="hohe2">Höhe</label>
+              <input
+                type="number"
+                id="hohe2"
+                step="0.1"
+                min="14"
+                value="30"
+                placeholder="0.0"
+                pattern="/^[0-9]+(\.[0-9]{2})?$/"
+                oninput="setInputCookie(this, cookieKeys.schritt2Hohe)"
+              /><span>cm</span>
+            </div>--->
+          <div class="schritt-1-btn-container" id="btn-con3">
+            <button
+              class="active"
+              name="waschbecken1"
+              id="waschbecken1"
+              onclick="//setBtnCookie(cookieKeys.waschbecken, '0'); toggleBtnWaschbecken(this, 3)"
+            >
+              Waschtisch mit einem Waschbecken
+            </button>
+            <button
+              name="waschbecken2"
+              id="waschbecken2"
+              onclick="//setBtnCookie(cookieKeys.waschbecken, '1'); toggleBtnWaschbecken(this, 3)"
+            >
+              Waschtisch mit zwei Waschbecken
+            </button>
+          </div>
+        </div>
+      </section>
+      <div class="bottom-section-btn">
+        <a routerLink="/configurator" href="#">
+          <b>HIER KONFIGURIEREN</b>
+          <span
+            ><img src="assets/images/icons/chevron.svg" alt="right arrow"
+          /></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <section class="second-section" id="scrollTo-2">
+    <h3>SO EINFACH GEHT ES:</h3>
+    <div class="home-img-slideshow" style="margin-top: 8px">
+      <div class="slider slider1">
+        <div class="slide_viewer">
+          <div class="slide_group">
+            <div
+              style="background-image: url(assets/images/01-min.jpeg)"
+              class="slide bgImg"
+              alt="Erstellen Sie sich ihr eigenes individuelles Waschbecken"
+            >
+              <p class="img-additional-txt">
+                Erstellen Sie sich ihr eigenes individuelles Waschbecken
+              </p>
+            </div>
+            <div
+              style="background-image: url(assets/images/02-min.jpg)"
+              class="slide bgImg"
+              alt="Konfigurieren Sie sich Ihren eigenen individuellen Unterschrank nach ihren Bedürfnissen"
+            >
+              <p class="img-additional-txt">
+                Konfigurieren Sie sich Ihren eigenen individuellen Unterschrank
+                nach ihren Bedürfnissen
+              </p>
+            </div>
+            <div
+              style="background-image: url(assets/images/03-min.jpeg)"
+              class="slide bgImg"
+              alt="Wählen Sie aus über 20 Dekoren und verschiedenen Griffvarianten und stellen Sie sich so ihr Wunschmöbel zusammen"
+            >
+              <p class="img-additional-txt">
+                Wählen Sie aus über 20 Dekoren und verschiedenen Griffvarianten
+                und stellen Sie sich so ihr Wunschmöbel zusammen
+              </p>
+            </div>
+            <div
+              style="background-image: url(assets/images/04-min.jpeg)"
+              class="slide bgImg"
+              alt="Sie werden zu jeder Zeit von unserem Support unterstützt"
+            >
+              <p class="img-additional-txt">
+                Sie werden zu jeder Zeit von unserem Support unterstützt
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="to-left to-left1 previous_btn" aria-label="To previous">
+        <div></div>
+      </button>
+      <button class="to-right to-right1 next_btn" aria-label="To next">
+        <div></div>
+      </button>
+      <div class="slide_buttons slide_buttons1 bottom-slide-part"></div>
+    </div>
+  </section>
+  <section class="third-section" id="scrollTo-3">
+    <h3>Über <b>150 JAHRE</b> Kompetenz<br />in der Möbel-Industrie</h3>
+    <div>
+      <div class="left-section side-section">
+        <b class="orange">JAHR</b>
+        <p>
+          Am <b>15. September 1832</b> begann Friedrich Wilhelm Wilcke mit
+          seiner Tischlerei. Damals stand die Fertigung von Geräten,
+          Einrichtungen und Möobel für die Aussteuer im Vordergrund.
+        </p>
+        <div class="bottom-line-p"><span></span></div>
+        <b class="orange">JAHR</b>
+      </div>
+      <div class="middle-section"></div>
+      <div class="right-section side-section">
+        <b class="orange">1832</b>
+        <p>
+          <b>Hambacher Fest</b> am 27. Mai 1832. Es gilt zu Recht als eines der
+          bedeutendsten Ereignisse der deutschen Demokratiegeschichte.
+        </p>
+        <div class="bottom-line-p"></div>
+        <b class="orange">1876</b>
+      </div>
+    </div>
+    <div class="bottom-section-btn">
+      <a href="#">
+        <b>MEHR ERFAHREN</b>
+        <span><img src="assets/images/icons/plus.svg" alt="plus sign" /></span>
+      </a>
+    </div>
+  </section>
+  <div class="orange-line"></div>
+  <section class="fourth-section" id="scrollTo-4">
+    <h3>Qualitätsmöbel aus<br /><b>ENIGNER HERSTELLUNG</b></h3>
+    <div class="home-img-slideshow" style="margin-top: 8px">
+      <div class="slider slider2">
+        <div class="slide_viewer">
+          <div class="slide_group">
+            <div
+              style="background-image: url(assets/images/05-min.jpeg)"
+              class="slide bgImg"
+              onclick="//toggleReadMore()"
+              alt="Hochwertiges MDF für exklusive Möbel"
+            >
+              <p class="img-additional-txt">
+                Hochwertiges MDF für exklusive Möbel
+              </p>
+            </div>
+            <div
+              style="background-image: url(assets/images/06-min.jpeg)"
+              class="slide bgImg"
+              onclick="//toggleReadMore()"
+              alt="100% individuell durch eigene Waschbeckenproduktion"
+            >
+              <p class="img-additional-txt">
+                100% individuell durch eigene Waschbeckenproduktion
+              </p>
+            </div>
+            <div
+              style="background-image: url(assets/images/07-min.JPG)"
+              class="slide bgImg"
+              alt="Möbelproduktion aus eigener Herrstellung"
+              onclick="//toggleReadMore()"
+            >
+              <p class="img-additional-txt">
+                Möbelproduktion aus eigener Herrstellung
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="to-left to-left2 previous_btn" aria-label="To previous">
+        <div></div>
+      </button>
+      <button class="to-right to-right2 next_btn" aria-label="To next">
+        <div></div>
+      </button>
+      <div class="slide_buttons slide_buttons2 bottom-slide-part"></div>
+    </div>
+  </section>
+  <div class="slider-text-container">
+    <p class="active" id="slider-text-0">
+      Hochwertiges MDF für exklusive Möbel
+    </p>
+    <p id="slider-text-1">
+      100% individuell durch eigene Waschbeckenproduktion
+    </p>
+    <p id="slider-text-2">Möbelproduktion aus eigener Herrstellung</p>
+  </div>
+  <div class="read-more-btn-con">
+    <button onclick="//toggleReadMore()" class="bottom-section-btn">
+      <a href="#"><b>WEITERLESEN</b></a>
+      <span><div></div></span>
+    </button>
+  </div>
+  <div class="orange-line"></div>
+</main>

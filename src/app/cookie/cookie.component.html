@@ -1,1 +1,35 @@
-<p>cookie works!</p>
+<div class="cookie-container" id="cookie-container">
+  <p>
+    We use cookies on our website to give you the best experience on our site
+    and show you relevant ads. To find out more read our
+    <a href="#">Privacy policy</a> and <a href="#">Cookie policy</a>
+  </p>
+  <div class="cookie-cb-container">
+    <label for="cookie_cb_ga"
+      >Analytically
+      <input
+        type="checkbox"
+        id="cookie_cb_ga"
+        checked
+        onchange="//cookieCbOther(this, 0)"
+    /></label>
+    <label for="cookie_cb_al"
+      >Advertising
+      <input
+        type="checkbox"
+        id="cookie_cb_al"
+        checked
+        onchange="//cookieCbOther(this, 1)"
+    /></label>
+    <label for="cookie_cb_tr"
+      >Necessary
+      <input
+        type="checkbox"
+        id="cookie_cb_tr"
+        checked
+        disabled
+        onchange="//cookieCbOther(this, 2)"
+    /></label>
+  </div>
+  <button id="cookie-btn" class="cookie-btn">Okay</button>
+</div>
