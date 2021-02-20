@@ -16,10 +16,6 @@ import { CoreModule } from './core/core.module';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ContactService } from './core/services/contact.service';
-import { CookieService } from './core/services/cookie.service';
-import { AccountService } from './core/services/account.service';
-import { SlideshowService } from './core/services/slideshow.service';
 import { AccountComponent } from './pages/account/account.component';
 import { CompleteConfigurationComponent } from './pages/complete-configuration/complete-configuration.component';
 import { ThanksComponent } from './pages/thanks/thanks.component';
@@ -72,7 +68,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     CoreModule,
   ],
-  providers: [ContactService, CookieService, AccountService, SlideshowService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

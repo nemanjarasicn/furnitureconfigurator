@@ -1185,6 +1185,9 @@ div#colors {
   background: #ffffff;
   border: 1px solid #cad0d5;
   z-index: 1500;
+  a {
+    cursor: pointer;
+  }
 }
 
 .nav-div-scroll-con .link--prev,

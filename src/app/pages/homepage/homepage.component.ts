@@ -1,23 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { CookieService } from '../../core/services/cookie.service';
 import { SlideshowService } from '../../core/services/slideshow.service';
+import { ScrollerService } from '../../core/services/scroller.service';
 import { SlideShow } from '../../common/models/interfaces/homepage-slideshow.interface';
+
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
+  //slider
   slideShow1: SlideShow;
   slideShow2: SlideShow;
   isWaschbecken0Active: boolean = true;
   isSlide_text_container: boolean = false;
   isSTCbtnIcon: boolean = false;
 
+  //scroller
+  scrollIndex: number = 0;
+  lastScrollTop: number = 0;
   showScroller = true;
+
+  @HostListener('keydown.ArrowUp', ['$event'])
+  onUpArrow(event: KeyboardEvent) {
+    if (this.isNotMobile()) {
+      this.scrollUp();
+    }
+  }
+
+  @HostListener('keydown.ArrowDown', ['$event'])
+  onDownArrow(event: KeyboardEvent) {
+    if (this.isNotMobile()) {
+      this.scrollDown();
+    }
+  }
+
+  @HostListener('wheel', ['$event'])
+  onWheel(event: KeyboardEvent) {
+    if (this.isNotMobile()) {
+      const delta = Math.sign(event['deltaY']);
+      if (delta > 0) this.scrollDown();
+      else if (delta < 0) this.scrollUp();
+    }
+  }
+
   constructor(
     private cookieService: CookieService,
-    private slideshowService: SlideshowService
+    private slideshowService: SlideshowService,
+    private scrollerService: ScrollerService,
+    @Inject(DOCUMENT) private document: any
   ) {
     this.slideShow1 = {
       toRight: '.to-right1',
@@ -36,9 +71,50 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.body.style.overflow = 'hidden';
+
+    const y = window.pageYOffset;
+
+    if (y <= $('#scrollTo-0').offset().top) {
+      this.scrollIndex = 0;
+    } else if (y <= $('#scrollTo-1').offset().top) {
+      this.scrollIndex = 0;
+    } else if (y <= $('#scrollTo-2').offset().top) {
+      this.scrollIndex = 2;
+    } else if (y <= $('#scrollTo-3').offset().top) {
+      this.scrollIndex = 3;
+    } else if (y <= $('#scrollTo-4').offset().top) {
+      this.scrollIndex = 4;
+    } else if (y <= $('#scrollTo-5').offset().top) {
+      this.scrollIndex = 5;
+    }
+
     this.showScroller = this.isNotMobile() ? true : false;
     //this.slideShow1.start();
     //this.slideShow2.start({ sliderText: '.slider-text-container p' });
+  }
+
+  scrollArrow(condition: number, reset: number): void {
+    if (this.scrollIndex !== condition) {
+      this.scrollerService.scroll(this.scrollIndex);
+    } else this.scrollIndex = reset;
+  }
+
+  scrollUp(): void {
+    this.scrollIndex--;
+    if (this.scrollIndex === 1) this.scrollIndex = 0;
+    this.scrollArrow(-1, 0);
+  }
+
+  scrollDown(): void {
+    this.scrollIndex++;
+    if (this.scrollIndex === 1) this.scrollIndex = 2;
+    this.scrollArrow(6, 5);
+  }
+
+  scrollToFun(value: number): void {
+    this.scrollIndex = value;
+    this.scrollerService.scroll(this.scrollIndex);
   }
 
   toggleBtnWaschbecken(num: 0 | 1) {
@@ -50,12 +126,8 @@ export class HomepageComponent implements OnInit {
   }
 
   toggleReadMore(): void {
-    if (this.isSlide_text_container) {
-      //getDocElement('.nav-div-scroll-con a[scrollTo = "4"]').click();
-    } else {
-      //getDocElement('.nav-div-scroll-con a[scrollTo = "5"]').click();
-    }
-
+    const value: number = this.isSlide_text_container ? 4 : 5;
+    this.scrollToFun(value);
     this.isSlide_text_container = !this.isSlide_text_container;
     this.isSTCbtnIcon = !this.isSTCbtnIcon;
   }

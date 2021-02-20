@@ -1,15 +1,13 @@
 <div class="nav-div-scroll-con">
   <a
-    href="#prev"
     class="section-nav--link link--prev"
     title="Hochscrollen"
-    (click)="scrollUp()"
+    (click)="scrollUpParent()"
     ><div></div
   ></a>
   <a
-    href="#start"
     scrollto="0"
-    (click)="scrollToFun(0)"
+    (click)="scrollToFunParent(0)"
     class="section-nav--link link--start"
     [class.is-active]="scrollIndex === 0"
     title="Header"
@@ -23,46 +21,41 @@
         ><div></div
       ></a>-->
   <a
-    href="#section-2"
     title="Abschnitt 2"
     scrollto="2"
-    (click)="scrollToFun(2)"
+    (click)="scrollToFunParent(2)"
     [class.is-active]="scrollIndex === 2"
     class="section-nav--link link--link"
     ><div></div
   ></a>
   <a
-    href="#section-3"
     title="Abschnitt 3"
     scrollto="3"
-    (click)="scrollToFun(3)"
+    (click)="scrollToFunParent(3)"
     [class.is-active]="scrollIndex === 3"
     class="section-nav--link link--link"
     ><div></div
   ></a>
   <a
-    href="#section-4"
     title="Abschnitt 4"
     scrollto="4"
-    (click)="scrollToFun(4)"
+    (click)="scrollToFunParent(4)"
     [class.is-active]="scrollIndex === 4"
     class="section-nav--link link--link"
     ><div></div
   ></a>
   <a
-    href="#end"
     scrollto="5"
-    (click)="scrollToFun(5)"
+    (click)="scrollToFunParent(5)"
     [class.is-active]="scrollIndex === 5"
     class="section-nav--link link--link"
     title="Fusszeile"
     ><div></div
   ></a>
   <a
-    href="#next"
     class="section-nav--link link--next"
     title="Runterscrollen"
-    (click)="scrollDown()"
+    (click)="scrollDownParent()"
     ><div></div
   ></a>
 </div>

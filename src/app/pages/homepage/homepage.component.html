@@ -1,5 +1,12 @@
 <main>
-  <app-scroller *ngIf="showScroller" [isNotMobile]="isNotMobile"></app-scroller>
+  <app-scroller
+    *ngIf="showScroller"
+    [scrollUp]="scrollUp"
+    [scrollDown]="scrollDown"
+    [scrollToFun]="scrollToFun"
+    [(scrollIndex)]="scrollIndex"
+    [scrollArrow]="scrollArrow"
+  ></app-scroller>
   <div class="first-section" id="scrollTo-1">
     <h2>Konfiguriere Dir</h2>
     <h2><b>DEIN</b> Badmöbel</h2>

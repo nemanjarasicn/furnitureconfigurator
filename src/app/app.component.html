@@ -1,8 +1,7 @@
 <div
   [ngClass]="{
-    'site-wrapper': currentRoute === '/configurator' || currentRoute === '/',
-    'site-wrapper-custom':
-      currentRoute !== '/configurator' && currentRoute !== '/'
+    'site-wrapper': currentRoute === '/configurator',
+    'site-wrapper-custom': currentRoute !== '/configurator'
   }"
 >
   <div class="header">
