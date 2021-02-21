@@ -27,6 +27,7 @@ export class HomepageComponent implements OnInit {
 
   @HostListener('keydown.ArrowUp', ['$event'])
   onUpArrow(event: KeyboardEvent) {
+    console.log('up');
     if (this.isNotMobile()) {
       this.scrollUp();
     }
@@ -34,6 +35,7 @@ export class HomepageComponent implements OnInit {
 
   @HostListener('keydown.ArrowDown', ['$event'])
   onDownArrow(event: KeyboardEvent) {
+    console.log('down');
     if (this.isNotMobile()) {
       this.scrollDown();
     }

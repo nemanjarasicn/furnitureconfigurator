@@ -78,12 +78,18 @@
       name="r_password"
       required
       class="input-field"
-      placeholder="Passwort ***"
+      placeholder="Passwort *"
       [ngClass]="{
         'alert-input':
-          this.frmRegister.controls.r_password.invalid &&
-          (this.frmRegister.controls.r_password.dirty ||
-            this.frmRegister.controls.r_password.touched)
+          (this.frmRegister.controls.r_password.invalid &&
+            (this.frmRegister.controls.r_password.dirty ||
+              this.frmRegister.controls.r_password.touched)) ||
+          (this.frmRegister.controls.r_password.value !==
+            this.frmRegister.controls.r_password2.value &&
+            (this.frmRegister.controls.r_password.dirty ||
+              this.frmRegister.controls.r_password.touched) &&
+            (this.frmRegister.controls.r_password2.dirty ||
+              this.frmRegister.controls.r_password2.touched))
       }"
     />
     <input
@@ -92,12 +98,18 @@
       name="r_password2"
       required
       class="input-field"
-      placeholder="Wiederhole das Passwort ***"
+      placeholder="Wiederhole das Passwort *"
       [ngClass]="{
         'alert-input':
-          this.frmRegister.controls.r_password2.invalid &&
-          (this.frmRegister.controls.r_password2.dirty ||
-            this.frmRegister.controls.r_password2.touched)
+          (this.frmRegister.controls.r_password2.invalid &&
+            (this.frmRegister.controls.r_password2.dirty ||
+              this.frmRegister.controls.r_password2.touched)) ||
+          (this.frmRegister.controls.r_password.value !==
+            this.frmRegister.controls.r_password2.value &&
+            (this.frmRegister.controls.r_password.dirty ||
+              this.frmRegister.controls.r_password.touched) &&
+            (this.frmRegister.controls.r_password2.dirty ||
+              this.frmRegister.controls.r_password2.touched))
       }"
     />
     <input
@@ -131,12 +143,29 @@
         style="transition: all 0.2s"
         type="submit"
         name="btnSubRegister"
-        [disabled]="!frmRegister.valid || !isChecked"
-        [class.disabled_btn]="!frmRegister.valid || !isChecked"
+        [disabled]="
+          !frmRegister.valid ||
+          !isChecked ||
+          (this.frmRegister.controls.r_password.value !==
+            this.frmRegister.controls.r_password2.value &&
+            (this.frmRegister.controls.r_password.dirty ||
+              this.frmRegister.controls.r_password.touched) &&
+            (this.frmRegister.controls.r_password2.dirty ||
+              this.frmRegister.controls.r_password2.touched))
+        "
+        [class.disabled_btn]="
+          !frmRegister.valid ||
+          !isChecked ||
+          (this.frmRegister.controls.r_password.value !==
+            this.frmRegister.controls.r_password2.value &&
+            (this.frmRegister.controls.r_password.dirty ||
+              this.frmRegister.controls.r_password.touched) &&
+            (this.frmRegister.controls.r_password2.dirty ||
+              this.frmRegister.controls.r_password2.touched))
+        "
       >
         Einreichen
       </button>
-      <p id="msgEleRegister" class="msgEleP"></p>
     </div>
   </form>
 </section>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class AccountComponent implements OnInit {
   isLoggedIn: boolean = false;
 
-  constructor() {}
+  constructor(@Inject(DOCUMENT) private document: any) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.body.style.overflow = 'auto';
+  }
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ContactService } from '../../core/services/contact.service';
 import { Gender } from '../../common/models/interfaces/contact-gender.interface';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -27,9 +28,14 @@ export class ContactComponent implements OnInit {
 
   errMsg: string | undefined = '';
 
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    @Inject(DOCUMENT) private document: any
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.body.style.overflow = 'auto';
+  }
 
   contactFrmSubmit() {
     this.contactService
