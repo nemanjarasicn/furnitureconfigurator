@@ -11,11 +11,11 @@ const templates: IDisplayValue[] = Utils.convertEnumToDisplayArray(
 
 templates.forEach((element: IDisplayValue) => {
   canvasTemplateOptions.push({
-    label: `CONFIGURATION.COLORS.${element.displayValue}.LABEL`,
-    description: `CONFIGURATION.COLORS.${element.displayValue}.DESCRIPTION`,
+    label: `CONFIGURATION.CANVAS-TEMPLATES.${element.displayValue}.LABEL`,
+    description: `CONFIGURATION.CANVAS-TEMPLATES.${element.displayValue}.DESCRIPTION`,
     value: element.value,
-    previewUrl: `CONFIGURATION.COLORS.${element.displayValue}.PREVIEW_URL`,
-    imageUrl: `CONFIGURATION.COLORS.${element.displayValue}.IMAGE_URL`,
+    previewUrl: `CONFIGURATION.CANVAS-TEMPLATES.${element.displayValue}.PREVIEW_URL`,
+    imageUrl: `CONFIGURATION.CANVAS-TEMPLATES.${element.displayValue}.IMAGE_URL`,
   });
 });
 

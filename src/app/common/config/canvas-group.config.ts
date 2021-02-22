@@ -5,7 +5,7 @@ import { canvasElementOptions } from './canvas-options-elements.config';
 import { canvasTemplateOptions } from './canvas-options-template.config';
 import { canvasHandlesOptions } from './canvas-options-handles.config';
 
-const cabinetConfig: IConfigurationGroup = {
+const canvasConfig: IConfigurationGroup = {
   title: 'CONFIGURATION.CANVAS.GROUP_TITLE',
   anchorLink: 'canvas',
   items: [
@@ -45,4 +45,4 @@ const cabinetConfig: IConfigurationGroup = {
   ],
 };
 
-export { cabinetConfig };
+export { canvasConfig };

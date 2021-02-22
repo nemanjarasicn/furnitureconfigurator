@@ -9,11 +9,11 @@ const handles: IDisplayValue[] = Utils.convertEnumToDisplayArray(CanvasHandles);
 
 handles.forEach((element: IDisplayValue) => {
   canvasHandlesOptions.push({
-    label: `CONFIGURATION.COLORS.${element.displayValue}.LABEL`,
-    description: `CONFIGURATION.COLORS.${element.displayValue}.DESCRIPTION`,
+    label: `CONFIGURATION.CANVAS-HANDLES.${element.displayValue}.LABEL`,
+    description: `CONFIGURATION.CANVAS-HANDLES.${element.displayValue}.DESCRIPTION`,
     value: element.value,
-    previewUrl: `CONFIGURATION.COLORS.${element.displayValue}.PREVIEW_URL`,
-    imageUrl: `CONFIGURATION.COLORS.${element.displayValue}.IMAGE_URL`,
+    previewUrl: `CONFIGURATION.CANVAS-HANDLES.${element.displayValue}.PREVIEW_URL`,
+    imageUrl: `CONFIGURATION.CANVAS-HANDLES.${element.displayValue}.IMAGE_URL`,
   });
 });
 
