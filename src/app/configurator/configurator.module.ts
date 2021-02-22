@@ -11,11 +11,13 @@ import { ConfigurationPreviewComponent } from './components/configuration-previe
 import { OptionInputComponent } from './option-layouts/option-input/option-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfigurationBreadcrumbComponent } from './components/configuration-breadcrumb/configuration-breadcrumb.component';
+import { CanvasOptionsComponent } from './components/canvas-options/canvas-options.component';
+import { CanvasComponentComponent } from './components/canvas-component/canvas-component.component';
 
 
 
 @NgModule({
-  declarations: [ConfiguratorComponent, ConfigurationGroupComponent, ConfigurationItemComponent, ConfigurationItemOptionsComponent, OptionTileComponent, ConfigurationPreviewComponent, OptionInputComponent, ConfigurationBreadcrumbComponent],
+  declarations: [ConfiguratorComponent, ConfigurationGroupComponent, ConfigurationItemComponent, ConfigurationItemOptionsComponent, OptionTileComponent, ConfigurationPreviewComponent, OptionInputComponent, ConfigurationBreadcrumbComponent, CanvasOptionsComponent, CanvasComponentComponent],
   imports: [
     CommonModule,
     ConfiguratorRoutingModule,

@@ -4,16 +4,13 @@ import { IConfigurationGroup } from 'src/app/common/models/interfaces/configurat
 @Component({
   selector: 'app-configuration-group',
   templateUrl: './configuration-group.component.html',
-  styleUrls: ['./configuration-group.component.scss']
+  styleUrls: ['./configuration-group.component.scss'],
 })
 export class ConfigurationGroupComponent implements OnInit {
-
   @Input()
   group!: IConfigurationGroup;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

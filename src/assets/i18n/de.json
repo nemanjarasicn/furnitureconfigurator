@@ -140,6 +140,28 @@
         }
       }
     },
+    "CANVAS": {
+      "GROUP_TITLE": "Canvas konfigurieren",
+      "GROUP_DESCRIPTION": "Geben Sie Ihrem Schrank Farbe und Form.",
+      "ITEMS": {
+        "TEMPLATES": {
+          "TITLE": "Template",
+          "DESCRIPTION": "Choose Template"
+        },
+        "ELEMENTS": {
+          "TITLE": "Elements",
+          "DESCRIPTION": "Choose Element"
+        },
+        "HANDLES": {
+          "TITLE": "Handles",
+          "DESCRIPTION": "Choose Handle"
+        },
+        "TOP_COLOR": {
+          "TITLE": "Colors",
+          "DESCRIPTION": "Choose colors"
+        }
+      }
+    },
     "COLORS": {
       "COLORADO": {
         "LABEL": "Colorado",
