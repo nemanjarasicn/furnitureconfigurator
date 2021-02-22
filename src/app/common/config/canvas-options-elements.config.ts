@@ -11,11 +11,11 @@ const elements: IDisplayValue[] = Utils.convertEnumToDisplayArray(
 
 elements.forEach((element: IDisplayValue) => {
   canvasElementOptions.push({
-    label: `CONFIGURATION.CANVAS-ELEMENTS.${element.displayValue}.LABEL`,
-    description: `CONFIGURATION.CANVAS-ELEMENTS.${element.displayValue}.DESCRIPTION`,
+    label: `CONFIGURATION.CANVAS_ELEMENTS.${element.displayValue}.LABEL`,
+    description: `CONFIGURATION.CANVAS_ELEMENTS.${element.displayValue}.DESCRIPTION`,
     value: element.value,
-    previewUrl: `CONFIGURATION.CANVAS-ELEMENTS.${element.displayValue}.PREVIEW_URL`,
-    imageUrl: `CONFIGURATION.CANVAS-ELEMENTS.${element.displayValue}.IMAGE_URL`,
+    previewUrl: `CONFIGURATION.CANVAS_ELEMENTS.${element.displayValue}.PREVIEW_URL`,
+    imageUrl: `CONFIGURATION.CANVAS_ELEMENTS.${element.displayValue}.IMAGE_URL`,
   });
 });
 

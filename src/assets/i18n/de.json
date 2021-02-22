@@ -156,7 +156,7 @@
           "TITLE": "Handles",
           "DESCRIPTION": "Choose Handle"
         },
-        "TOP_COLOR": {
+        "COLORS": {
           "TITLE": "Colors",
           "DESCRIPTION": "Choose colors"
         }
@@ -270,6 +270,72 @@
         "DESCRIPTION": "Cashmere",
         "PREVIEW_URL": "assets/images/configurator_images/previews/color_cashmere.jpg",
         "IMAGE_URL": "assets/images/configurator_images/previews/color_cashmere.jpg"
+      }
+    },
+    "CANVAS_ELEMENTS": {
+      "DOOR": {
+        "LABEL": "Door",
+        "DESCRIPTION": "Door",
+        "PREVIEW_URL": "assets/images/configurator_images/door1.png",
+        "IMAGE_URL": "assets/images/configurator_images/door1.png"
+      },
+      "DRAWER": {
+        "LABEL": "Drawer",
+        "DESCRIPTION": "Drawer",
+        "PREVIEW_URL": "assets/images/configurator_images/drawer1.png",
+        "IMAGE_URL": "assets/images/configurator_images/drawer1.png"
+      }
+    },
+    "CANVAS_TEMPLATES": {
+      "TEMPLATE1": {
+        "LABEL": "Template 1",
+        "DESCRIPTION": "Template 1",
+        "PREVIEW_URL": "assets/images/configurator_images/red.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/red.jpg"
+      },
+      "TEMPLATE2": {
+        "LABEL": "Template 2",
+        "DESCRIPTION": "Template 2",
+        "PREVIEW_URL": "assets/images/configurator_images/red.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/red.jpg"
+      },
+      "TEMPLATE3": {
+        "LABEL": "Template 3",
+        "DESCRIPTION": "Template 3",
+        "PREVIEW_URL": "assets/images/configurator_images/red.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/red.jpg"
+      },
+      "TEMPLATE4": {
+        "LABEL": "Template 4",
+        "DESCRIPTION": "Template 4",
+        "PREVIEW_URL": "assets/images/configurator_images/red.jpg",
+        "IMAGE_URL": "assets/images/configurator_images/red.jpg"
+      }
+    },
+    "CANVAS_HANDLES": {
+      "HANDLEFRONT1": {
+        "LABEL": "Handle 1",
+        "DESCRIPTION": "Template 1",
+        "PREVIEW_URL": "assets/images/configurator_images/handleFront1.svg",
+        "IMAGE_URL": "assets/images/configurator_images/handleFront1.svg"
+      },
+      "HANDLEFRONT2": {
+        "LABEL": "Handle 2",
+        "DESCRIPTION": "Template 2",
+        "PREVIEW_URL": "assets/images/configurator_images/handleFront2.svg",
+        "IMAGE_URL": "assets/images/configurator_images/handleFront2.svg"
+      },
+      "HANDLEFRONT3": {
+        "LABEL": "Handle 3",
+        "DESCRIPTION": "Template 3",
+        "PREVIEW_URL": "assets/images/configurator_images/handleFront3.svg",
+        "IMAGE_URL": "assets/images/configurator_images/handleFront3.svg"
+      },
+      "HANDLEFRONT4": {
+        "LABEL": "Handle 4",
+        "DESCRIPTION": "Template 4",
+        "PREVIEW_URL": "assets/images/configurator_images/handleFront4.svg",
+        "IMAGE_URL": "assets/images/configurator_images/handleFront4.svg"
       }
     }
   }
