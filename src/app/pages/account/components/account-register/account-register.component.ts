@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AccountService } from '../../../../core/services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-register',
@@ -20,12 +22,43 @@ export class AccountRegisterComponent implements OnInit {
     r_address: new FormControl(''),
   });
 
-  constructor() {}
+  register_errMsg: string = '';
+
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  frmRegisterSubmit(): void {
-    console.log(true);
+  async frmRegisterSubmit(): Promise<void> {
+    const hashedPass1 = await this.accountService
+      .hash('SHA-256', this.frmRegister.controls.r_password.value)
+      .then((hashed: string) => {
+        return this.accountService.encode64(hashed);
+      });
+    const hashedPass2 = await this.accountService
+      .hash('SHA-256', this.frmRegister.controls.r_password2.value)
+      .then((hashed: string) => {
+        return this.accountService.encode64(hashed);
+      });
+
+    this.accountService
+      .register({
+        first_name: this.frmRegister.controls.r_firstname.value,
+        last_name: this.frmRegister.controls.r_lastname.value,
+        salutation: this.frmRegister.controls.r_salutation.value,
+        title: this.frmRegister.controls.r_title.value,
+        email_address: this.frmRegister.controls.r_email.value,
+        password: hashedPass1,
+        password2: hashedPass2,
+        phone_number: this.frmRegister.controls.r_phone.value,
+        address: this.frmRegister.controls.r_address.value,
+      })
+      .subscribe((res) => {
+        if (res[0] === true) {
+          this.router.navigateByUrl('/info', { state: { infoType: 'thanks' } });
+        } else {
+          if (res[1] !== undefined) this.register_errMsg = res[1];
+        }
+      });
   }
 
   toggleIsChecked(): void {

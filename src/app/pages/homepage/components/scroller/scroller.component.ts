@@ -12,7 +12,7 @@ export class ScrollerComponent implements OnInit {
   @Input() scrollToFun: any;
   @Input() scrollArrow: any;
 
-  @Input() scrollIndex: any;
+  @Input() scrollIndex;
   @Output() scrollIndexChange = new EventEmitter<number>();
 
   constructor(private scrollerService: ScrollerService) {}

@@ -22,7 +22,6 @@
       type="password"
       formControlName="l_password"
       name="l_password"
-      minlength="8"
       placeholder="********"
       [ngClass]="{
         'alert-input':
@@ -41,7 +40,7 @@
       >
         Einreichen
       </button>
-      <p id="msgEleLogin" class="msgEleP"></p>
+      <p class="msgEleP">{{ login_errMsg }}</p>
     </div>
   </form>
 </section>

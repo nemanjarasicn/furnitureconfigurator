@@ -839,19 +839,6 @@ footer {
     margin-top: 15px;
   }
   button {
-    margin-top: 15px;
-    height: 40px;
-    width: 100px;
-    align-self: flex-end;
-    color: $clr-white;
-    font-weight: bold;
-    background-color: $clr-orange;
-    cursor: pointer;
-    @include flex-row();
-    align-items: center;
-    justify-content: space-around;
-    align-self: flex-end;
-    border: none;
     div {
       width: 14px;
       height: 14px;
@@ -1849,6 +1836,23 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 .site-wrapper-custom {
   @include flex-column();
 }
+.plainBtn {
+  margin-top: 15px;
+  height: 40px;
+  width: 100px;
+  align-self: flex-end;
+  color: $clr-white;
+  font-weight: bold;
+  background-color: $clr-black;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  align-self: flex-end;
+  border: none;
+}
+
 /* HEIGHT issue for index page */
 @media only screen and (max-height: 785px) {
   .home-img-slideshow .slide_viewer {

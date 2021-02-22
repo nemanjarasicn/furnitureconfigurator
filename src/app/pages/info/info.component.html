@@ -1,0 +1,12 @@
+<main>
+  <app-thanks *ngIf="infoType === 'thanks'"></app-thanks>
+  <div *ngIf="infoType === ''">
+    <h1 class="title">keine Information</h1>
+    <section>
+      <p style="text-align: center">
+        Es gibt keine neuen Informationen, zurück zur
+        <a [routerLink]="['/']">Homepage</a>
+      </p>
+    </section>
+  </div>
+</main>

@@ -5,7 +5,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
 import { AccountComponent } from './pages/account/account.component';
-import { ThanksComponent } from './pages/thanks/thanks.component';
+import { InfoComponent } from './pages/info/info.component';
+import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { CompleteConfigurationComponent } from './pages/complete-configuration/complete-configuration.component';
 
 const routes: Routes = [
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'imprint', component: ImprintComponent },
   { path: 'complete-configuration', component: CompleteConfigurationComponent },
-  { path: 'thanks', component: ThanksComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'info', component: InfoComponent },
+  { path: 'email-verification', component: EmailVerificationComponent },
   {
     path: 'configurator',
     loadChildren: () =>

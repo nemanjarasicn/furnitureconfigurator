@@ -18,13 +18,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AccountComponent } from './pages/account/account.component';
 import { CompleteConfigurationComponent } from './pages/complete-configuration/complete-configuration.component';
-import { ThanksComponent } from './pages/thanks/thanks.component';
 import { AccountLoginComponent } from './pages/account/components/account-login/account-login.component';
 import { AccountRegisterComponent } from './pages/account/components/account-register/account-register.component';
 import { AccountDashboardComponent } from './pages/account/components/account-dashboard/account-dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { CookieComponent } from './cookie/cookie.component';
 import { ScrollerComponent } from './pages/homepage/components/scroller/scroller.component';
+import { InfoComponent } from './pages/info/info.component';
+import { ThanksComponent } from './pages/info/components/thanks/thanks.component';
+import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,13 +42,15 @@ export function createTranslateLoader(http: HttpClient) {
     HeaderComponent,
     AccountComponent,
     CompleteConfigurationComponent,
-    ThanksComponent,
     AccountLoginComponent,
     AccountRegisterComponent,
     AccountDashboardComponent,
     FooterComponent,
     CookieComponent,
     ScrollerComponent,
+    InfoComponent,
+    ThanksComponent,
+    EmailVerificationComponent,
   ],
   imports: [
     BrowserModule,
