@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AccountService } from '../../../../core/services/account.service';
 
 @Component({
   selector: 'app-account-login',
@@ -12,11 +13,26 @@ export class AccountLoginComponent implements OnInit {
     l_password: new FormControl(''),
   });
 
-  constructor() {}
+  login_errMsg: string = '';
+
+  @Output() loggedChanged = new EventEmitter<boolean>();
+
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {}
 
   frmLoginSubmit(): void {
-    console.log(true);
+    this.accountService
+      .login(
+        this.frmLogin.controls.l_email.value,
+        this.frmLogin.controls.l_pass.value
+      )
+      .subscribe((res) => {
+        if (res[0] === true) {
+          this.loggedChanged.emit(true);
+        } else {
+          if (res[1] !== undefined) this.login_errMsg = res[1];
+        }
+      });
   }
 }

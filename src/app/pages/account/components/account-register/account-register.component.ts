@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { AccountService } from '../../../../core/services/account.service';
 @Component({
   selector: 'app-account-register',
   templateUrl: './account-register.component.html',
@@ -20,12 +20,32 @@ export class AccountRegisterComponent implements OnInit {
     r_address: new FormControl(''),
   });
 
-  constructor() {}
+  register_errMsg: string = '';
+
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {}
 
   frmRegisterSubmit(): void {
-    console.log(true);
+    this.accountService
+      .register({
+        first_name: this.frmRegister.controls.r_firstname.value,
+        last_name: this.frmRegister.controls.r_lastname.value,
+        salutation: this.frmRegister.controls.r_salutation.value,
+        title: this.frmRegister.controls.r_title.value,
+        email_address: this.frmRegister.controls.r_email.value,
+        phone_number: this.frmRegister.controls.r_password.value,
+        address: this.frmRegister.controls.r_password2.value,
+        password: this.frmRegister.controls.r_phone.value,
+        password2: this.frmRegister.controls.r_address.value,
+      })
+      .subscribe((res) => {
+        if (res[0] === true) {
+          //show notification about email
+        } else {
+          if (res[1] !== undefined) this.register_errMsg = res[1];
+        }
+      });
   }
 
   toggleIsChecked(): void {

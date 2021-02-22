@@ -7,8 +7,7 @@ import { ContactForm } from '../../common/models/interfaces/contact-form.interfa
   providedIn: 'root',
 })
 export class ContactService {
-  endpointURL: string =
-    'https://niemann-moebelplaner.de/backend/kontakt/sendMail';
+  endpointURL: string = 'https://niemann-moebelplaner.de/backend/kontakt';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json;charset=utf-8',
@@ -19,7 +18,7 @@ export class ContactService {
 
   sendEmail(contact: ContactForm): Observable<[boolean, string | undefined]> {
     return this.http.post<[boolean, string | undefined]>(
-      this.endpointURL,
+      this.endpointURL + '/sendMail',
       contact,
       this.httpOptions
     );
