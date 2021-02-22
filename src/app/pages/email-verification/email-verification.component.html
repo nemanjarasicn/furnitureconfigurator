@@ -1,0 +1,38 @@
+<main style="display: grid; place-items: center; min-height: 200px">
+  <h1 class="title" style="text-align: center">Bestätigung des Kontos</h1>
+  <form
+    style="display: grid; place-items: center"
+    [formGroup]="frmVer"
+    name="frmVer"
+    (ngSubmit)="submitFrmVer()"
+  >
+    <div style="text-align: center">
+      <label for="verCode">Verifizierungs-Schlüssel:</label>
+      <input
+        required
+        style="width: 100%; margin: 10px"
+        type="text"
+        formControlName="verCode"
+        name="verCode"
+        class="input-field"
+        [ngClass]="{
+          'alert-input':
+            this.frmVer.controls.verCode.invalid &&
+            (this.frmVer.controls.verCode.dirty ||
+              this.frmVer.controls.verCode.touched)
+        }"
+      />
+    </div>
+    <button
+      style="place-self: center"
+      name="btnVer"
+      type="submit"
+      class="plainBtn"
+      [class.disabled_btn]="!frmVer.valid"
+      [disabled]="!frmVer.valid"
+    >
+      überprüfen
+    </button>
+  </form>
+  <p style="text-align: center">{{ errMsg }}</p>
+</main>

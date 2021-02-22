@@ -23,16 +23,20 @@ export class AccountLoginComponent implements OnInit {
 
   frmLoginSubmit(): void {
     this.accountService
-      .login(
-        this.frmLogin.controls.l_email.value,
-        this.frmLogin.controls.l_pass.value
-      )
-      .subscribe((res) => {
-        if (res[0] === true) {
-          this.loggedChanged.emit(true);
-        } else {
-          if (res[1] !== undefined) this.login_errMsg = res[1];
-        }
+      .hash('SHA-256', this.frmLogin.controls.l_password.value)
+      .then((hashed) => {
+        return this.accountService.encode64(hashed);
+      })
+      .then((hashedPass: string) => {
+        this.accountService
+          .login(this.frmLogin.controls.l_email.value, hashedPass)
+          .subscribe((res) => {
+            if (res[0] === true) {
+              this.loggedChanged.emit(true);
+            } else {
+              if (res[1] !== undefined) this.login_errMsg = res[1];
+            }
+          });
       });
   }
 }
