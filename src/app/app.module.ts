@@ -27,6 +27,9 @@ import { ScrollerComponent } from './pages/homepage/components/scroller/scroller
 import { InfoComponent } from './pages/info/info.component';
 import { ThanksComponent } from './pages/info/components/thanks/thanks.component';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
+import { CheckEmailComponent } from './pages/info/components/check-email/check-email.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -51,6 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
     InfoComponent,
     ThanksComponent,
     EmailVerificationComponent,
+    CheckEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
       placement: 'bottom',
     }),
     CoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

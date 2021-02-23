@@ -1,8 +1,12 @@
 <div class="configurator-breadcrumbs">
   <ul>
     <li *ngFor="let breadcrumb of breadcrumbs">
-      <a [ngClass]="{ 'active' : breadcrumb.anchor === activeAnchor }" [href]="breadcrumb.anchor" (click)="onBreadcrumbClick(breadcrumb)">
-        {{breadcrumb.title | translate}}
+      <a
+        [ngClass]="{ active: breadcrumb.anchor === activeAnchor }"
+        [href]="breadcrumb.anchor"
+        (click)="onBreadcrumbClick(breadcrumb)"
+      >
+        {{ breadcrumb.title | translate }}
       </a>
     </li>
   </ul>

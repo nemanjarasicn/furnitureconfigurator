@@ -3,5 +3,4 @@ export interface SlideShow {
   toLeft: string;
   bottom_buttons: string;
   slider: string;
-  start: any;
 }
