@@ -1,5 +1,5 @@
 <main>
-  <div class="acc-container">
+  <div [class.acc-container]="isLogged">
     <app-account-dashboard
       *ngIf="isLogged"
       (loggedChanged)="isLoggedChanged($event)"

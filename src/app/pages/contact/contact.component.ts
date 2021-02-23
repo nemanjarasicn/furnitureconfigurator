@@ -26,7 +26,7 @@ export class ContactComponent implements OnInit {
     { value: 'Herr', label: 'Herr' },
   ];
 
-  errMsg: string | undefined = '';
+  msg: string | undefined = '';
 
   constructor(
     private contactService: ContactService,
@@ -49,7 +49,11 @@ export class ContactComponent implements OnInit {
         msg: this.contactFrm.value.msg,
       })
       .subscribe((res: [boolean, string | undefined]) => {
-        this.errMsg = res[0] === false ? res[1] : 'ungültige E-Mail';
+        if (res[0] === true) this.msg = 'E-Mail wird gesendet';
+        else {
+          this.msg = 'ungültige E-Mail';
+          console.log(res[1]);
+        }
       });
   }
 }
