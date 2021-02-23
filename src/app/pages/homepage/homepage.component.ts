@@ -24,8 +24,9 @@ export class HomepageComponent implements OnInit {
   scrollIndex: number = 0;
   lastScrollTop: number = 0;
   showScroller = true;
+  //isFreeToScroll: boolean = true;
 
-  @HostListener('keydown.ArrowUp', ['$event'])
+  @HostListener('keydown.arrowup', ['$event'])
   onUpArrow(event: KeyboardEvent) {
     console.log('up');
     if (this.isNotMobile()) {
@@ -33,7 +34,7 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  @HostListener('keydown.ArrowDown', ['$event'])
+  @HostListener('keydown.arrowdown', ['$event'])
   onDownArrow(event: KeyboardEvent) {
     console.log('down');
     if (this.isNotMobile()) {
@@ -61,14 +62,12 @@ export class HomepageComponent implements OnInit {
       toLeft: '.to-left1',
       bottom_buttons: '.slide_buttons1',
       slider: '.slider1',
-      start: null, //this.slideshowService.startSlider,
     };
     this.slideShow2 = {
       toRight: '.to-right2',
       toLeft: '.to-left2',
       bottom_buttons: '.slide_buttons2',
       slider: '.slider2',
-      start: null, //this.slideshowService.startSlider,
     };
   }
 
@@ -92,8 +91,11 @@ export class HomepageComponent implements OnInit {
     }
 
     this.showScroller = this.isNotMobile() ? true : false;
-    //this.slideShow1.start();
-    //this.slideShow2.start({ sliderText: '.slider-text-container p' });
+    this.slideshowService.startSlider({ slideShow: this.slideShow1 });
+    this.slideshowService.startSlider({
+      sliderText: '.slider-text-container p',
+      slideShow: this.slideShow2,
+    });
   }
 
   scrollArrow(condition: number, reset: number): void {

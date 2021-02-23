@@ -54,7 +54,9 @@ export class AccountRegisterComponent implements OnInit {
       })
       .subscribe((res) => {
         if (res[0] === true) {
-          this.router.navigateByUrl('/info', { state: { infoType: 'thanks' } });
+          this.router.navigateByUrl('/info', {
+            state: { infoType: 'check-email' },
+          });
         } else {
           if (res[1] !== undefined) this.register_errMsg = res[1];
         }

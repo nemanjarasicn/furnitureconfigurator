@@ -1,1 +1,129 @@
-<p>complete-configuration works!</p>
+<main>
+  <h1 class="title">Dein geplantes Möbel</h1>
+  <div class="complate-back-con">
+    <button
+      class="to-left_steps previous_btn_step"
+      [routerLink]="['/configurator']"
+      style="position: relative; top: unset"
+    >
+      <span><img src="assets/images/icons/left-arrow.svg" alt="Zurück" /></span
+      ><b>Zurück</b>
+    </button>
+  </div>
+  <section class="complete-config-container">
+    <form [formGroup]="orderFrm" (ngSubmit)="frmOrderSubmit()">
+      <ul>
+        <li class="li-b">
+          Breite:
+          <a [routerLink]="['/configurator']"><b id="Breite"></b></a>
+        </li>
+        <li id="li-t">
+          Tiefe: <a [routerLink]="['/configurator']"><b id="Tiefe"></b></a>
+        </li>
+        <li class="li-h">
+          Höhe: <a [routerLink]="['/configurator']"><b id="Hohe"></b></a>
+        </li>
+        <li>
+          Waschbecken (einem / zwei ):
+          <a [routerLink]="['/configurator']"><b id="Waschbecken1"></b></a>
+        </li>
+        <li>
+          Aufsatzwaschbecken / Waschbecken nach Maß:
+          <a [routerLink]="['/configurator']"><b id="Waschbecken2"></b></a>
+          <ul style="margin: 0; margin-left: 15px">
+            <li class="li-b2" style="display: none">
+              Breite:
+              <a [routerLink]="['/configurator']"><b id="Breite2"></b></a>
+            </li>
+            <li class="li-h2" style="display: none">
+              Randhöhe:
+              <a [routerLink]="['/configurator']"><b id="Hohe2"></b></a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          basin: <a [routerLink]="['/configurator']"><b id="basin"></b></a>
+        </li>
+        <li>
+          Farbe außen:
+          <a [routerLink]="['/configurator']"><b id="Farbe"></b></a>
+        </li>
+        <li>
+          Farbe front:
+          <a [routerLink]="['/configurator']"><b id="Farbe2"></b></a>
+        </li>
+        <li>
+          Farbe Deckplatte:
+          <a [routerLink]="['/configurator']"><b id="Farbe3"></b></a>
+        </li>
+        <!---<li>Griff: <a href="konfigurieren.php?step=2"><b id="Griff"></b></a></li>--->
+      </ul>
+      <!--<?php if($user === null) echo '--->
+      <div class="orange-line-part" style="width: 100%"></div>
+      <p style="text-align: center">
+        Du kannst ,
+        <a [routerLink]="['/account']" style="color: #f06a15"
+          >ein Konto / Login erstellen</a
+        >
+        oder Deine Daten eingeben:
+      </p>
+      <!--';?>--->
+      <div class="orange-line-part" style="width: 100%"></div>
+      <div class="complete-con">
+        <input
+          type="text"
+          formControlName="first_name"
+          name="first_name"
+          class="input-field"
+          placeholder="Vorname *"
+          required
+        />
+        <input
+          type="text"
+          formControlName="last_name"
+          name="last_name"
+          class="input-field"
+          required
+          placeholder="Nachname *"
+        />
+        <input
+          type="email"
+          formControlName="email_address"
+          name="email_address"
+          class="input-field"
+          required
+          placeholder="E-Mail Adresse *"
+        />
+        <input
+          type="tel"
+          name="phone_number"
+          formControlName="phone_number"
+          class="input-field"
+          required
+          placeholder="Telefonnummer *"
+        />
+        <input
+          type="text"
+          name="address"
+          formControlName="address"
+          class="input-field"
+          required
+          placeholder="Straße, PLZ, Ort *"
+        />
+        <small style="margin: 10px 0"
+          >Die mit einem * markierten Felder sind Pflichtfelder.</small
+        >
+        <button
+          type="submit"
+          name="orderSubBtn"
+          [class.disabled_btn]="!orderFrm.valid"
+          [disabled]="!orderFrm.valid"
+          class="plainBtn"
+        >
+          Absenden
+        </button>
+      </div>
+      <p id="msgEle" class="msgEleP"></p>
+    </form>
+  </section>
+</main>
