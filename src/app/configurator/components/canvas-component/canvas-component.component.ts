@@ -4,6 +4,7 @@ import { ICanvasStyleDimensions } from '../../../common/models/interfaces/canvas
 import { ICanvasDimensions } from '../../../common/models/interfaces/canvas-dimensions.interface';
 import * as $ from 'jquery';
 import Konva from 'konva';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-canvas-component',
@@ -67,10 +68,38 @@ export class CanvasComponentComponent implements OnInit {
       10,
       10
     );
+    this.canvasService.getSelectedHandle().subscribe((data) => {
+      console.log(data);
+    });
+    this.canvasService.getSelectedElement().subscribe((data) => {
+      this.addNewElement(data);
+    });
+
+    this.canvasService.getSelectedColor().subscribe((data) => {
+      console.log(data);
+    });
+    this.canvasService.getSelectedTemplate().subscribe((data) => {
+      console.log(data);
+    });
 
     this.stage.batchDraw();
   }
 
+  addNewElement(data) {
+    let id = uuidv4();
+    data.description.includes('DOOR') ? `door${id}` : `drawer${id}`;
+
+    this.newRectangle(
+      this,
+      this.layer,
+      this.stage,
+      id,
+      this.stage.x(),
+      this.stage.y(),
+      20,
+      20
+    );
+  }
   /*Function for adding grid layer with starting parameters of container*/
   addGridLayer(
     width: number,
@@ -114,19 +143,6 @@ export class CanvasComponentComponent implements OnInit {
     }
 
     this.stage.add(this.gridLayer);
-  }
-
-  addRectangle() {
-    this.newRectangle(
-      this,
-      this.layer,
-      this.stage,
-      22,
-      this.stage.x(),
-      this.stage.y(),
-      20,
-      20
-    );
   }
 
   /*Function for creating a main new rectangle*/
@@ -182,7 +198,7 @@ export class CanvasComponentComponent implements OnInit {
         strokeWidth: 1,
         shadowColor: 'black',
         shadowBlur: 2,
-        opacity: 0.4,
+        opacity: 0.8,
         easing: Konva.Easings.EaseIn,
         duration: 4,
         id: id,
@@ -196,7 +212,6 @@ export class CanvasComponentComponent implements OnInit {
           x: rectangle.x() + (rectangle.width() - 128) / 2,
           y: rectangle.y() + rectangle.height() / 2 - 36,
           image: imageObj,
-          imgSource: `./assets/images/red.jpg`,
           width: 128,
           height: 72,
           id: id,
@@ -223,7 +238,7 @@ export class CanvasComponentComponent implements OnInit {
             y: rectangle.y(),
             width: 20,
             height: 20,
-            fill: '#E90101',
+            fill: '#343a40',
             stroke: '#ddd',
             strokeWidth: 1,
             opacity: 0.8,
@@ -489,7 +504,7 @@ export class CanvasComponentComponent implements OnInit {
         // imageColorObj.src = `${this.selectedColorImgSource}`;
         imageColorObj.src = `./assets/images/Colorado.jpg`;
       };
-      imageObj.src = `./assets/images/red.jpg`;
+      imageObj.src = `./assets/images/handleFront1.svg`;
     };
 
     imageObjRect.src = `./assets/images/white.png`;
@@ -733,7 +748,6 @@ export class CanvasComponentComponent implements OnInit {
     ) {
       element.MIN_WIDTH = width;
     }
-    console.log(element.MIN_HEIGHT);
   }
 
   /*TEXT*/

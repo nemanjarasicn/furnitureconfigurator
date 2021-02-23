@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import * as $ from 'jquery';
 import Konva from 'konva';
 import { ICanvasDimensions } from '../../common/models/interfaces/canvas-dimensions.interface';
+import { IConfigurationItemOption } from 'src/app/common/models/interfaces/configuration-item-option.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,47 @@ export class CanvasService {
     {
       height: 400,
       width: 400,
+    }
+  );
+
+  selectedTemplateOption$: BehaviorSubject<IConfigurationItemOption> = new BehaviorSubject<IConfigurationItemOption>(
+    {
+      label: ' ',
+      description: '',
+      value: '',
+      previewUrl: '',
+      imageUrl: '',
+      type: '',
+    }
+  );
+  selectedElementOption$: BehaviorSubject<IConfigurationItemOption> = new BehaviorSubject<IConfigurationItemOption>(
+    {
+      label: ' ',
+      description: '',
+      value: '',
+      previewUrl: '',
+      imageUrl: '',
+      type: '',
+    }
+  );
+  selectedHandleOption$: BehaviorSubject<IConfigurationItemOption> = new BehaviorSubject<IConfigurationItemOption>(
+    {
+      label: ' ',
+      description: '',
+      value: '',
+      previewUrl: '',
+      imageUrl: '',
+      type: '',
+    }
+  );
+  selectedColorOption$: BehaviorSubject<IConfigurationItemOption> = new BehaviorSubject<IConfigurationItemOption>(
+    {
+      label: ' ',
+      description: '',
+      value: '',
+      previewUrl: '',
+      imageUrl: '',
+      type: '',
     }
   );
 
@@ -38,5 +80,31 @@ export class CanvasService {
 
   getMainDimensions(): BehaviorSubject<ICanvasDimensions> {
     return this.mainDimensions;
+  }
+  getSelectedTemplate(): BehaviorSubject<IConfigurationItemOption> {
+    return this.selectedTemplateOption$;
+  }
+  getSelectedHandle(): BehaviorSubject<IConfigurationItemOption> {
+    return this.selectedHandleOption$;
+  }
+  getSelectedColor(): BehaviorSubject<IConfigurationItemOption> {
+    return this.selectedColorOption$;
+  }
+  getSelectedElement(): BehaviorSubject<IConfigurationItemOption> {
+    return this.selectedElementOption$;
+  }
+
+  setSelectedOption(selectedOption: IConfigurationItemOption) {
+    selectedOption.description?.includes('CANVAS_TEMPLATES') &&
+      this.selectedTemplateOption$.next(selectedOption);
+
+    selectedOption.description?.includes('CANVAS_ELEMENTS') &&
+      this.selectedElementOption$.next(selectedOption);
+
+    selectedOption.description?.includes('CANVAS_HANDLES') &&
+      this.selectedHandleOption$.next(selectedOption);
+
+    selectedOption.description?.includes('COLORS') &&
+      this.selectedHandleOption$.next(selectedOption);
   }
 }

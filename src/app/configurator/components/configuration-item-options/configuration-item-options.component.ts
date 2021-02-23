@@ -3,6 +3,7 @@ import { ConfigurationOptionType } from 'src/app/common/enums/configuration-opti
 import { IConfigurationItemOption } from 'src/app/common/models/interfaces/configuration-item-option.interface';
 import { IConfigurationItem } from 'src/app/common/models/interfaces/configuration-item.interface';
 import { ConfigurationService } from 'src/app/core/services/configuration.service';
+import { CanvasService } from 'src/app/core/services/canvas.service';
 
 @Component({
   selector: 'app-configuration-item-options',
@@ -19,7 +20,10 @@ export class ConfigurationItemOptionsComponent implements OnInit {
   optionTypeTile = ConfigurationOptionType.TILE;
   optionTypeInput = ConfigurationOptionType.INPUT;
 
-  constructor(private configurationService: ConfigurationService) {}
+  constructor(
+    private configurationService: ConfigurationService,
+    private canvasService: CanvasService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,7 +35,7 @@ export class ConfigurationItemOptionsComponent implements OnInit {
         this.configurationService.selectOption(this.item, selectedOption);
       }
     } else {
-      console.log('jesteCanvas');
+      console.log(`${selectedOption.imageUrl}`);
     }
   }
 }
