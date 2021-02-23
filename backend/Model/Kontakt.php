@@ -21,6 +21,6 @@ class Kontakt{
             Basic::responseJSON([false, 'K-s-se-500']);   
         }        
 
-        Basic::responseJSON(true);   
+        Basic::responseJSON([true]);   
     }
 }

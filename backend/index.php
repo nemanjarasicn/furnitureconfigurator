@@ -1,9 +1,12 @@
 <?php
+
 namespace NiemmanMoebelplaner;
 
 use NiemmanMoebelplaner\Help\Basic;
 use NiemmanMoebelplaner\Help\Email;
 
+//header('Access-Control-Allow-Origin: *');
+//header('Access-Control-Allow-Headers: *');
 // error_reporting(E_ALL);
 // ini_set("display_errors","On");
 

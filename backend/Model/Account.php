@@ -91,7 +91,7 @@ class Account extends DB{
         //send email
         try{
             $html_msg = '<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><h3>E-Mail-Verifizierung</h3><br /><br /><p>Bitte gehen Sie zum Link: </p><a target="_blank" href="https://niemann-moebelplaner.de/email_verification.php?u=' .  DB::$lastInsertedID . '">KONTO ÜBERPRÜFEN</a><br><p>und Code eingeben: <b>' . $rnd . '</b><br>Vielen Dank.</p></body></html>';
-            $alt_msg = "E-Mail-Verifizierung, Bitte gehen Sie zum Link: https://niemann-moebelplaner.de/email_verification.php?u=" .  DB::$lastInsertedID . " und Code eingeben: " . $rnd;
+            $alt_msg = "E-Mail-Verifizierung, Bitte gehen Sie zum Link: https://niemann-moebelplaner.de/email_verification?u=" .  DB::$lastInsertedID . " und Code eingeben: " . $rnd;
 
             Email::send(
                 $data->email, //to
@@ -121,7 +121,7 @@ class Account extends DB{
                 $param = [1, $data->id];
                 $this->dbConn->query(2, $sql, 0, $param);
                 
-                Basic::responseJSON([true, 'Ihr Konto wurde überprüft, gehen Sie zur Anmeldeseite.']);   
+                Basic::responseJSON([true]);   
             } catch (Exception $e) {
                 Basic::responseJSON([false, 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später']);
             }
@@ -172,7 +172,7 @@ class Account extends DB{
             $alt_msg = "order";
 
             Email::send(
-                $data->email, //to
+                $data->customer->email, //to
                 'Auftrag', //subject
                 $html_msg, //msg
                 $alt_msg //alt msg
