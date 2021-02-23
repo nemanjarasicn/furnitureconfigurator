@@ -14,6 +14,7 @@ handles.forEach((element: IDisplayValue) => {
     value: element.value,
     previewUrl: `CONFIGURATION.CANVAS_HANDLES.${element.displayValue}.PREVIEW_URL`,
     imageUrl: `CONFIGURATION.CANVAS_HANDLES.${element.displayValue}.IMAGE_URL`,
+    type: 'canvas',
   });
 });
 

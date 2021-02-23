@@ -4,4 +4,5 @@ export interface IConfigurationItemOption {
   value: any;
   previewUrl?: string;
   imageUrl?: string;
+  type?: string;
 }

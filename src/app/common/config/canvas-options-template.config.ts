@@ -16,6 +16,7 @@ templates.forEach((element: IDisplayValue) => {
     value: element.value,
     previewUrl: `CONFIGURATION.CANVAS_TEMPLATES.${element.displayValue}.PREVIEW_URL`,
     imageUrl: `CONFIGURATION.CANVAS_TEMPLATES.${element.displayValue}.IMAGE_URL`,
+    type: 'canvas',
   });
 });
 

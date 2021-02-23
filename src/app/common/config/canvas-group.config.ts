@@ -7,7 +7,7 @@ import { canvasHandlesOptions } from './canvas-options-handles.config';
 
 const canvasConfig: IConfigurationGroup = {
   title: 'CONFIGURATION.CANVAS.GROUP_TITLE',
-  anchorLink: 'canvas',
+  anchorLink: 'canvasAnchor',
   items: [
     {
       key: 'templates',

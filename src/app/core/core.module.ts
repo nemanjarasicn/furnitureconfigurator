@@ -6,6 +6,7 @@ import { CookieService } from './services/cookie.service';
 import { AccountService } from './services/account.service';
 import { SlideshowService } from './services/slideshow.service';
 import { ScrollerService } from './services/scroller.service';
+import { CanvasService } from './services/canvas.service';
 
 @NgModule({
   declarations: [],
@@ -17,6 +18,7 @@ import { ScrollerService } from './services/scroller.service';
     AccountService,
     SlideshowService,
     ScrollerService,
+    CanvasService,
   ],
 })
 export class CoreModule {}

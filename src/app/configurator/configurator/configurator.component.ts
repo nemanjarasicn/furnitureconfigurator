@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigurationConstants } from 'src/app/common/constants/configuration.constants';
 import { IConfigurationGroup } from 'src/app/common/models/interfaces/configuration-group.interface';
+import { CanvasService } from '../../core/services/canvas.service';
 
 @Component({
   selector: 'app-configurator',
   templateUrl: './configurator.component.html',
-  styleUrls: ['./configurator.component.scss']
+  styleUrls: ['./configurator.component.scss'],
 })
 export class ConfiguratorComponent implements OnInit {
+  isCanvas: boolean = false;
 
-  constructor() { }
+  constructor(private canvasService: CanvasService) {}
 
-  configuratorForm: IConfigurationGroup[] = ConfigurationConstants.CONFIGURATION_FORM
+  configuratorForm: IConfigurationGroup[] =
+    ConfigurationConstants.CONFIGURATION_FORM;
 
   ngOnInit(): void {
+    this.canvasService.getCanvasState().subscribe((data) => {
+      this.isCanvas = data;
+    });
   }
-
 }

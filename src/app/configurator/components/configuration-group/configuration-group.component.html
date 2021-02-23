@@ -1,6 +1,21 @@
 <div class="configuration-group" [id]="group.anchorLink">
   <div class="group-info">
-    <div class="group-title">{{ group.title | translate }}</div>
+    <div class="group-title">
+      {{ group.title | translate }}
+      <button
+        *ngIf="group.anchorLink === 'canvasAnchor' && isCanvas === false"
+        (click)="showCanvas()"
+      >
+        Show Canvas
+      </button>
+      <button
+        *ngIf="group.anchorLink === 'canvasAnchor' && isCanvas === true"
+        (click)="hideCanvas()"
+      >
+        Hide Canvas
+      </button>
+    </div>
+
     <div class="group-description" *ngIf="group.description">
       {{ group.description | translate }}
     </div>

@@ -24,9 +24,14 @@ export class ConfigurationItemOptionsComponent implements OnInit {
   ngOnInit(): void {}
 
   onTileSelected(selectedOption: IConfigurationItemOption) {
-    if (this.activeOption !== selectedOption) {
-      this.activeOption = selectedOption;
-      this.configurationService.selectOption(this.item, selectedOption);
+    //Check if it is canvas element
+    if (selectedOption.type !== 'canvas') {
+      if (this.activeOption !== selectedOption) {
+        this.activeOption = selectedOption;
+        this.configurationService.selectOption(this.item, selectedOption);
+      }
+    } else {
+      console.log('jesteCanvas');
     }
   }
 }

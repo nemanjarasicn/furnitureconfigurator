@@ -16,6 +16,7 @@ elements.forEach((element: IDisplayValue) => {
     value: element.value,
     previewUrl: `CONFIGURATION.CANVAS_ELEMENTS.${element.displayValue}.PREVIEW_URL`,
     imageUrl: `CONFIGURATION.CANVAS_ELEMENTS.${element.displayValue}.IMAGE_URL`,
+    type: 'canvas',
   });
 });
 

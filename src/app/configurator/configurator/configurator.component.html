@@ -1,16 +1,20 @@
 <div class="configurator-wrapper">
-
   <div class="configurator-current-step-window">
     <app-configuration-breadcrumb></app-configuration-breadcrumb>
 
-    <div class="configurator-preview">
+    <div class="configurator-preview" *ngIf="isCanvas === false">
       <app-configuration-preview></app-configuration-preview>
+    </div>
+    <div class="configurator-preview" *ngIf="isCanvas === true">
+      <app-canvas-component></app-canvas-component>
     </div>
   </div>
 
   <div class="configurator-steps-container">
-
-    <div class="configurator-group-wrapper" *ngFor="let group of configuratorForm">
+    <div
+      class="configurator-group-wrapper"
+      *ngFor="let group of configuratorForm"
+    >
       <app-configuration-group [group]="group"></app-configuration-group>
     </div>
   </div>
