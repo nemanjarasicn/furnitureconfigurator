@@ -587,6 +587,7 @@ footer {
       a {
         color: $clr-white;
         text-decoration: none;
+        transition: all 0.2s;
         &:hover {
           color: $clr-orange;
         }
