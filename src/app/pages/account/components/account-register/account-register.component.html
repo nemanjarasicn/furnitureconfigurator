@@ -79,6 +79,7 @@
       required
       class="input-field"
       placeholder="Passwort *"
+      minlength="8"
       [ngClass]="{
         'alert-input':
           (this.frmRegister.controls.r_password.invalid &&
@@ -97,6 +98,7 @@
       formControlName="r_password2"
       name="r_password2"
       required
+      minlength="8"
       class="input-field"
       placeholder="Wiederhole das Passwort *"
       [ngClass]="{
@@ -166,7 +168,7 @@
       >
         Einreichen
       </button>
-      <p class="msgEleP">{{ register_errMsg }}</p>
     </div>
+    <p class="msgEleP">{{ register_errMsg }}</p>
   </form>
 </section>

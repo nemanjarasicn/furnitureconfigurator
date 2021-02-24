@@ -1436,7 +1436,6 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
   @include flex-row();
   flex-wrap: wrap;
   justify-content: space-evenly;
-
   section {
     @include flex-column();
     padding: 15px 5px;
