@@ -26,7 +26,8 @@ export class ContactComponent implements OnInit {
     { value: 'Herr', label: 'Herr' },
   ];
 
-  msg: string | undefined = '';
+  msg: string = '';
+  msgErr: string = '';
 
   constructor(
     private contactService: ContactService,
@@ -51,8 +52,9 @@ export class ContactComponent implements OnInit {
       .subscribe((res: [boolean, string | undefined]) => {
         if (res[0] === true) this.msg = 'E-Mail wird gesendet';
         else {
-          this.msg = 'ungültige E-Mail';
-          console.log(res[1]);
+          this.msgErr =
+            'etwas ist schief gelaufen, bitte versuchen Sie es später';
+          //console.log(res[1]);
         }
       });
   }
