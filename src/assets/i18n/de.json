@@ -339,5 +339,10 @@
         "IMAGE_URL": "assets/images/configurator_images/handleFront4.svg"
       }
     }
+  },
+  "CONTACT": {
+    "SALUTATION": "Anrede",
+    "MRS": "Frau",
+    "MR": "Herr"
   }
 }

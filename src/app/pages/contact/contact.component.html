@@ -23,7 +23,7 @@
       >
         <select name="gender" id="gender" class="select-field">
           <option *ngFor="let gender of genderList" [value]="gender.value">
-            {{ gender.label }}
+            {{ gender.label | translate }}
           </option>
         </select>
         <input

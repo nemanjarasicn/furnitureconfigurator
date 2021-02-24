@@ -21,9 +21,9 @@ export class ContactComponent implements OnInit {
   });
 
   genderList: Gender[] = [
-    { value: '', label: 'Anrede' },
-    { value: 'Frau', label: 'Frau' },
-    { value: 'Herr', label: 'Herr' },
+    { value: '', label: 'CONTACT.SALUTATION' },
+    { value: 'Frau', label: 'CONTACT.MRS' },
+    { value: 'Herr', label: 'CONTACT.MR' },
   ];
 
   msg: string = '';
