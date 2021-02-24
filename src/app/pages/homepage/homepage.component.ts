@@ -24,7 +24,7 @@ export class HomepageComponent implements OnInit {
   scrollIndex: number = 0;
   lastScrollTop: number = 0;
   showScroller = true;
-  //isFreeToScroll: boolean = true;
+  isFreeToScroll: boolean = true;
 
   @HostListener('keydown.arrowup', ['$event'])
   onUpArrow(event: KeyboardEvent) {
@@ -73,7 +73,6 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     document.body.style.overflow = 'hidden';
-
     const y = window.pageYOffset;
 
     if (y <= $('#scrollTo-0').offset().top) {
@@ -98,27 +97,41 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  scrollArrow(condition: number, reset: number): void {
-    if (this.scrollIndex !== condition) {
-      this.scrollerService.scroll(this.scrollIndex);
-    } else this.scrollIndex = reset;
+  scrollArrow(condition: number, reset: number, increase: number): void {
+    if (this.isFreeToScroll === true) {
+      this.scrollIndex = this.scrollIndex + increase;
+      if (this.scrollIndex === 1 && increase < 0) this.scrollIndex = 0;
+      else if (this.scrollIndex === 1 && increase > 0) this.scrollIndex = 2;
+
+      if (this.scrollIndex !== condition) {
+        this.isFreeToScroll = false;
+        this.scrollerService.scroll(this.scrollIndex);
+        setTimeout(() => {
+          this.isFreeToScroll = true;
+        }, 800);
+      } else this.scrollIndex = reset;
+
+      console.log(this.scrollIndex);
+    }
   }
 
   scrollUp(): void {
-    this.scrollIndex--;
-    if (this.scrollIndex === 1) this.scrollIndex = 0;
-    this.scrollArrow(-1, 0);
+    this.scrollArrow(-1, 0, -1);
   }
 
   scrollDown(): void {
-    this.scrollIndex++;
-    if (this.scrollIndex === 1) this.scrollIndex = 2;
-    this.scrollArrow(6, 5);
+    this.scrollArrow(6, 5, 1);
   }
 
   scrollToFun(value: number): void {
     this.scrollIndex = value;
-    this.scrollerService.scroll(this.scrollIndex);
+    if (this.isFreeToScroll === true) {
+      this.isFreeToScroll = false;
+      this.scrollerService.scroll(this.scrollIndex);
+      setTimeout(() => {
+        this.isFreeToScroll = true;
+      }, 800);
+    }
   }
 
   toggleBtnWaschbecken(num: 0 | 1) {

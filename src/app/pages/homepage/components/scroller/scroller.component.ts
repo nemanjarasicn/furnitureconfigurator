@@ -11,8 +11,8 @@ export class ScrollerComponent implements OnInit {
   @Input() scrollDown: any;
   @Input() scrollToFun: any;
   @Input() scrollArrow: any;
-
-  @Input() scrollIndex;
+  @Input() isFreeToScroll!: boolean;
+  @Input() scrollIndex!: number;
   @Output() scrollIndexChange = new EventEmitter<number>();
 
   constructor(private scrollerService: ScrollerService) {}

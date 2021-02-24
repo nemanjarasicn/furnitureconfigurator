@@ -30,6 +30,11 @@
         <li *ngFor="let item of menuItems">
           <a [routerLink]="item.link">{{ item.label | translate }}</a>
         </li>
+        <li>
+          <a href="https://www.emotion-24.de/datenschutz/" target="_blank">
+            {{ "NAVIGATION.DATA_PROTECTION" | translate }}
+          </a>
+        </li>
       </ul>
     </nav>
     <address style="margin: 0">

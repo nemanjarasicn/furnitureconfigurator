@@ -1,17 +1,12 @@
 <footer id="scrollTo-5">
-  <div>
-    <b>Title2</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-  </div>
-  <div>
-    <b>Title2</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-  </div>
-  <div>
-    <b>Title2</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-  </div>
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.link">{{ item.label | translate }}</a>
+    </li>
+    <li>
+      <a href="https://www.emotion-24.de/datenschutz/" target="_blank">
+        {{ "NAVIGATION.DATA_PROTECTION" | translate }}
+      </a>
+    </li>
+  </ul>
 </footer>

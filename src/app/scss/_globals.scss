@@ -571,20 +571,27 @@ header {
     }
   }
 }
-
-$footerHeight: 160px;
-
 footer {
-  min-height: $footerHeight;
+  min-height: 160px;
   background-color: $clr-black;
-  @include flex();
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-evenly;
+  @include flex-center-item();
+  flex-direction: row;
+  flex-flow: wrap;
   color: #ebebeb;
   padding: 6px;
-  div {
-    margin: 20px 0;
+  ul {
+    @include flex-row();
+    justify-content: space-evenly;
+    width: 100%;
+    li {
+      a {
+        color: $clr-white;
+        text-decoration: none;
+        &:hover {
+          color: $clr-orange;
+        }
+      }
+    }
   }
 }
 
