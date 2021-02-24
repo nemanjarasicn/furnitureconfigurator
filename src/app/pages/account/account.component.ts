@@ -10,12 +10,7 @@ import { AccountService } from '../../core/services/account.service';
 })
 export class AccountComponent implements OnInit {
   user!: User | null;
-  isLogged: boolean = false;
-
-  constructor(
-    @Inject(DOCUMENT) private document: any,
-    private accountService: AccountService
-  ) {}
+  isLogged!: boolean;
 
   private doAfterCheckIsUserLoggedIn(res): void {
     if (res !== false) {
@@ -27,12 +22,17 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    document.body.style.overflow = 'auto';
-
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private accountService: AccountService
+  ) {
     this.accountService.isUserLoggedIn().subscribe((res) => {
       this.doAfterCheckIsUserLoggedIn(res);
     });
+  }
+
+  ngOnInit(): void {
+    document.body.style.overflow = 'auto';
   }
 
   isLoggedChanged(event: boolean) {

@@ -1,18 +1,14 @@
 <main>
-  <div [class.acc-container]="!isLogged">
-    <app-account-dashboard
-      *ngIf="isLogged"
-      (loggedChanged)="isLoggedChanged($event)"
-      [user]="user"
-    ></app-account-dashboard>
+  <div class="acc-container" *ngIf="!isLogged">
     <app-account-login
       [style.flex-grow]="1"
-      *ngIf="!isLogged"
       (loggedChanged)="isLoggedChanged($event)"
     ></app-account-login>
-    <app-account-register
-      [style.flex-grow]="1"
-      *ngIf="!isLogged"
-    ></app-account-register>
+    <app-account-register [style.flex-grow]="1"></app-account-register>
   </div>
+  <app-account-dashboard
+    *ngIf="isLogged"
+    (loggedChanged)="isLoggedChanged($event)"
+    [user]="user"
+  ></app-account-dashboard>
 </main>

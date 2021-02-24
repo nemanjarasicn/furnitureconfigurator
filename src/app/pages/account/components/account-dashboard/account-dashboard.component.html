@@ -8,14 +8,7 @@
     <span><img src="assets/images/icons/left-arrow.svg" alt="Ausloggen" /></span
     ><b>Ausloggen</b>
   </button>
-  <div
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      margin-top: 15px;
-    "
-  >
+  <div class="dashboard-info">
     <p>{{ user?.first_name }}</p>
     <p>{{ user?.last_name }}</p>
     <p>{{ user?.email_address }}</p>
@@ -31,7 +24,7 @@
   >
     <button
       class="previous_btn_step"
-      [routerLink]="['/complete_configuration']"
+      [routerLink]="['/complete-configuration']"
       style="
         position: relative;
         top: unset;
