@@ -10,7 +10,8 @@
     "AGB": "Agb",
     "CONTACT": "Kontakt",
     "IMPRINT": "Impressum",
-    "DATA_PROTECTION": "Datenschutz"
+    "DATA_PROTECTION": "Datenschutz",
+    "COMPLETE_CONFIGURATION": "Vollständige Konfiguration"
   },
   "CONFIGURATION": {
     "BASIN": {
