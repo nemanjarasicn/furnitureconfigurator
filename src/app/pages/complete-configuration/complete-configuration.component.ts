@@ -5,6 +5,7 @@ import { CookieService } from '../../core/services/cookie.service';
 import { Customer } from '../..//common/models/interfaces/customer.interface';
 import { Order } from '../..//common/models/interfaces/order.interface';
 import { Router } from '@angular/router';
+import { UnsubscriptionError } from 'rxjs';
 
 @Component({
   selector: 'app-complete-configuration',
@@ -47,68 +48,57 @@ export class CompleteConfigurationComponent implements OnInit {
     this.accountService.isUserLoggedIn().subscribe((res) => {
       if (res !== false) {
         this.isLoggedIn = true;
-        this.orderFrm.value.first_name = res.first_name;
-        this.orderFrm.value.last_name = res.last_name;
-        this.orderFrm.value.phone_number = res.phone_number;
-        this.orderFrm.value.email_address = res.email_address;
-        this.orderFrm.value.address = res.address;
+        this.orderFrm.reset({
+          first_name: res.first_name,
+          last_name: res.last_name,
+          phone_number: res.phone_number,
+          email_address: res.email_address,
+          address: res.address,
+        });
       }
     });
 
     //get from cookie
-    if (
-      this.cookieService.checkCookie(
-        this.cookieService.cookieKeys.num_of_basins
-      )
-    ) {
+    let tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.num_of_basins
+    );
+    if (tmpCookieVal !== undefined) {
       this.order.num_of_basins =
-        this.cookieService.getCookie(
-          this.cookieService.cookieKeys.num_of_basins
-        ) === '0'
+        tmpCookieVal === '0'
           ? 'Einzelnes Waschbecken aus Keramik.'
           : 'ZWei Waschbecken nebeneinander.';
     }
-    if (
-      this.cookieService.checkCookie(this.cookieService.cookieKeys.sink_type)
-    ) {
-      if (
-        this.cookieService.getCookie(
-          this.cookieService.cookieKeys.sink_type
-        ) === '0'
-      )
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.sink_type
+    );
+    if (tmpCookieVal !== undefined) {
+      if (tmpCookieVal === '0')
         this.order.sink_type =
           'Aufsatzwaschbecken werden direkt in den Möbelkorpus hinein gelegt.';
       else {
         this.order.sink_type =
           'Definieren Sie die Maße Ihres Waschbeckens selbst.';
-        if (
-          this.cookieService.checkCookie(
-            this.cookieService.cookieKeys.sink_dimensions_width
-          )
-        ) {
-          this.order.sink_dimensions_width =
-            this.cookieService.getCookie(
-              this.cookieService.cookieKeys.sink_dimensions_width
-            ) + ' cm';
-        }
-        if (
-          this.cookieService.checkCookie(
-            this.cookieService.cookieKeys.sink_dimensions_height
-          )
-        ) {
-          this.order.sink_dimensions_height =
-            this.cookieService.getCookie(
-              this.cookieService.cookieKeys.sink_dimensions_height
-            ) + ' cm';
-        }
+        tmpCookieVal = this.cookieService.getCookie(
+          this.cookieService.cookieKeys.sink_dimensions_width
+        );
+        if (tmpCookieVal !== undefined)
+          this.order.sink_dimensions_width = tmpCookieVal + ' cm';
+
+        tmpCookieVal = this.cookieService.getCookie(
+          this.cookieService.cookieKeys.sink_dimensions_height
+        );
+
+        if (tmpCookieVal !== undefined)
+          this.order.sink_dimensions_height = tmpCookieVal + ' cm';
       }
     }
-    if (
-      this.cookieService.checkCookie(this.cookieService.cookieKeys.sink_model)
-    ) {
-      switch (
-        this.cookieService.getCookie(this.cookieService.cookieKeys.sink_model)
-      ) {
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.sink_model
+    );
+    if (tmpCookieVal !== undefined) {
+      switch (tmpCookieVal) {
         case '0':
           this.order.sink_model = 'Nette Ausführung';
           break;
@@ -124,45 +114,37 @@ export class CompleteConfigurationComponent implements OnInit {
           break;
       }
     }
-    if (this.cookieService.checkCookie(this.cookieService.cookieKeys.width)) {
-      this.order.width =
-        this.cookieService.getCookie(this.cookieService.cookieKeys.width) +
-        ' cm';
-    }
-    if (this.cookieService.checkCookie(this.cookieService.cookieKeys.height)) {
-      this.order.height =
-        this.cookieService.getCookie(this.cookieService.cookieKeys.height) +
-        ' cm';
-    }
-    if (this.cookieService.checkCookie(this.cookieService.cookieKeys.depth)) {
-      this.order.depth =
-        this.cookieService.getCookie(this.cookieService.cookieKeys.depth) +
-        ' cm';
-    }
-    if (
-      this.cookieService.checkCookie(
-        this.cookieService.cookieKeys.color_consists
-      )
-    ) {
-      this.order.color_consists = this.cookieService.getCookie(
-        this.cookieService.cookieKeys.color_consists
-      );
-    }
-    if (
-      this.cookieService.checkCookie(this.cookieService.cookieKeys.color_front)
-    ) {
-      this.order.color_front = this.cookieService.getCookie(
-        this.cookieService.cookieKeys.color_front
-      );
-    }
-    if (
-      this.cookieService.checkCookie(
-        this.cookieService.cookieKeys.color_cover_plate
-      )
-    ) {
-      this.order.color_cover_plate = this.cookieService.getCookie(
-        this.cookieService.cookieKeys.color_cover_plate
-      );
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.width
+    );
+    if (tmpCookieVal !== undefined) this.order.width = tmpCookieVal + ' cm';
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.height
+    );
+    if (tmpCookieVal !== undefined) this.order.height = tmpCookieVal + ' cm';
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.depth
+    );
+    if (tmpCookieVal !== undefined) this.order.depth = tmpCookieVal + ' cm';
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.color_consists
+    );
+    if (tmpCookieVal !== undefined) this.order.color_consists = tmpCookieVal;
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.color_front
+    );
+    if (tmpCookieVal !== undefined) this.order.color_front = tmpCookieVal;
+
+    tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.color_cover_plate
+    );
+    if (tmpCookieVal !== undefined) {
+      this.order.color_cover_plate = tmpCookieVal;
     }
   }
 

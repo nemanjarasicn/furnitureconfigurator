@@ -33,11 +33,15 @@
         </li>
         <li>
           Anzahl Waschbecken:
-          <a [routerLink]="['/configurator']"><b></b></a>
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.num_of_basins }}</b></a
+          >
         </li>
         <li>
           Waschbeckenart:
-          <a [routerLink]="['/configurator']"><b></b></a>
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.sink_type }}</b></a
+          >
           <ul style="margin: 0; margin-left: 15px">
             <li
               *ngIf="

@@ -31,11 +31,12 @@ export class CookieComponent implements OnInit {
   constructor(private cookieService: CookieService) {}
 
   ngOnInit(): void {
-    this.isHide = this.cookieService.checkCookie(
-      this.cookieService.cookieKeys.none_approved
-    )
-      ? true
-      : false;
+    this.isHide =
+      this.cookieService.getCookie(
+        this.cookieService.cookieKeys.none_approved
+      ) !== undefined
+        ? true
+        : false;
   }
 
   setApprovedCookies(): void {

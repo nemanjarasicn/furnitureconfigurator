@@ -13,12 +13,12 @@ import { DOCUMENT } from '@angular/common';
 export class ContactComponent implements OnInit {
   contactFrm: FormGroup = new FormGroup({
     gender: new FormControl(''),
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
-    title: new FormControl(''),
-    msg: new FormControl(''),
+    first_name: new FormControl(null),
+    last_name: new FormControl(null),
+    email: new FormControl(null),
+    phone: new FormControl(null),
+    title: new FormControl(null),
+    msg: new FormControl(null),
   });
 
   genderList: Gender[] = [
@@ -37,13 +37,15 @@ export class ContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    document.body.style.overflow = 'auto';
+    this.document.body.style.overflow = 'auto';
     this.accountService.isUserLoggedIn().subscribe((res) => {
       if (res !== false) {
-        this.contactFrm.value.first_name = res.first_name;
-        this.contactFrm.value.last_name = res.last_name;
-        this.contactFrm.value.email = res.email_address;
-        this.contactFrm.value.phone = res.phone_number;
+        this.contactFrm.reset({
+          first_name: res.first_name,
+          last_name: res.last_name,
+          email: res.email_address,
+          phone: res.phone_number,
+        });
       }
     });
   }

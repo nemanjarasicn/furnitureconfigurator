@@ -73,6 +73,13 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     document.body.style.overflow = 'hidden';
+    //get cookie
+    const tmpCookieVal = this.cookieService.getCookie(
+      this.cookieService.cookieKeys.num_of_basins
+    );
+    if (tmpCookieVal !== undefined) this.isWaschbecken0Active = !tmpCookieVal;
+
+    //scroller
     const y = window.pageYOffset;
 
     if (y <= $('#scrollTo-0').offset().top) {

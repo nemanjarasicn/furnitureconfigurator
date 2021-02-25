@@ -165,12 +165,12 @@ class Account extends DB{
     function sendOrder($data){       
         //send email
         try{
-            $html_msg = 'order';
-            $alt_msg = "order";
+            $html_msg = 'order test';
+            $alt_msg = "order test";
 
             Email::send(
-                $data->customer->email, //to
-                'Auftrag', //subject
+                $data->customer->email_address, //to
+                'Auftrag test', //subject
                 $html_msg, //msg
                 $alt_msg //alt msg
             );

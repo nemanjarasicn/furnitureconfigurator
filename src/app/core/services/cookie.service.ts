@@ -58,7 +58,7 @@ export class CookieService {
     document.cookie = updatedCookie;
   }
 
-  getCookie(name: string): string {
+  getCookie(name: string): string | undefined {
     let matches = document.cookie.match(
       new RegExp(
         '(?:^|; )' +
@@ -66,14 +66,10 @@ export class CookieService {
           '=([^;]*)'
       )
     );
-    return matches ? decodeURIComponent(matches[1]) : '';
+    return matches ? decodeURIComponent(matches[1]) : undefined;
   }
 
   deleteCookie(name: string): void {
     this.setCookie(name, '', { ...this.cookieOptions, 'max-age': -1 });
-  }
-
-  checkCookie(name: string): boolean {
-    return this.getCookie(name) === undefined ? false : true;
   }
 }
