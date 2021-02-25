@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ConfigurationConstants } from 'src/app/common/constants/configuration.constants';
 import { IConfigurationGroup } from 'src/app/common/models/interfaces/configuration-group.interface';
 import { CanvasService } from '../../core/services/canvas.service';
@@ -10,6 +10,8 @@ import { CanvasService } from '../../core/services/canvas.service';
 })
 export class ConfiguratorComponent implements OnInit {
   isCanvas: boolean = false;
+  x: number = 0;
+  y: number = 0;
 
   constructor(private canvasService: CanvasService) {}
 
@@ -21,4 +23,13 @@ export class ConfiguratorComponent implements OnInit {
       this.isCanvas = data;
     });
   }
+
+  onScroll(e) {
+    // console.log('scrolling');
+  }
+
+  // @HostListener('mouseenter', ['$event'])
+  // onMouseEnter(event: KeyboardEvent) {
+  //   console.log('wheel');
+  // }
 }

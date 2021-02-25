@@ -26,6 +26,7 @@ export class ConfigurationPreviewComponent implements OnInit, OnDestroy {
   }
 
   private buildBackGroundImage(imageUrl: string) {
+    
     return imageUrl.length > 0 ? `url(${this.translateService.instant(imageUrl)}) no-repeat center center` : '';
   }
 

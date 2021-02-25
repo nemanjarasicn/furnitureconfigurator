@@ -6,6 +6,7 @@ import * as $ from 'jquery';
 import Konva from 'konva';
 import { ICanvasDimensions } from '../../common/models/interfaces/canvas-dimensions.interface';
 import { IConfigurationItemOption } from 'src/app/common/models/interfaces/configuration-item-option.interface';
+import { IConfigurationItem } from 'src/app/common/models/interfaces/configuration-item.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,9 @@ export class CanvasService {
   private isCanvas$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
+
+  //For initial active option
+  private hoveredItem$: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   mainDimensions: BehaviorSubject<ICanvasDimensions> = new BehaviorSubject<ICanvasDimensions>(
     {
@@ -105,6 +109,13 @@ export class CanvasService {
       this.selectedHandleOption$.next(selectedOption);
 
     selectedOption.description?.includes('COLORS') &&
-      this.selectedHandleOption$.next(selectedOption);
+      this.selectedColorOption$.next(selectedOption);
+  }
+
+  setHoveredItem(hoveredItem: IConfigurationItem) {
+    this.hoveredItem$.next(hoveredItem);
+  }
+  getHoveredItem() {
+    return this.hoveredItem$;
   }
 }

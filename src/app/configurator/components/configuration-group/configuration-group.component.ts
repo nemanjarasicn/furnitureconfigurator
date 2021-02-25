@@ -20,10 +20,10 @@ export class ConfigurationGroupComponent implements OnInit {
     });
   }
 
-  showCanvas() {
-    this.canvasService.setCanvasTrue();
-  }
-  hideCanvas() {
-    this.canvasService.setCanvasFalse();
-  }
+  // showCanvas() {
+  //   this.canvasService.setCanvasTrue();
+  // }
+  // hideCanvas() {
+  //   this.canvasService.setCanvasFalse();
+  // }
 }

@@ -2,7 +2,7 @@
   <div class="group-info">
     <div class="group-title">
       {{ group.title | translate }}
-      <button
+      <!-- <button
         *ngIf="group.anchorLink === 'canvasAnchor' && isCanvas === false"
         (click)="showCanvas()"
       >
@@ -13,7 +13,7 @@
         (click)="hideCanvas()"
       >
         Hide Canvas
-      </button>
+      </button> -->
     </div>
 
     <div class="group-description" *ngIf="group.description">
