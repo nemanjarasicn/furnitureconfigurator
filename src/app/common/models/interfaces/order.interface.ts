@@ -1,16 +1,13 @@
 export interface Order {
-  num_of_basins: 0 | 1; //0 Einzelnes Waschbecken aus Keramik | 1 ZWei Waschbecken nebeneinander
-  sink_type: 0 | 1; //0 Aufsatzwaschbecken werden direkt in den Möbelkorpus hinein gelegt. | 1 Definieren Sie die Maße Ihres Waschbeckens selbst.
-  sink_dimensions_width?: number;
-  sink_dimensions_height?: number;
+  num_of_basins: string;
+  sink_type: string;
+  sink_dimensions_width: string;
+  sink_dimensions_height: string;
   sink_model: string;
-  width: number;
-  height: number;
-  depth: number;
-  color_consists_id: number;
-  color_consists_name: string;
-  color_front_id: number;
-  color_front_name: string;
-  color_cover_plate_id: number;
-  color_cover_plate_name: string;
+  width: string;
+  height: string;
+  depth: string;
+  color_consists: string;
+  color_front: string;
+  color_cover_plate: string;
 }

@@ -14,6 +14,7 @@ const routes: Routes = [
     path: '',
     component: HomepageComponent,
   },
+  { path: '**', redirectTo: 'home' },
   { path: 'agb', component: AgbComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'imprint', component: ImprintComponent },

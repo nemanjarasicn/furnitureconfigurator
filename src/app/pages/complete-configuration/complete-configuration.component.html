@@ -13,70 +13,112 @@
   <section class="complete-config-container">
     <form [formGroup]="orderFrm" (ngSubmit)="frmOrderSubmit()">
       <ul>
-        <li class="li-b">
+        <li>
           Breite:
-          <a [routerLink]="['/configurator']"><b id="Breite"></b></a>
-        </li>
-        <li id="li-t">
-          Tiefe: <a [routerLink]="['/configurator']"><b id="Tiefe"></b></a>
-        </li>
-        <li class="li-h">
-          Höhe: <a [routerLink]="['/configurator']"><b id="Hohe"></b></a>
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.width }}</b></a
+          >
         </li>
         <li>
-          Waschbecken (einem / zwei ):
-          <a [routerLink]="['/configurator']"><b id="Waschbecken1"></b></a>
+          Tiefe:
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.depth }}</b></a
+          >
         </li>
         <li>
-          Aufsatzwaschbecken / Waschbecken nach Maß:
-          <a [routerLink]="['/configurator']"><b id="Waschbecken2"></b></a>
+          Höhe:
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.height }}</b></a
+          >
+        </li>
+        <li>
+          Anzahl Waschbecken:
+          <a [routerLink]="['/configurator']"><b></b></a>
+        </li>
+        <li>
+          Waschbeckenart:
+          <a [routerLink]="['/configurator']"><b></b></a>
           <ul style="margin: 0; margin-left: 15px">
-            <li class="li-b2" style="display: none">
+            <li
+              *ngIf="
+                order.sink_type ===
+                'Definieren Sie die Maße Ihres Waschbeckens selbst.'
+              "
+            >
               Breite:
-              <a [routerLink]="['/configurator']"><b id="Breite2"></b></a>
+              <a [routerLink]="['/configurator']"
+                ><b>{{ order.sink_dimensions_width }}</b></a
+              >
             </li>
-            <li class="li-h2" style="display: none">
+            <li
+              *ngIf="
+                order.sink_type ===
+                'Definieren Sie die Maße Ihres Waschbeckens selbst.'
+              "
+            >
               Randhöhe:
-              <a [routerLink]="['/configurator']"><b id="Hohe2"></b></a>
+              <a [routerLink]="['/configurator']"
+                ><b>{{ order.sink_dimensions_height }}</b></a
+              >
             </li>
           </ul>
         </li>
         <li>
-          basin: <a [routerLink]="['/configurator']"><b id="basin"></b></a>
+          Waschbecken Modell:
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.sink_model }}</b></a
+          >
         </li>
         <li>
           Farbe außen:
-          <a [routerLink]="['/configurator']"><b id="Farbe"></b></a>
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.color_consists }}</b></a
+          >
         </li>
         <li>
           Farbe front:
-          <a [routerLink]="['/configurator']"><b id="Farbe2"></b></a>
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.color_front }}</b></a
+          >
         </li>
         <li>
           Farbe Deckplatte:
-          <a [routerLink]="['/configurator']"><b id="Farbe3"></b></a>
+          <a [routerLink]="['/configurator']"
+            ><b>{{ order.color_cover_plate }}</b></a
+          >
         </li>
-        <!---<li>Griff: <a href="konfigurieren.php?step=2"><b id="Griff"></b></a></li>--->
       </ul>
-      <!--<?php if($user === null) echo '--->
-      <div class="orange-line-part" style="width: 100%"></div>
-      <p style="text-align: center">
-        Du kannst ,
-        <a [routerLink]="['/account']" style="color: #f06a15"
-          >ein Konto / Login erstellen</a
-        >
-        oder Deine Daten eingeben:
-      </p>
-      <!--';?>--->
-      <div class="orange-line-part" style="width: 100%"></div>
+      <div *ngIf="!isLoggedIn">
+        <div
+          class="orange-line-part"
+          style="width: 100%; margin-bottom: 15px"
+        ></div>
+        <p style="text-align: center">
+          Du kannst ,
+          <a [routerLink]="['/account']" style="color: #f06a15"
+            >ein Konto / Login erstellen</a
+          >
+          oder Deine Daten eingeben:
+        </p>
+      </div>
+      <div
+        class="orange-line-part"
+        style="width: 100%; margin-bottom: 15px"
+      ></div>
       <div class="complete-con">
         <input
           type="text"
           formControlName="first_name"
           name="first_name"
           class="input-field"
-          placeholder="Vorname *"
           required
+          placeholder="Vorname *"
+          [ngClass]="{
+            'alert-input':
+              this.orderFrm.controls.first_name.invalid &&
+              (this.orderFrm.controls.first_name.dirty ||
+                this.orderFrm.controls.first_name.touched)
+          }"
         />
         <input
           type="text"
@@ -85,6 +127,12 @@
           class="input-field"
           required
           placeholder="Nachname *"
+          [ngClass]="{
+            'alert-input':
+              this.orderFrm.controls.last_name.invalid &&
+              (this.orderFrm.controls.last_name.dirty ||
+                this.orderFrm.controls.last_name.touched)
+          }"
         />
         <input
           type="email"
@@ -93,6 +141,13 @@
           class="input-field"
           required
           placeholder="E-Mail Adresse *"
+          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+          [ngClass]="{
+            'alert-input':
+              this.orderFrm.controls.email_address.invalid &&
+              (this.orderFrm.controls.email_address.dirty ||
+                this.orderFrm.controls.email_address.touched)
+          }"
         />
         <input
           type="tel"
@@ -101,6 +156,12 @@
           class="input-field"
           required
           placeholder="Telefonnummer *"
+          [ngClass]="{
+            'alert-input':
+              this.orderFrm.controls.phone_number.invalid &&
+              (this.orderFrm.controls.phone_number.dirty ||
+                this.orderFrm.controls.phone_number.touched)
+          }"
         />
         <input
           type="text"
@@ -109,6 +170,12 @@
           class="input-field"
           required
           placeholder="Straße, PLZ, Ort *"
+          [ngClass]="{
+            'alert-input':
+              this.orderFrm.controls.address.invalid &&
+              (this.orderFrm.controls.address.dirty ||
+                this.orderFrm.controls.address.touched)
+          }"
         />
         <small style="margin: 10px 0"
           >Die mit einem * markierten Felder sind Pflichtfelder.</small
