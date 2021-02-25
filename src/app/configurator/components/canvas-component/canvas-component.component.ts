@@ -37,13 +37,39 @@ export class CanvasComponentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.canvasService.getMainDimensions().subscribe((data) => {
-      this.setWidthHeightByRatio(
-        data.width,
-        data.height,
-        this.mainDimensions.width,
-        this.mainDimensions.height
-      );
+    // this.canvasService.getMainDimensions().subscribe((data) => {
+    //   this.setWidthHeightByRatio(
+    //     data.width,
+    //     data.height,
+    //     this.mainDimensions.width,
+    //     this.mainDimensions.height
+    //   );
+    // });
+
+    // this.canvasService.getMainWidth().subscribe((data) => {
+    //   this.setWidthHeightByRatio(
+    //     data,
+    //     this.mainDimensions.height,
+    //     this.mainDimensions.width,
+    //     this.mainDimensions.height
+    //   );
+    // });
+    // this.canvasService.getMainHeight().subscribe((data) => {
+    //   this.setWidthHeightByRatio(
+    //     this.mainDimensions.width,
+    //     data,
+    //     this.mainDimensions.width,
+    //     this.mainDimensions.height
+    //   );
+    // });
+    this.canvasService.getMainWidth().subscribe((data) => {
+      console.log(data);
+      // this.mainDimensions.width = data;
+      // this.setWidthHeightByRatio(data, this.mainDimensions.height);
+    });
+    this.canvasService.getMainHeight().subscribe((data) => {
+      // this.mainDimensions.height = data;
+      // this.setWidthHeightByRatio(this.mainDimensions.width, data);
     });
 
     this.stage = new Konva.Stage({
@@ -821,50 +847,47 @@ export class CanvasComponentComponent implements OnInit {
   sqWidth: any;
   sqHeight: any;
 
-  setWidthHeightByRatio(widthSize, heightSize, previousWidth, previousHeight) {
-    if (+heightSize > +widthSize) {
-      this.heightRatio = 1;
-      this.widthRatio = widthSize / heightSize;
-      this.sqNoWidth = Math.round(this.widthRatio * 10);
-      this.sqNoHeight = Math.round(this.heightRatio * 10);
-    } else {
-      this.widthRatio = 1;
-      this.heightRatio = heightSize / widthSize;
-      this.sqNoHeight = Math.round(this.heightRatio * 10);
-      this.sqNoWidth = Math.round(this.widthRatio * 10);
-    }
-
-    this.mainDimensions = {
-      width: 400 * this.widthRatio,
-      height: 400 * this.heightRatio,
-    };
-    this.styleDimensions = {
-      width: `${this.mainDimensions.width}px`,
-      height: `${this.mainDimensions.height}px`,
-    };
-    // this.containerHeight = 400 * heightRatio;
-    // containerWidth = 400 * widthRatio;
-
-    // container.style.width = `${containerWidth}px`;
-    // container.style.height = `${containerHeight}px`;
-
-    this.sqWidth = this.mainDimensions.width / previousWidth;
-    this.sqHeight = this.mainDimensions.height / previousHeight;
-    if (this.stage) {
-      this.stage.find('#gridLayer').destroy();
-      this.stage.width(this.mainDimensions.width);
-      this.stage.height(this.mainDimensions.height);
-
-      this.addGridLayer(
-        this.mainDimensions.width,
-        this.mainDimensions.height,
-        20,
-        this.sqNoWidth,
-        this.sqNoHeight
-      );
-      this.stage.add(this.layer);
-
-      this.stage.batchDraw();
-    }
+  setWidthHeightByRatio(widthSize, heightSize) {
+    console.log(widthSize);
+    console.log(heightSize);
+    // if (+heightSize > +widthSize) {
+    //   this.heightRatio = 1;
+    //   this.widthRatio = widthSize / heightSize;
+    //   this.sqNoWidth = Math.round(this.widthRatio * 10);
+    //   this.sqNoHeight = Math.round(this.heightRatio * 10);
+    // } else {
+    //   this.widthRatio = 1;
+    //   this.heightRatio = heightSize / widthSize;
+    //   this.sqNoHeight = Math.round(this.heightRatio * 10);
+    //   this.sqNoWidth = Math.round(this.widthRatio * 10);
+    // }
+    // this.mainDimensions = {
+    //   width: 400 * this.widthRatio,
+    //   height: 400 * this.heightRatio,
+    // };
+    // this.styleDimensions = {
+    //   width: `${this.mainDimensions.width}px`,
+    //   height: `${this.mainDimensions.height}px`,
+    // };
+    // // this.containerHeight = 400 * heightRatio;
+    // // containerWidth = 400 * widthRatio;
+    // // container.style.width = `${containerWidth}px`;
+    // // container.style.height = `${containerHeight}px`;
+    // this.sqWidth = this.mainDimensions.width / previousWidth;
+    // this.sqHeight = this.mainDimensions.height / previousHeight;
+    // if (this.stage) {
+    //   this.stage.find('#gridLayer').destroy();
+    //   this.stage.width(this.mainDimensions.width);
+    //   this.stage.height(this.mainDimensions.height);
+    //   this.addGridLayer(
+    //     this.mainDimensions.width,
+    //     this.mainDimensions.height,
+    //     20,
+    //     this.sqNoWidth,
+    //     this.sqNoHeight
+    //   );
+    //   this.stage.add(this.layer);
+    //   this.stage.batchDraw();
+    // }
   }
 }

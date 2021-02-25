@@ -21,10 +21,13 @@ export class CanvasService {
 
   mainDimensions: BehaviorSubject<ICanvasDimensions> = new BehaviorSubject<ICanvasDimensions>(
     {
-      height: 400,
-      width: 400,
+      height: 200,
+      width: 200,
     }
   );
+
+  mainWidth: BehaviorSubject<number> = new BehaviorSubject<number>(200);
+  mainHeight: BehaviorSubject<number> = new BehaviorSubject<number>(200);
 
   selectedTemplateOption$: BehaviorSubject<IConfigurationItemOption> = new BehaviorSubject<IConfigurationItemOption>(
     {
@@ -82,9 +85,24 @@ export class CanvasService {
     this.isCanvas$.next(false);
   }
 
+  setMainWidth(width: number) {
+    this.mainWidth.next(Number(width));
+  }
+  setMainHeight(height: number) {
+    this.mainHeight.next(Number(height));
+  }
+
   getMainDimensions(): BehaviorSubject<ICanvasDimensions> {
     return this.mainDimensions;
   }
+
+  getMainWidth(): BehaviorSubject<number> {
+    return this.mainWidth;
+  }
+  getMainHeight(): BehaviorSubject<number> {
+    return this.mainHeight;
+  }
+
   getSelectedTemplate(): BehaviorSubject<IConfigurationItemOption> {
     return this.selectedTemplateOption$;
   }

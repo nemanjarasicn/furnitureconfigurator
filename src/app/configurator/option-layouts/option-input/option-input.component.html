@@ -1,7 +1,13 @@
 <form [formGroup]="inputGroup">
   <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">{{option.label | translate}}</label>
-    <input class="form-control" formControlName="value" (focus)="onGetFocus()" />
+    <label for="exampleFormControlInput1" class="form-label">{{
+      option.label | translate
+    }}</label>
+    <input
+      class="form-control"
+      formControlName="value"
+      (focus)="onGetFocus()"
+      (change)="onValueChanged($event)"
+    />
   </div>
-
 </form>
