@@ -4,6 +4,7 @@ import { colorOptions } from './color-options.config';
 import { canvasElementOptions } from './canvas-options-elements.config';
 import { canvasTemplateOptions } from './canvas-options-template.config';
 import { canvasHandlesOptions } from './canvas-options-handles.config';
+import { canvasColorsOptions } from './canvas-options-colors.config';
 
 const canvasConfig: IConfigurationGroup = {
   title: 'CONFIGURATION.CANVAS.GROUP_TITLE',
@@ -17,20 +18,13 @@ const canvasConfig: IConfigurationGroup = {
       options: canvasTemplateOptions,
       tileSize: 100,
     },
-    {
-      key: 'canvasElements',
-      title: 'CONFIGURATION.CANVAS.ITEMS.ELEMENTS.TITLE',
-      description: 'CONFIGURATION.CANVAS.ITEMS.ELEMENTS.DESCRIPTION',
-      type: ConfigurationOptionType.TILE,
-      options: canvasElementOptions,
-      tileSize: 100,
-    },
+
     {
       key: 'canvasColors',
       title: 'CONFIGURATION.CANVAS.ITEMS.COLORS.TITLE',
       description: 'CONFIGURATION.CANVAS.ITEMS.COLORS.DESCRIPTION',
       type: ConfigurationOptionType.TILE,
-      options: colorOptions,
+      options: canvasColorsOptions,
       tileSize: 60,
     },
     {
@@ -39,6 +33,14 @@ const canvasConfig: IConfigurationGroup = {
       description: 'CONFIGURATION.CANVAS.ITEMS.HANDLES.DESCRIPTION',
       type: ConfigurationOptionType.TILE,
       options: canvasHandlesOptions,
+      tileSize: 100,
+    },
+    {
+      key: 'canvasElements',
+      title: 'CONFIGURATION.CANVAS.ITEMS.ELEMENTS.TITLE',
+      description: 'CONFIGURATION.CANVAS.ITEMS.ELEMENTS.DESCRIPTION',
+      type: ConfigurationOptionType.TILE,
+      options: canvasElementOptions,
       tileSize: 100,
     },
   ],

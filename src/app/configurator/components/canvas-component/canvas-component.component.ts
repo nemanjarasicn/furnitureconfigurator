@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CanvasService } from '../../../core/services/canvas.service';
 import { ICanvasStyleDimensions } from '../../../common/models/interfaces/canvas-style.interface';
 import { ICanvasDimensions } from '../../../common/models/interfaces/canvas-dimensions.interface';
+import { TranslateService } from '@ngx-translate/core';
 import * as $ from 'jquery';
 import Konva from 'konva';
 import { v4 as uuidv4 } from 'uuid';
@@ -27,9 +28,13 @@ export class CanvasComponentComponent implements OnInit {
   snapHeight: number = 10;
   MIN_WIDTH: number = 14;
   MIN_HEIGHT: number = 14;
-  selectedHandleBarImgSource: string = '';
+  selectedHandleBarImgSource: string | undefined = '';
+  selectedColorImgSource: string | undefined = '';
 
-  constructor(private canvasService: CanvasService) {}
+  constructor(
+    private canvasService: CanvasService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.canvasService.getMainDimensions().subscribe((data) => {
@@ -69,25 +74,32 @@ export class CanvasComponentComponent implements OnInit {
       10
     );
     this.canvasService.getSelectedHandle().subscribe((data) => {
-      console.log(data);
+      this.selectedHandleBarImgSource = this.buildImageSource(
+        data.imageUrl ? data.imageUrl : ''
+      );
     });
     this.canvasService.getSelectedElement().subscribe((data) => {
       this.addNewElement(data);
     });
 
     this.canvasService.getSelectedColor().subscribe((data) => {
-      console.log(data);
+      this.selectedColorImgSource = this.buildImageSource(
+        data.imageUrl ? data.imageUrl : ''
+      );
+      console.log(this.selectedColorImgSource);
     });
     this.canvasService.getSelectedTemplate().subscribe((data) => {
-      console.log(data);
+      // console.log(data)
     });
 
     this.stage.batchDraw();
   }
 
   addNewElement(data) {
+    console.log('usao u New Element');
     let id = uuidv4();
     data.description.includes('DOOR') ? `door${id}` : `drawer${id}`;
+    console.log(id);
 
     this.newRectangle(
       this,
@@ -96,8 +108,8 @@ export class CanvasComponentComponent implements OnInit {
       id,
       this.stage.x(),
       this.stage.y(),
-      20,
-      20
+      200,
+      200
     );
   }
   /*Function for adding grid layer with starting parameters of container*/
@@ -147,6 +159,7 @@ export class CanvasComponentComponent implements OnInit {
 
   /*Function for creating a main new rectangle*/
   newRectangle(element, layer, stage, id, rectX, rectY, rectWidth, rectHeight) {
+    console.log('usao u New Rectangle');
     let tr = new Konva.Transformer({
       rotateEnabled: false,
       boundBoxFunc: function (oldBoundBox, newBoundBox) {
@@ -502,9 +515,9 @@ export class CanvasComponentComponent implements OnInit {
           layer.batchDraw();
         };
         // imageColorObj.src = `${this.selectedColorImgSource}`;
-        imageColorObj.src = `./assets/images/Colorado.jpg`;
+        imageColorObj.src = `${element.selectedColorImgSource}`;
       };
-      imageObj.src = `./assets/images/handleFront1.svg`;
+      imageObj.src = `${element.selectedHandleBarImgSource} `;
     };
 
     imageObjRect.src = `./assets/images/white.png`;
@@ -526,6 +539,14 @@ export class CanvasComponentComponent implements OnInit {
 
   //   return matchingImage;
   // }
+
+  private buildImageSource(imageUrl: string) {
+    // console.log('Image Url')
+    // console.log(imageUrl)
+    return imageUrl.length > 0
+      ? `./${this.translateService.instant(imageUrl)} `
+      : '';
+  }
 
   findActiveTransformer() {
     let transformers = this.stage.find('Transformer');
