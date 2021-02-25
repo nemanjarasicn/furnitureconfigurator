@@ -136,8 +136,8 @@ export class HomepageComponent implements OnInit {
 
   toggleBtnWaschbecken(num: 0 | 1) {
     this.cookieService.setCookie(
-      this.cookieService.cookieKeys.waschbecken,
-      num.toString()
+      this.cookieService.cookieKeys.num_of_basins,
+      `${num}`
     );
     this.isWaschbecken0Active = num === 0 ? true : false;
   }

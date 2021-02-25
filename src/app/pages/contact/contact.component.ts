@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ContactService } from '../../core/services/contact.service';
+import { AccountService } from '../../core/services/account.service';
 import { Gender } from '../../common/models/interfaces/contact-gender.interface';
 import { DOCUMENT } from '@angular/common';
 
@@ -31,11 +32,20 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private contactService: ContactService,
+    private accountService: AccountService,
     @Inject(DOCUMENT) private document: any
   ) {}
 
   ngOnInit(): void {
     document.body.style.overflow = 'auto';
+    this.accountService.isUserLoggedIn().subscribe((res) => {
+      if (res !== false) {
+        this.contactFrm.value.first_name = res.first_name;
+        this.contactFrm.value.last_name = res.last_name;
+        this.contactFrm.value.email = res.email_address;
+        this.contactFrm.value.phone = res.phone_number;
+      }
+    });
   }
 
   contactFrmSubmit() {

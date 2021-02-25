@@ -10,31 +10,17 @@ export class CookieService {
     cookie_approved_1: 'cookie_approved_1',
     cookie_approved_2: 'cookie_approved_2',
     none_approved: 'none_approved',
-    schritt1Btn1: 'schritt1Btn1',
-    schritt1Btn2: 'schritt1Btn2',
-    schritt2Hohe: 'schritt2Hohe',
-    schritt2Tiefe: 'schritt2Tiefe',
-    schritt2Breite: 'schritt2Breite',
-    schritt3Hohe: 'schritt3Hohe',
-    schritt3Tiefe: 'schritt3Tiefe',
-    schritt3Breite: 'schritt3Breite',
-    schritt3Img: 'schritt3Img',
-    schritt3Schubladen: 'schritt3Schubladen',
-    schritt3Turen: 'schritt3Turen',
-    schritt4Img: 'schritt4Img',
-    schritt2Img: 'schritt2Img',
-    schritt2ImgID: 'schritt2ImgID',
-    schritt1Img: 'schritt1Img',
-    schritt1ImgID: 'schritt1ImgID',
-    griff: 'griff',
-    griffID: 'griffID',
-    farbe: 'farbe',
-    farbeID: 'farbeID',
-    farbe2: 'farbe2',
-    farbe2ID: 'farbe2ID',
-    farbe3: 'farbe3',
-    farbe3ID: 'farbe3ID',
-    waschbecken: 'waschbecken',
+    num_of_basins: 'num_of_basins',
+    sink_type: 'sink_type',
+    sink_dimensions_width: 'sink_dimensions_width',
+    sink_dimensions_height: 'sink_dimensions_height',
+    sink_model: 'sink_model',
+    width: 'width',
+    height: 'height',
+    depth: 'depth',
+    color_consists: 'color_consists',
+    color_front: 'color_front',
+    color_cover_plate: 'color_cover_plate',
   };
 
   cookieOptions: CookieOptions = {
@@ -72,7 +58,7 @@ export class CookieService {
     document.cookie = updatedCookie;
   }
 
-  getCookie(name: string): string | undefined {
+  getCookie(name: string): string {
     let matches = document.cookie.match(
       new RegExp(
         '(?:^|; )' +
@@ -80,7 +66,7 @@ export class CookieService {
           '=([^;]*)'
       )
     );
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    return matches ? decodeURIComponent(matches[1]) : '';
   }
 
   deleteCookie(name: string): void {
