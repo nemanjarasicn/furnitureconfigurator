@@ -13,12 +13,15 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./canvas-component.component.scss'],
 })
 export class CanvasComponentComponent implements OnInit {
+  inputDimensions: ICanvasDimensions = { width: 100, height: 100 };
   mainDimensions: ICanvasDimensions = { width: 100, height: 100 };
 
-  styleDimensions: ICanvasStyleDimensions = {
-    width: `100px`,
-    height: `100px`,
-  };
+  inputWidth: number = 100;
+  inputHeight: number = 100;
+  // styleDimensions: ICanvasStyleDimensions = {
+  //   width: `100px`,
+  //   height: `100px`,
+  // };
 
   stage: any;
   layer: any;
@@ -62,20 +65,11 @@ export class CanvasComponentComponent implements OnInit {
     //     this.mainDimensions.height
     //   );
     // });
-    this.canvasService.getMainWidth().subscribe((data) => {
-      console.log(data);
-      // this.mainDimensions.width = data;
-      // this.setWidthHeightByRatio(data, this.mainDimensions.height);
-    });
-    this.canvasService.getMainHeight().subscribe((data) => {
-      // this.mainDimensions.height = data;
-      // this.setWidthHeightByRatio(this.mainDimensions.width, data);
-    });
 
     this.stage = new Konva.Stage({
       container: 'konva-canvas',
-      width: this.mainDimensions.width,
-      height: this.mainDimensions.height,
+      width: 300,
+      height: 300,
     });
 
     this.layer = new Konva.Layer({});
@@ -92,14 +86,14 @@ export class CanvasComponentComponent implements OnInit {
     this.stage.add(this.layer);
     this.layer.add(this.stageRectangle);
 
-    this.addGridLayer(
-      this.mainDimensions.width,
-      this.mainDimensions.height,
-      20,
-      10,
-      10
-    );
+    this.addGridLayer(300, 300, 20, 10, 10);
+
     this.canvasService.getSelectedHandle().subscribe((data) => {
+      if (this.stage.find('Transformer').length !== 0) {
+        this.updateElementHandlePicture(data);
+      } else {
+        console.log('nema ih');
+      }
       this.selectedHandleBarImgSource = this.buildImageSource(
         data.imageUrl ? data.imageUrl : ''
       );
@@ -109,23 +103,92 @@ export class CanvasComponentComponent implements OnInit {
     });
 
     this.canvasService.getSelectedColor().subscribe((data) => {
+      if (this.stage.find('Transformer').length !== 0) {
+        this.updateElementColorPicture(data);
+      } else {
+        console.log('nema ih');
+      }
       this.selectedColorImgSource = this.buildImageSource(
         data.imageUrl ? data.imageUrl : ''
       );
-      console.log(this.selectedColorImgSource);
+      // console.log(this.selectedColorImgSource);
     });
     this.canvasService.getSelectedTemplate().subscribe((data) => {
       // console.log(data)
     });
 
     this.stage.batchDraw();
+
+    this.canvasService.getMainWidth().subscribe((data) => {
+      this.inputWidth = data;
+    });
+    this.canvasService.getMainHeight().subscribe((data) => {
+      this.inputHeight = data;
+    });
+    this.setWidthHeightByRatio(this.inputWidth, this.inputHeight);
+  }
+
+  updateElementColorPicture(data) {
+    let colorUrl = this.buildImageSource(data.imageUrl);
+    let transformers = this.stage.find('Transformer');
+    let activeTransformer;
+    transformers.forEach((element) => {
+      element.attrs.visible == true && (activeTransformer = element);
+    });
+
+    if (activeTransformer) {
+      let id = activeTransformer.attrs.id;
+      let currentImage = this.stage.find(`.colorImage${id}`);
+
+      if (currentImage) {
+        var imageObj2 = new Image();
+        imageObj2.src = `${colorUrl}`;
+        imageObj2.onload = function () {
+          currentImage.image(imageObj2);
+
+          //Setting new imgSource attribute so i can compare them to carousel images
+          if (currentImage[0]) {
+            currentImage[0].attrs.imgSource = `${colorUrl}`;
+          }
+        };
+      }
+
+      this.stage.batchDraw();
+    }
+  }
+
+  updateElementHandlePicture(data) {
+    let handleUrl = this.buildImageSource(data.imageUrl);
+    let transformers = this.stage.find('Transformer');
+    let activeTransformer;
+    transformers.forEach((element) => {
+      element.attrs.visible == true && (activeTransformer = element);
+    });
+
+    if (activeTransformer) {
+      let id = activeTransformer.attrs.id;
+      let currentImage = this.stage.find(`.handleBarImage${id}`);
+
+      if (currentImage) {
+        var imageObj2 = new Image();
+        imageObj2.src = `${handleUrl}`;
+        imageObj2.onload = function () {
+          currentImage.image(imageObj2);
+
+          //Setting new imgSource attribute so i can compare them to carousel images
+          if (currentImage[0]) {
+            currentImage[0].attrs.imgSource = `${handleUrl}`;
+          }
+        };
+      }
+
+      this.stage.batchDraw();
+    }
   }
 
   addNewElement(data) {
-    console.log('usao u New Element');
     let id = uuidv4();
     data.description.includes('DOOR') ? `door${id}` : `drawer${id}`;
-    console.log(id);
 
     this.newRectangle(
       this,
@@ -134,8 +197,8 @@ export class CanvasComponentComponent implements OnInit {
       id,
       this.stage.x(),
       this.stage.y(),
-      200,
-      200
+      this.stage.x() + this.snapWidth * 4,
+      this.stage.y() + this.snapWidth * 5
     );
   }
   /*Function for adding grid layer with starting parameters of container*/
@@ -148,6 +211,9 @@ export class CanvasComponentComponent implements OnInit {
   ) {
     this.snapWidth = Math.round(width / widthSqNo);
     this.snapHeight = Math.round(height / heightSqNo);
+    console.log(this.snapWidth);
+    // console.log(this.snapHeight);
+    console.log(widthSqNo);
 
     for (let i = 0; i < widthSqNo; i++) {
       this.gridLayer.add(
@@ -160,6 +226,7 @@ export class CanvasComponentComponent implements OnInit {
           ],
           stroke: '#ffffff',
           strokeWidth: 1,
+          opacity: 0.5,
         })
       );
     }
@@ -176,6 +243,7 @@ export class CanvasComponentComponent implements OnInit {
           ],
           stroke: '#ffffff',
           strokeWidth: 0.5,
+          opacity: 0.5,
         })
       );
     }
@@ -228,8 +296,8 @@ export class CanvasComponentComponent implements OnInit {
         y: rectY,
         image: imageObjRect,
         imgSource: `./assets/images/white.png`,
-        width: stage.width() / 2,
-        height: stage.height() / 2,
+        width: rectWidth,
+        height: rectHeight,
         draggable: true,
         stroke: 'black',
         borderColor: 'black',
@@ -237,7 +305,7 @@ export class CanvasComponentComponent implements OnInit {
         strokeWidth: 1,
         shadowColor: 'black',
         shadowBlur: 2,
-        opacity: 0.8,
+        opacity: 0.4,
         easing: Konva.Easings.EaseIn,
         duration: 4,
         id: id,
@@ -251,6 +319,7 @@ export class CanvasComponentComponent implements OnInit {
           x: rectangle.x() + (rectangle.width() - 128) / 2,
           y: rectangle.y() + rectangle.height() / 2 - 36,
           image: imageObj,
+          imgSource: `${element.selectedHandleBarImgSource}`,
           width: 128,
           height: 72,
           id: id,
@@ -264,7 +333,7 @@ export class CanvasComponentComponent implements OnInit {
             x: rectangle.x() + rectangle.width() - 40,
             y: rectangle.y() + rectangle.height() - 40,
             image: imageColorObj,
-            // imgSource: `${selectedColorImgSource}`,
+            imgSource: `${element.selectedColorImgSource}`,
             width: 40,
             height: 40,
             id: id,
@@ -277,7 +346,7 @@ export class CanvasComponentComponent implements OnInit {
             y: rectangle.y(),
             width: 20,
             height: 20,
-            fill: '#343a40',
+            fill: 'black',
             stroke: '#ddd',
             strokeWidth: 1,
             opacity: 0.8,
@@ -347,6 +416,7 @@ export class CanvasComponentComponent implements OnInit {
             strokeWidth: 1,
             opacity: 0.5,
             id: id,
+            visible: false,
           });
 
           element.updateText(
@@ -372,6 +442,7 @@ export class CanvasComponentComponent implements OnInit {
             }
 
             tr.hide();
+            element.canvasService.setTransformerFalse(tr.attrs.visible);
             layer.draw();
           });
           line1Delete.on('click', (e) => {
@@ -388,6 +459,7 @@ export class CanvasComponentComponent implements OnInit {
             }
 
             tr.hide();
+            element.canvasService.setTransformerFalse(tr.attrs.visible);
             layer.draw();
           });
           line2Delete.on('click', (e) => {
@@ -404,6 +476,7 @@ export class CanvasComponentComponent implements OnInit {
             }
 
             tr.hide();
+            element.canvasService.setTransformerFalse(tr.attrs.visible);
             layer.draw();
           });
 
@@ -424,10 +497,18 @@ export class CanvasComponentComponent implements OnInit {
               imageColorContainer
             );
 
-            tr.attrs.visible == true ? tr.hide() : tr.show();
+            tr.attrs.visible == true
+              ? (tr.hide(),
+                element.canvasService.setTransformerFalse(tr.attrs.visible))
+              : (tr.show(),
+                element.canvasService.setTransformerTrue(tr.attrs.visible));
             element.removeSiblingCanvas(tr, 'Transformer');
 
-            // element.setActiveValues(rectangle, imageContainer, imageColorContainer);
+            element.setActiveValues(
+              rectangle,
+              imageContainer,
+              imageColorContainer
+            );
 
             // shadowRectangle.show();
             shadowRectangle.moveToTop();
@@ -522,6 +603,7 @@ export class CanvasComponentComponent implements OnInit {
 
             shadowRectangle.hide();
             tr.show();
+            element.canvasService.setTransformerTrue(tr.attrs.visible);
 
             element.removeSiblingCanvas(tr, 'Transformer');
             // setActiveValues(rectangle, imageContainer, imageColorContainer);
@@ -550,7 +632,50 @@ export class CanvasComponentComponent implements OnInit {
   }
 
   /*Setting values of carousel depending on clicked element*/
-  setActiveValues(rectangle, imageContainer, imageColorContainer) {}
+  setActiveValues(rectangle, imageContainer, imageColorContainer) {
+    let transformer = this.stage.find(`.transformer${rectangle.attrs.id}`);
+    console.log(transformer);
+
+    let elementHandleImage = this.stage.find(
+      `.handleBarImage${rectangle.attrs.id}`
+    );
+    console.log(elementHandleImage[0].attrs.image.attributes[0].value);
+
+    let elementColorImage = this.stage.find(`.colorImage${rectangle.attrs.id}`);
+    console.log(elementColorImage[0].attrs.image.attributes[0].value);
+
+    this.canvasService.setActiveCanvasElementSource(
+      elementColorImage[0].attrs.image.attributes[0].value
+    );
+
+    // //door and drawer elements
+    // let elements = getDocElements(".drawer-con img");
+
+    // elements.forEach((el) => {
+    //   transformer[0].attrs.id.includes(`${el.id}`) &&
+    //     setActiveElement(el, transformer[0]);
+    // });
+
+    // //handle bars elements
+
+    // let handles = getDocElements(".slick2  div");
+    // let handleImages = getDocElements(".slick2 img");
+
+    // if (transformer[0].attrs.visible === true) {
+    //   let currentSlide = getCurrentSlide("slick2", handles);
+    //   let matchingSlide;
+
+    //   //If current slide image is not canvas element image
+    //   if (
+    //     !currentSlide.children[1].src.includes(imageContainer.attrs.imgSource)
+    //   ) {
+    //     matchingSlide = getMatchingImage(handleImages, imageContainer)
+    //       .parentElement;
+
+    //     //move to matching slide
+    //     $(".slick2").slick("slickGoTo", matchingSlide.dataset.slickIndex, false);
+    //   }
+  }
 
   // function getMatchingImage(slickImages, canvasImage) {
   //   let matchingImage;
@@ -720,6 +845,7 @@ export class CanvasComponentComponent implements OnInit {
       );
       element.updateImagePosition(imageContainer, e);
       element.updateColorImagePosition(imageColorContainer, e);
+      shadowRectangle.hide();
     });
 
     rectangle.on('transformend', function (e) {
@@ -799,6 +925,8 @@ export class CanvasComponentComponent implements OnInit {
 
   /*TEXT*/
   updateText(textHeight, textWidth, width, height) {
+    console.log(width);
+
     textHeight.text('h: ' + Math.round(height / this.sqHeight));
     textWidth.text('w: ' + Math.round(width / this.sqWidth));
     this.layer.batchDraw();
@@ -848,46 +976,60 @@ export class CanvasComponentComponent implements OnInit {
   sqHeight: any;
 
   setWidthHeightByRatio(widthSize, heightSize) {
-    console.log(widthSize);
-    console.log(heightSize);
-    // if (+heightSize > +widthSize) {
-    //   this.heightRatio = 1;
-    //   this.widthRatio = widthSize / heightSize;
-    //   this.sqNoWidth = Math.round(this.widthRatio * 10);
-    //   this.sqNoHeight = Math.round(this.heightRatio * 10);
-    // } else {
-    //   this.widthRatio = 1;
-    //   this.heightRatio = heightSize / widthSize;
-    //   this.sqNoHeight = Math.round(this.heightRatio * 10);
-    //   this.sqNoWidth = Math.round(this.widthRatio * 10);
-    // }
-    // this.mainDimensions = {
-    //   width: 400 * this.widthRatio,
-    //   height: 400 * this.heightRatio,
-    // };
+    if (+heightSize > +widthSize) {
+      this.heightRatio = 1;
+      this.widthRatio = widthSize / heightSize;
+      this.sqNoWidth = Math.round(this.widthRatio * 10);
+      this.sqNoHeight = Math.round(this.heightRatio * 10);
+    } else {
+      this.widthRatio = 1;
+      this.heightRatio = heightSize / widthSize;
+      this.sqNoHeight = Math.round(this.heightRatio * 10);
+      this.sqNoWidth = Math.round(this.widthRatio * 10);
+    }
+
+    // input dimensions
+    this.inputDimensions = {
+      width: widthSize,
+      height: heightSize,
+    };
+
+    //stage
+    this.mainDimensions = {
+      width: 600 * this.widthRatio,
+      height: 600 * this.heightRatio,
+    };
+
+    // console.log(this.mainDimensions);
+    //container
     // this.styleDimensions = {
-    //   width: `${this.mainDimensions.width}px`,
-    //   height: `${this.mainDimensions.height}px`,
+    //   width: `${400 * this.widthRatio}px`,
+    //   height: `${400 * this.heightRatio}px`,
     // };
     // // this.containerHeight = 400 * heightRatio;
     // // containerWidth = 400 * widthRatio;
     // // container.style.width = `${containerWidth}px`;
     // // container.style.height = `${containerHeight}px`;
-    // this.sqWidth = this.mainDimensions.width / previousWidth;
-    // this.sqHeight = this.mainDimensions.height / previousHeight;
-    // if (this.stage) {
-    //   this.stage.find('#gridLayer').destroy();
-    //   this.stage.width(this.mainDimensions.width);
-    //   this.stage.height(this.mainDimensions.height);
-    //   this.addGridLayer(
-    //     this.mainDimensions.width,
-    //     this.mainDimensions.height,
-    //     20,
-    //     this.sqNoWidth,
-    //     this.sqNoHeight
-    //   );
-    //   this.stage.add(this.layer);
-    //   this.stage.batchDraw();
-    // }
+
+    this.sqWidth = this.mainDimensions.width / widthSize;
+    this.sqHeight = this.mainDimensions.height / heightSize;
+    if (this.stage) {
+      this.stage.find('#gridLayer').destroy();
+      this.stage.width(this.mainDimensions.width);
+      this.stage.height(this.mainDimensions.height);
+
+      this.stageRectangle.width(this.mainDimensions.width);
+      this.stageRectangle.height(this.mainDimensions.height);
+      this.stage.add(this.layer);
+      this.layer.add(this.stageRectangle);
+      this.addGridLayer(
+        this.mainDimensions.width,
+        this.mainDimensions.height,
+        20,
+        this.sqNoWidth,
+        this.sqNoHeight
+      );
+      this.stage.batchDraw();
+    }
   }
 }
