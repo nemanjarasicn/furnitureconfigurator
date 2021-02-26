@@ -35,10 +35,4 @@ export class OptionInputComponent implements OnInit {
   onGetFocus() {
     this.configurationService.focusInput(this.option);
   }
-  onValueChanged(e) {
-    // this.option.description?.includes('CABINET_MEASURES.OPTIONS.WIDTH') &&
-    //   this.canvasService.setMainWidth(Number(e.target.value));
-    // this.option.description?.includes('CABINET_MEASURES.OPTIONS.HEIGHT') &&
-    //   this.canvasService.setMainHeight(Number(e.target.value));
-  }
 }

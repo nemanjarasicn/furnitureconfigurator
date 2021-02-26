@@ -15,6 +15,13 @@ export class CanvasService {
   private isCanvas$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
+  private isTransformerActive$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+
+  private canvasActiveElementSource$: BehaviorSubject<string> = new BehaviorSubject<string>(
+    ''
+  );
 
   //For initial active option
   private hoveredItem$: BehaviorSubject<any> = new BehaviorSubject<any>({});
@@ -116,6 +123,13 @@ export class CanvasService {
     return this.selectedElementOption$;
   }
 
+  setActiveCanvasElementSource(source: string) {
+    this.canvasActiveElementSource$.next(source);
+  }
+  getActiveCanvasElementSource() {
+    return this.canvasActiveElementSource$;
+  }
+
   setSelectedOption(selectedOption: IConfigurationItemOption) {
     selectedOption.description?.includes('CANVAS_TEMPLATES') &&
       this.selectedTemplateOption$.next(selectedOption);
@@ -135,5 +149,15 @@ export class CanvasService {
   }
   getHoveredItem() {
     return this.hoveredItem$;
+  }
+
+  setTransformerTrue(visibility) {
+    this.isTransformerActive$.next(visibility);
+  }
+  setTransformerFalse(visibility) {
+    this.isTransformerActive$.next(visibility);
+  }
+  getIsTransformerActive() {
+    return this.isTransformerActive$;
   }
 }
