@@ -71,8 +71,6 @@ export class ConfigurationItemOptionsComponent implements OnInit {
         ? this.canvasService.setSelectedOption(selectedOption)
         : this.configurationService.selectOption(this.item, selectedOption);
     }
-
-    console.log(selectedOption);
   }
 
   buildImageSource(imageUrl: string) {
