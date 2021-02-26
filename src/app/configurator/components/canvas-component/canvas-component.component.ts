@@ -66,7 +66,6 @@ export class CanvasComponentComponent implements OnInit {
       if (this.stage.find('Transformer').length !== 0) {
         this.updateElementHandlePicture(data);
       } else {
-        console.log('nema ih');
       }
       this.selectedHandleBarImgSource = this.buildImageSource(
         data.imageUrl ? data.imageUrl : ''
@@ -80,7 +79,6 @@ export class CanvasComponentComponent implements OnInit {
       if (this.stage.find('Transformer').length !== 0) {
         this.updateElementColorPicture(data);
       } else {
-        console.log('nema ih');
       }
       this.selectedColorImgSource = this.buildImageSource(
         data.imageUrl ? data.imageUrl : ''
@@ -102,10 +100,10 @@ export class CanvasComponentComponent implements OnInit {
   }
 
   setTemplate(data) {
-    data.description.includes('TEMPLATE1') && this.sampleTemplate1(this);
+    data.description.includes('TEMPLATE1') && this.sampleTemplate4(this);
     data.description.includes('TEMPLATE2') && this.sampleTemplate2(this);
     data.description.includes('TEMPLATE3') && this.sampleTemplate3(this);
-    data.description.includes('TEMPLATE4') && this.sampleTemplate4(this);
+    data.description.includes('TEMPLATE4') && this.sampleTemplate1(this);
   }
 
   sampleTemplate1(element) {
@@ -264,6 +262,8 @@ export class CanvasComponentComponent implements OnInit {
     );
   }
 
+  updateElementPicture(data) {}
+
   updateElementColorPicture(data) {
     let colorUrl = this.buildImageSource(data.imageUrl);
     let transformers = this.stage.find('Transformer');
@@ -323,8 +323,9 @@ export class CanvasComponentComponent implements OnInit {
   }
 
   addNewElement(data) {
-    let id = uuidv4();
-    data.description.includes('DOOR') ? `door${id}` : `drawer${id}`;
+    let id = data.description.includes('DOOR')
+      ? `door${uuidv4()}`
+      : `drawer${uuidv4()}`;
 
     this.newRectangle(
       this,
@@ -347,9 +348,6 @@ export class CanvasComponentComponent implements OnInit {
   ) {
     this.snapWidth = Math.round(width / widthSqNo);
     this.snapHeight = Math.round(height / heightSqNo);
-    console.log(this.snapWidth);
-    // console.log(this.snapHeight);
-    console.log(widthSqNo);
 
     for (let i = 0; i < widthSqNo; i++) {
       this.gridLayer.add(
@@ -389,7 +387,6 @@ export class CanvasComponentComponent implements OnInit {
 
   /*Function for creating a main new rectangle*/
   newRectangle(element, layer, stage, id, rectX, rectY, rectWidth, rectHeight) {
-    console.log('usao u New Rectangle');
     let tr = new Konva.Transformer({
       rotateEnabled: false,
       boundBoxFunc: function (oldBoundBox, newBoundBox) {
@@ -567,7 +564,7 @@ export class CanvasComponentComponent implements OnInit {
           deleteRect.on('click', (e) => {
             let shapes = stage.children[0].children;
             let matching: any[] = [];
-            console.log(stage);
+
             for (let i = 0; i < shapes.length; i++) {
               if (shapes[i].attrs.id == id) {
                 matching.push(shapes[i]);
@@ -578,13 +575,13 @@ export class CanvasComponentComponent implements OnInit {
             }
 
             tr.hide();
-            element.canvasService.setTransformerFalse(tr.attrs.visible);
+
             layer.draw();
           });
           line1Delete.on('click', (e) => {
             let shapes = stage.children[0].children;
             let matching: any[] = [];
-            console.log(stage);
+
             for (let i = 0; i < shapes.length; i++) {
               if (shapes[i].attrs.id == id) {
                 matching.push(shapes[i]);
@@ -595,13 +592,13 @@ export class CanvasComponentComponent implements OnInit {
             }
 
             tr.hide();
-            element.canvasService.setTransformerFalse(tr.attrs.visible);
+
             layer.draw();
           });
           line2Delete.on('click', (e) => {
             let shapes = stage.children[0].children;
             let matching: any[] = [];
-            console.log(stage);
+
             for (let i = 0; i < shapes.length; i++) {
               if (shapes[i].attrs.id == id) {
                 matching.push(shapes[i]);
@@ -612,7 +609,7 @@ export class CanvasComponentComponent implements OnInit {
             }
 
             tr.hide();
-            element.canvasService.setTransformerFalse(tr.attrs.visible);
+
             layer.draw();
           });
 
@@ -633,18 +630,16 @@ export class CanvasComponentComponent implements OnInit {
               imageColorContainer
             );
 
-            tr.attrs.visible == true
-              ? (tr.hide(),
-                element.canvasService.setTransformerFalse(tr.attrs.visible))
-              : (tr.show(),
-                element.canvasService.setTransformerTrue(tr.attrs.visible));
-            element.removeSiblingCanvas(tr, 'Transformer');
+            tr.attrs.visible == true ? tr.hide() : tr.show(),
+              element.setActiveValues(
+                rectangle,
+                imageContainer,
+                imageColorContainer
+              );
 
-            element.setActiveValues(
-              rectangle,
-              imageContainer,
-              imageColorContainer
-            );
+            element.sendImageSources(imageColorContainer, imageContainer, id);
+
+            element.removeSiblingCanvas(tr, 'Transformer');
 
             // shadowRectangle.show();
             shadowRectangle.moveToTop();
@@ -739,7 +734,6 @@ export class CanvasComponentComponent implements OnInit {
 
             shadowRectangle.hide();
             tr.show();
-            element.canvasService.setTransformerTrue(tr.attrs.visible);
 
             element.removeSiblingCanvas(tr, 'Transformer');
             // setActiveValues(rectangle, imageContainer, imageColorContainer);
@@ -767,22 +761,29 @@ export class CanvasComponentComponent implements OnInit {
     imageObjRect.src = `./assets/images/white.png`;
   }
 
+  sendImageSources(colorImage, handleImage, id) {
+    this.canvasService.setActiveCanvasElementSource(colorImage.attrs.imgSource);
+    this.canvasService.setActiveCanvasElementSource(
+      handleImage.attrs.imgSource
+    );
+    this.canvasService.setActiveCanvasElementSource(id.toUpperCase());
+    // console.log(handleImage);
+    // console.log(colorImage);
+  }
+
   /*Setting values of carousel depending on clicked element*/
   setActiveValues(rectangle, imageContainer, imageColorContainer) {
     let transformer = this.stage.find(`.transformer${rectangle.attrs.id}`);
-    console.log(transformer);
 
     let elementHandleImage = this.stage.find(
       `.handleBarImage${rectangle.attrs.id}`
     );
-    console.log(elementHandleImage[0].attrs.image.attributes[0].value);
 
     let elementColorImage = this.stage.find(`.colorImage${rectangle.attrs.id}`);
-    console.log(elementColorImage[0].attrs.image.attributes[0].value);
 
-    this.canvasService.setActiveCanvasElementSource(
-      elementColorImage[0].attrs.image.attributes[0].value
-    );
+    // this.canvasService.setActiveCanvasElementSource(
+    //   elementColorImage[0].attrs.image.attributes[0].value
+    // );
 
     // //door and drawer elements
     // let elements = getDocElements(".drawer-con img");
@@ -828,8 +829,6 @@ export class CanvasComponentComponent implements OnInit {
   // }
 
   private buildImageSource(imageUrl: string) {
-    // console.log('Image Url')
-    // console.log(imageUrl)
     return imageUrl.length > 0
       ? `./${this.translateService.instant(imageUrl)} `
       : '';
@@ -1061,8 +1060,6 @@ export class CanvasComponentComponent implements OnInit {
 
   /*TEXT*/
   updateText(textHeight, textWidth, width, height) {
-    console.log(width);
-
     textHeight.text('h: ' + Math.round(height / this.sqHeight));
     textWidth.text('w: ' + Math.round(width / this.sqWidth));
     this.layer.batchDraw();

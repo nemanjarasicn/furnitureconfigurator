@@ -15,9 +15,6 @@ export class CanvasService {
   private isCanvas$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
-  private isTransformerActive$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
 
   private canvasActiveElementSource$: BehaviorSubject<string> = new BehaviorSubject<string>(
     ''
@@ -149,15 +146,5 @@ export class CanvasService {
   }
   getHoveredItem() {
     return this.hoveredItem$;
-  }
-
-  setTransformerTrue(visibility) {
-    this.isTransformerActive$.next(visibility);
-  }
-  setTransformerFalse(visibility) {
-    this.isTransformerActive$.next(visibility);
-  }
-  getIsTransformerActive() {
-    return this.isTransformerActive$;
   }
 }

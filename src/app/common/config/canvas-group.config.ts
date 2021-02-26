@@ -11,15 +11,6 @@ const canvasConfig: IConfigurationGroup = {
   anchorLink: 'canvasAnchor',
   items: [
     {
-      key: 'templates',
-      title: 'CONFIGURATION.CANVAS.ITEMS.TEMPLATES.TITLE',
-      description: 'CONFIGURATION.CANVAS.ITEMS.TEMPLATES.DESCRIPTION',
-      type: ConfigurationOptionType.TILE,
-      options: canvasTemplateOptions,
-      tileSize: 100,
-    },
-
-    {
       key: 'canvasColors',
       title: 'CONFIGURATION.CANVAS.ITEMS.COLORS.TITLE',
       description: 'CONFIGURATION.CANVAS.ITEMS.COLORS.DESCRIPTION',
@@ -41,6 +32,14 @@ const canvasConfig: IConfigurationGroup = {
       description: 'CONFIGURATION.CANVAS.ITEMS.ELEMENTS.DESCRIPTION',
       type: ConfigurationOptionType.TILE,
       options: canvasElementOptions,
+      tileSize: 100,
+    },
+    {
+      key: 'templates',
+      title: 'CONFIGURATION.CANVAS.ITEMS.TEMPLATES.TITLE',
+      description: 'CONFIGURATION.CANVAS.ITEMS.TEMPLATES.DESCRIPTION',
+      type: ConfigurationOptionType.TILE,
+      options: canvasTemplateOptions,
       tileSize: 100,
     },
   ],

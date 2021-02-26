@@ -44,13 +44,30 @@ export class ConfigurationItemOptionsComponent implements OnInit {
       }
     });
 
-    // this.canvasService.getActiveCanvasElementSource().subscribe((data) => {
-    //   console.log(data);
-    //   this.options.forEach((e) => {
-    //     data = this.buildImageSource(e.imageUrl ? e.imageUrl : '');
-    //     this.activeOption = e;
-    //   });
-    // });
+    this.canvasService.getActiveCanvasElementSource().subscribe((data) => {
+      this.options.forEach((e) => {
+        // console.log(e);
+        if (this.buildImageSource(e.imageUrl ? e.imageUrl : '') === data) {
+          this.activeOption = e;
+        }
+
+        if (e.imageUrl?.includes('DOOR') && data.includes('DOOR')) {
+          this.activeOption = e;
+        }
+        if (e.imageUrl?.includes('DRAWER') && data.includes('DRAWER')) {
+          this.activeOption = e;
+        }
+
+        // if (
+        //   this.buildImageSource(e.imageUrl ? e.imageUrl : '').includes(
+        //     'DRAWER'
+        //   ) &&
+        //   data.includes('DRAWER')
+        // ) {
+        //   this.activeOption = e;
+        // }
+      });
+    });
   }
 
   onTileSelected(selectedOption: IConfigurationItemOption) {
