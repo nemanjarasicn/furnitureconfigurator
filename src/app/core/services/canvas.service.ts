@@ -7,11 +7,14 @@ import Konva from 'konva';
 import { ICanvasDimensions } from '../../common/models/interfaces/canvas-dimensions.interface';
 import { IConfigurationItemOption } from 'src/app/common/models/interfaces/configuration-item-option.interface';
 import { IConfigurationItem } from 'src/app/common/models/interfaces/configuration-item.interface';
+import { CookieService } from 'src/app/core/services/cookie.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CanvasService {
+  constructor(private cookieService: CookieService) {}
+
   private isCanvas$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
@@ -76,8 +79,6 @@ export class CanvasService {
 
   stage: any;
   layer: any;
-
-  constructor() {}
 
   getCanvasState(): BehaviorSubject<boolean> {
     return this.isCanvas$;

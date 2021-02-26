@@ -5,6 +5,7 @@ import { IConfigurationItem } from 'src/app/common/models/interfaces/configurati
 import { ConfigurationService } from 'src/app/core/services/configuration.service';
 import { CanvasService } from 'src/app/core/services/canvas.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'src/app/core/services/cookie.service';
 
 @Component({
   selector: 'app-configuration-item-options',
@@ -24,10 +25,12 @@ export class ConfigurationItemOptionsComponent implements OnInit {
   constructor(
     private configurationService: ConfigurationService,
     private canvasService: CanvasService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
+    //For Scrolling
     this.canvasService.getHoveredItem().subscribe((data) => {
       if (data === this.item! && !this.activeOption) {
         this.activeOption = data.options[0];
@@ -44,9 +47,9 @@ export class ConfigurationItemOptionsComponent implements OnInit {
       }
     });
 
+    //For updating images on canvas elements
     this.canvasService.getActiveCanvasElementSource().subscribe((data) => {
       this.options.forEach((e) => {
-        // console.log(e);
         if (this.buildImageSource(e.imageUrl ? e.imageUrl : '') === data) {
           this.activeOption = e;
         }
@@ -57,15 +60,6 @@ export class ConfigurationItemOptionsComponent implements OnInit {
         if (e.imageUrl?.includes('DRAWER') && data.includes('DRAWER')) {
           this.activeOption = e;
         }
-
-        // if (
-        //   this.buildImageSource(e.imageUrl ? e.imageUrl : '').includes(
-        //     'DRAWER'
-        //   ) &&
-        //   data.includes('DRAWER')
-        // ) {
-        //   this.activeOption = e;
-        // }
       });
     });
   }
@@ -77,6 +71,8 @@ export class ConfigurationItemOptionsComponent implements OnInit {
         ? this.canvasService.setSelectedOption(selectedOption)
         : this.configurationService.selectOption(this.item, selectedOption);
     }
+
+    console.log(selectedOption);
   }
 
   buildImageSource(imageUrl: string) {
