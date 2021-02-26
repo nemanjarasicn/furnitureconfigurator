@@ -3,7 +3,7 @@
     <li *ngFor="let breadcrumb of breadcrumbs">
       <a
         [ngClass]="{ active: breadcrumb.anchor === activeAnchor }"
-        [href]="breadcrumb.anchor"
+        style="cursor: pointer"
         (click)="onBreadcrumbClick(breadcrumb)"
       >
         {{ breadcrumb.title | translate }}
