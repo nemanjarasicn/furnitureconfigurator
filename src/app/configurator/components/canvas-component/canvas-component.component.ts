@@ -40,32 +40,6 @@ export class CanvasComponentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.canvasService.getMainDimensions().subscribe((data) => {
-    //   this.setWidthHeightByRatio(
-    //     data.width,
-    //     data.height,
-    //     this.mainDimensions.width,
-    //     this.mainDimensions.height
-    //   );
-    // });
-
-    // this.canvasService.getMainWidth().subscribe((data) => {
-    //   this.setWidthHeightByRatio(
-    //     data,
-    //     this.mainDimensions.height,
-    //     this.mainDimensions.width,
-    //     this.mainDimensions.height
-    //   );
-    // });
-    // this.canvasService.getMainHeight().subscribe((data) => {
-    //   this.setWidthHeightByRatio(
-    //     this.mainDimensions.width,
-    //     data,
-    //     this.mainDimensions.width,
-    //     this.mainDimensions.height
-    //   );
-    // });
-
     this.stage = new Konva.Stage({
       container: 'konva-canvas',
       width: 300,
@@ -111,10 +85,9 @@ export class CanvasComponentComponent implements OnInit {
       this.selectedColorImgSource = this.buildImageSource(
         data.imageUrl ? data.imageUrl : ''
       );
-      // console.log(this.selectedColorImgSource);
     });
     this.canvasService.getSelectedTemplate().subscribe((data) => {
-      // console.log(data)
+      this.setTemplate(data);
     });
 
     this.stage.batchDraw();
@@ -126,6 +99,169 @@ export class CanvasComponentComponent implements OnInit {
       this.inputHeight = data;
     });
     this.setWidthHeightByRatio(this.inputWidth, this.inputHeight);
+  }
+
+  setTemplate(data) {
+    data.description.includes('TEMPLATE1') && this.sampleTemplate1(this);
+    data.description.includes('TEMPLATE2') && this.sampleTemplate2(this);
+    data.description.includes('TEMPLATE3') && this.sampleTemplate3(this);
+    data.description.includes('TEMPLATE4') && this.sampleTemplate4(this);
+  }
+
+  sampleTemplate1(element) {
+    this.layer.destroyChildren();
+
+    this.stageRectangle = new Konva.Rect({
+      x: this.stage.x(),
+      y: this.stage.y(),
+      width: this.stage.width(),
+      height: this.stage.height(),
+      fill: '#ebebeb',
+    });
+    this.layer.add(this.stageRectangle);
+    this.layer.draw();
+  }
+
+  sampleTemplate2(element) {
+    this.layer.destroyChildren();
+    this.layer.draw();
+    this.stageRectangle = new Konva.Rect({
+      x: this.stage.x(),
+      y: this.stage.y(),
+      width: this.stage.width(),
+      height: this.stage.height(),
+      fill: '#ebebeb',
+    });
+    this.layer.add(this.stageRectangle);
+
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x(),
+      this.stage.y(),
+      this.stage.width() / 2,
+      this.stage.height()
+    );
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x() + this.stage.width() / 2,
+      this.stage.y(),
+      this.stage.width() / 2,
+      this.stage.height()
+    );
+  }
+
+  sampleTemplate3(element) {
+    this.layer.destroyChildren();
+    this.layer.draw();
+    this.stageRectangle = new Konva.Rect({
+      x: this.stage.x(),
+      y: this.stage.y(),
+      width: this.stage.width(),
+      height: this.stage.height(),
+      fill: '#ebebeb',
+    });
+    this.layer.add(this.stageRectangle);
+
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x(),
+      this.stage.y(),
+      this.stage.width() / 2,
+      this.stage.height()
+    );
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x() + this.stage.width() / 2,
+      this.stage.y(),
+      this.stage.width() / 2,
+      this.stage.height() / 2
+    );
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x() + this.stage.width() / 2,
+      this.stage.y() + this.stage.height() / 2,
+      this.stage.width() / 2,
+      this.stage.height() / 2
+    );
+  }
+
+  sampleTemplate4(element) {
+    this.layer.destroyChildren();
+    this.layer.draw();
+    this.stageRectangle = new Konva.Rect({
+      x: this.stage.x(),
+      y: this.stage.y(),
+      width: this.stage.width(),
+      height: this.stage.height(),
+      fill: '#ebebeb',
+    });
+    this.layer.add(this.stageRectangle);
+
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x(),
+      this.stage.y(),
+      this.stage.width() / 3,
+      this.stage.height()
+    );
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x() + (this.stage.width() / 3) * 2,
+      this.stage.y(),
+      this.stage.width() / 3,
+      this.stage.height()
+    );
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x() + this.stage.width() / 3,
+      this.stage.y(),
+      this.stage.width() / 3,
+      this.stage.height() / 3
+    );
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x() + this.stage.width() / 3,
+      this.stage.y() + this.stage.height() / 3,
+      this.stage.width() / 3,
+      this.stage.height() / 3
+    );
+    this.newRectangle(
+      element,
+      this.layer,
+      this.stage,
+      uuidv4(),
+      this.stage.x() + this.stage.width() / 3,
+      this.stage.y() + (this.stage.height() / 3) * 2,
+      this.stage.width() / 3,
+      this.stage.height() / 3
+    );
   }
 
   updateElementColorPicture(data) {
